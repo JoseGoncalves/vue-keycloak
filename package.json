@@ -7,10 +7,10 @@
     "email": "gerhard.hirschfeld@baloise.ch",
     "url": "https://github.com/hirsch88"
   },
-  "homepage": "https://github.com/baloise/vue-keycloak",
+  "homepage": "https://github.com/JoseGoncalves/vue-keycloak",
   "repository": {
     "type": "git",
-    "url": "https://github.com/baloise/vue-keycloak.git"
+    "url": "https://github.com/JoseGoncalves/vue-keycloak.git"
   },
   "scripts": {
     "test": "jest",
