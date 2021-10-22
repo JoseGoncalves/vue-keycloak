@@ -10,7 +10,7 @@
   "homepage": "https://github.com/JoseGoncalves/vue-keycloak",
   "repository": {
     "type": "git",
-    "url": "https://github.com/JoseGoncalves/vue-keycloak.git"
+    "url": "git@github.com:JoseGoncalves/vue-keycloak.git"
   },
   "scripts": {
     "test": "jest",
