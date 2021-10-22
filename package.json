@@ -1,5 +1,5 @@
 {
-  "name": "@JoseGoncalves/vue-keycloak",
+  "name": "@josempgon/vue-keycloak",
   "version": "1.5.0",
   "description": "Keycloak plugin for Vue3 and Composition API",
   "author": {
