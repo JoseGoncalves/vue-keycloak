@@ -7,7 +7,7 @@
     <h1 style="font-size: 10em">+</h1>
   </td>
   <td style="border: none;">
-    <img width="200px" src="https://www.keycloak.org/resources/images/keycloak_logo_480x108.png" />
+    <img width="200px" src="https://www.keycloak.org/resources/images/keycloak_icon_512px.svg" />
   </td>
 </tr>
 </table>
@@ -16,11 +16,11 @@
 
 A small wrapper library for the [Keycloak JavaScript adapter](https://www.keycloak.org/docs/latest/securing_apps/#_javascript_adapter).
 
-> The library is made for [Vue 3.x.x](https://v3.vuejs.org/) and the [Composiotion API](https://v3.vuejs.org/api/composition-api.html).
+> The library is made for [Vue 3](https://vuejs.org/) and the [Composition API](https://vuejs.org/guide/extras/composition-api-faq.html#what-is-composition-api).
 
 ## Instalation
 
-Install the [keycloak-js](https://www.keycloak.org/docs/latest/securing_apps/#_javascript_adapter) package , [jwt-decode](https://www.npmjs.com/package/jwt-decode) to decode the jwt token and our wrapper library with npm.
+Install the [keycloak-js](https://www.keycloak.org/docs/latest/securing_apps/#_javascript_adapter) package, [jwt-decode](https://www.npmjs.com/package/jwt-decode) to decode the jwt token and our wrapper library with npm.
 
 ```bash
 npm install keycloak-js jwt-decode @baloise/vue-keycloak
