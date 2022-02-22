@@ -28,6 +28,7 @@ export const useKeycloak = (): KeycloakComposable => {
       !isNil(resource) &&
       state.isAuthenticated &&
       !isNil(state.resourceRoles) &&
+      !isNil(state.resourceRoles[resource]) &&
       roles.every(role => state.resourceRoles[resource].includes(role)),
   }
 }
