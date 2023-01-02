@@ -39,7 +39,7 @@
   "license": "Apache-2.0",
   "peerDependencies": {
     "jwt-decode": "^3.1.2",
-    "keycloak-js": "^15.0.2",
+    "keycloak-js": "^20.0.2",
     "vue": "^3.0.8"
   },
   "devDependencies": {
@@ -47,7 +47,7 @@
     "@semantic-release/git": "^9.0.1",
     "@semantic-release/github": "^7.2.3",
     "@semantic-release/npm": "^7.1.0",
-    "@types/jest": "^27.0.2",
+    "@types/jest": "^27.5.2",
     "@typescript-eslint/eslint-plugin": "^4.33.0",
     "@typescript-eslint/parser": "^4.33.0",
     "@vue/eslint-config-prettier": "^6.0.0",
@@ -55,15 +55,15 @@
     "eslint": "^7.32.0",
     "eslint-plugin-prettier": "^3.4.1",
     "eslint-plugin-vue": "^7.20.0",
-    "jest": "^27.3.1",
+    "jest": "^27.5.1",
     "jwt-decode": "^3.1.2",
-    "keycloak-js": "^15.1.1",
-    "prettier": "^2.4.1",
+    "keycloak-js": "^20.0.2",
+    "prettier": "^2.8.1",
     "rimraf": "^3.0.2",
-    "rollup": "^2.58.0",
+    "rollup": "^2.79.1",
     "semantic-release": "^17.4.7",
-    "ts-jest": "^27.0.7",
-    "typescript": "^4.4.4",
-    "vue": "^3.2.31"
+    "ts-jest": "^27.1.5",
+    "typescript": "^4.9.4",
+    "vue": "^3.2.45"
   }
 }

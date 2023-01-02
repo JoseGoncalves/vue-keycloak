@@ -1,5 +1,4 @@
 import { Plugin } from 'vue'
-import Keycloak from 'keycloak-js'
 import { defaultInitConfig } from './const'
 import { createKeycloak, initKeycloak } from './keycloak'
 import { isPromise, isFunction, isNil, isString } from './utils'
