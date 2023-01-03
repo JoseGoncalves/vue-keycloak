@@ -97,7 +97,7 @@ This function checks if the token is still valid and will update it if it is exp
 > Have a look at our [vueAxios](https://github.com/baloise/vue-axios) plugin.
 
 ```typescript
-import { $axios } from '@josempgon/vue-axios'
+import { $axios } from '@baloise/vue-axios'
 import { getToken } from '@josempgon/vue-keycloak'
 
 const axiosApiInstance = $axios.create()
