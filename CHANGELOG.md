@@ -1,3 +1,10 @@
+## [1.7.1](https://github.com/JoseGoncalves/vue-keycloak/compare/v1.7.0...v1.7.1) (2023-01-03)
+
+
+### Bug Fixes
+
+* **release:** Package for NPM. ([975b8a9](https://github.com/JoseGoncalves/vue-keycloak/commit/975b8a9a70670e024ecc9677311573945225c265))
+
 # [1.4.0](https://github.com/baloise/vue-keycloak/compare/v1.3.0...v1.4.0) (2021-08-02)
 
 
