@@ -23,7 +23,7 @@ A small wrapper library for the [Keycloak JavaScript adapter](https://www.keyclo
 Install the [keycloak-js](https://www.keycloak.org/docs/latest/securing_apps/#_javascript_adapter) package, [jwt-decode](https://www.npmjs.com/package/jwt-decode) to decode the jwt token and our wrapper library with npm.
 
 ```bash
-npm install keycloak-js jwt-decode @baloise/vue-keycloak
+npm install keycloak-js jwt-decode @josempgon/vue-keycloak
 ```
 
 ## Use plugin
@@ -31,7 +31,7 @@ npm install keycloak-js jwt-decode @baloise/vue-keycloak
 Import the library into your `src/main.ts` file or any other entry point.
 
 ```typescript
-import { vueKeycloak } from '@baloise/vue-keycloak'
+import { vueKeycloak } from '@josempgon/vue-keycloak'
 ```
 
 Apply the library to the vue app instance.
@@ -97,8 +97,8 @@ This function checks if the token is still valid and will update it if it is exp
 > Have a look at our [vueAxios](https://github.com/baloise/vue-axios) plugin.
 
 ```typescript
-import { $axios } from '@baloise/vue-axios'
-import { getToken } from '@baloise/vue-keycloak'
+import { $axios } from '@josempgon/vue-axios'
+import { getToken } from '@josempgon/vue-keycloak'
 
 const axiosApiInstance = $axios.create()
 
@@ -121,7 +121,7 @@ axiosApiInstance.interceptors.request.use(
 
 ```typescript
 import { computed, defineComponent } from 'vue'
-import { useKeycloak } from '@baloise/vue-keycloak'
+import { useKeycloak } from '@josempgon/vue-keycloak'
 
 export default defineComponent({
   setup() {
@@ -141,7 +141,7 @@ export default defineComponent({
 The `useKeycloak` function exposes the following reactive state.
 
 ```typescript
-import { useKeycloak } from '@baloise/vue-keycloak'
+import { useKeycloak } from '@josempgon/vue-keycloak'
 
 const {
   isAuthenticated,
