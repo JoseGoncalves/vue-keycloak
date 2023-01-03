@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/JoseGoncalves/vue-keycloak/compare/v1.7.1...v1.8.0) (2023-01-03)
+
+
+### Features
+
+* Updated to keycloak-js 20.0.2. ([e696c35](https://github.com/JoseGoncalves/vue-keycloak/commit/e696c355d58d0dea1259c1155fdff7af8dc6ae6d))
+
 ## [1.7.1](https://github.com/JoseGoncalves/vue-keycloak/compare/v1.7.0...v1.7.1) (2023-01-03)
 
 
