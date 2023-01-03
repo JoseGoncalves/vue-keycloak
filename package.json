@@ -7,6 +7,9 @@
     "email": "gerhard.hirschfeld@baloise.ch",
     "url": "https://github.com/hirsch88"
   },
+  "contributors": [
+    "José Miguel Gonçalves <jose.goncalves@inov.pt>"
+  ],
   "homepage": "https://github.com/JoseGoncalves/vue-keycloak",
   "repository": {
     "type": "git",
