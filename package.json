@@ -26,7 +26,7 @@
     "format": "npm run prettier:write",
     "prettier:write": "prettier --write \"./src\"",
     "prettier:check": "prettier --check \"./src\"",
-    "release": "semantic-release"
+    "release": "semantic-release --no-ci"
   },
   "main": "./dist/index.js",
   "module": "./dist/index.esm.js",
