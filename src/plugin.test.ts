@@ -32,11 +32,19 @@ describe('vueKeycloak', () => {
     ;(initKeycloak as jest.Mock).mockImplementation(() => undefined)
   })
 
-  test('should throw an error if config is nil', async () => {
+  test('should throw an error if plugin config is nil', async () => {
     try {
       await vueKeycloak.install(appMock)
     } catch (error) {
-      expect(error.message).toBe('The Keycloak.KeycloakConfig are requried')
+      expect(error.message).toBe('The VueKeycloakPluginConfig is required')
+    }
+  })
+
+  test('should throw an error if keycloak config is nil', async () => {
+    try {
+      await vueKeycloak.install(appMock, {})
+    } catch (error) {
+      expect(error.message).toBe('The Keycloak.KeycloakConfig is required')
     }
   })
 
