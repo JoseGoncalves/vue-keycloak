@@ -64,7 +64,7 @@ app.use(vueKeycloak, '/keycloak.json')
 | Config      | Type                           | Description                              |
 | ----------- | ------------------------------ | ---------------------------------------- |
 | initOptions | `Keycloak.KeycloakInitOptions` | `initOptions` is Keycloak init options.  |
-| config      | `Keycloak.KeycloakConfig`      | `config` are the Keycloak configuration. |
+| config      | `Keycloak.KeycloakConfig`      | `config` is the Keycloak configuration.  |
 
 Use the example below to generate dynamic Keycloak conifiguration.
 
