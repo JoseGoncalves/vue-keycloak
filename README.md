@@ -20,10 +20,10 @@ A small wrapper library for the [Keycloak JavaScript adapter](https://www.keyclo
 
 ## Instalation
 
-Install the [keycloak-js](https://www.keycloak.org/docs/latest/securing_apps/#_javascript_adapter) package, [jwt-decode](https://www.npmjs.com/package/jwt-decode) to decode the jwt token and our wrapper library with npm.
+Install the wrapper library for the [Keycloak JavaScript adapter](https://www.keycloak.org/docs/latest/securing_apps/#_javascript_adapter) with npm.
 
 ```bash
-npm install keycloak-js jwt-decode @josempgon/vue-keycloak
+npm install @josempgon/vue-keycloak
 ```
 
 ## Use plugin
@@ -94,7 +94,7 @@ We export two helper functions for the token.
 
 This function checks if the token is still valid and will update it if it is expired.
 
-> Have a look at our [vueAxios](https://github.com/baloise/vue-axios) plugin.
+> Have a look at [vueAxios](https://github.com/baloise/vue-axios) plugin.
 
 ```typescript
 import { $axios } from '@baloise/vue-axios'
