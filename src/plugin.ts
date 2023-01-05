@@ -17,7 +17,7 @@ type VueKeycloakPluginConfig = string | KeycloakPluginConfig | KeycloakConfigFac
 export const vueKeycloak: Plugin = {
   async install(app, options: VueKeycloakPluginConfig) {
     if (isNil(options)) {
-      throw new Error('The Keycloak.KeycloakConfig are requried')
+      throw new Error('The VueKeycloakPluginConfig is required')
     }
 
     let keycloakPluginConfig: KeycloakPluginConfig
@@ -27,6 +27,10 @@ export const vueKeycloak: Plugin = {
       keycloakPluginConfig = await (options as KeycloakConfigAsyncFactory)()
     } else {
       keycloakPluginConfig = options as KeycloakPluginConfig
+    }
+
+    if (isNil(keycloakPluginConfig.config)) {
+      throw new Error('The Keycloak.KeycloakConfig is required')
     }
 
     const keycloakConfig = keycloakPluginConfig.config
