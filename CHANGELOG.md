@@ -1,3 +1,10 @@
+## [1.8.1](https://github.com/JoseGoncalves/vue-keycloak/compare/v1.8.0...v1.8.1) (2023-01-05)
+
+
+### Bug Fixes
+
+* update README and build environment ([877dc45](https://github.com/JoseGoncalves/vue-keycloak/commit/877dc451752f46ceae8eb1780acb4454bf5a254f))
+
 # [1.8.0](https://github.com/JoseGoncalves/vue-keycloak/compare/v1.7.1...v1.8.0) (2023-01-03)
 
 
