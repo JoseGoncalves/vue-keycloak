@@ -1,3 +1,10 @@
+## [1.8.2](https://github.com/JoseGoncalves/vue-keycloak/compare/v1.8.1...v1.8.2) (2023-01-05)
+
+
+### Bug Fixes
+
+* added check for required config ([93d0a75](https://github.com/JoseGoncalves/vue-keycloak/commit/93d0a7566d26c97477f061098365178c8cd50ceb))
+
 ## [1.8.1](https://github.com/JoseGoncalves/vue-keycloak/compare/v1.8.0...v1.8.1) (2023-01-05)
 
 
