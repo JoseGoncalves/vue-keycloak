@@ -66,9 +66,6 @@ export async function initKeycloak(initConfig: Keycloak.KeycloakInitOptions): Pr
     if (!isNil($keycloak.token)) {
       setToken($keycloak.token as string)
     }
-
-    $keycloak.onAuthRefreshSuccess = () => setToken($keycloak.token as string)
-    $keycloak.onTokenExpired = () => updateToken()
   } catch (error) {
     hasFailed(true)
     isAuthenticated(false)
