@@ -1,3 +1,10 @@
+## [1.8.3](https://github.com/JoseGoncalves/vue-keycloak/compare/v1.8.2...v1.8.3) (2023-01-06)
+
+
+### Bug Fixes
+
+* removal of callback setting ([652a60e](https://github.com/JoseGoncalves/vue-keycloak/commit/652a60e4b631c69903e3b2e49864dfdf1f9e9bab))
+
 ## [1.8.2](https://github.com/JoseGoncalves/vue-keycloak/compare/v1.8.1...v1.8.2) (2023-01-05)
 
 
