@@ -1,4 +1,4 @@
-import { createKeycloak, getToken, initKeycloak, isTokenReady } from './keycloak'
+import { createKeycloak, getToken, initKeycloak } from './keycloak'
 import Keycloak, { KeycloakConfig } from 'keycloak-js'
 import { hasFailed, isAuthenticated, isPending, setToken } from './state'
 import { defaultInitConfig } from './const'
@@ -34,18 +34,12 @@ describe('keyckoak', () => {
     ;(isPending as jest.Mock).mockClear()
   })
 
-  describe('isTokenReady', () => {
-    test('should resolve', async () => {
+  describe('getToken', () => {
+    test('should return the new token', async () => {
       ;(Keycloak as jest.Mock).mockImplementation(() => ({
         ...mockKeycloak,
       }))
-      setTimeout(() => createKeycloak(keycloakConfig), 600)
-      await isTokenReady()
-    })
-  })
 
-  describe('getToken', () => {
-    test('should return the new token', async () => {
       createKeycloak(keycloakConfig)
       const token = await getToken()
 

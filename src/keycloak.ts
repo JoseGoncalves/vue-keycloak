@@ -6,18 +6,6 @@ type KeycloakInstance = Keycloak.KeycloakInstance | undefined
 
 let $keycloak: KeycloakInstance = undefined
 
-export async function isTokenReady(): Promise<void> {
-  return new Promise(resolve => checkToken(resolve))
-}
-
-const checkToken = (resolve: () => void) => {
-  if (!isNil($keycloak) && !isNil($keycloak.token)) {
-    resolve()
-  } else {
-    setTimeout(() => checkToken(resolve), 500)
-  }
-}
-
 export function getKeycloak(): Keycloak.KeycloakInstance {
   return $keycloak as Keycloak.KeycloakInstance
 }
