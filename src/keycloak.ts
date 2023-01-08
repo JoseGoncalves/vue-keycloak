@@ -14,18 +14,6 @@ export async function getToken(): Promise<string> {
   return updateToken()
 }
 
-export async function isLoggedIn(): Promise<boolean> {
-  try {
-    if (!$keycloak.authenticated) {
-      return false
-    }
-    await this.updateToken()
-    return true
-  } catch (error) {
-    return false
-  }
-}
-
 export async function updateToken(): Promise<string> {
   if (!$keycloak) {
     throw new Error('Keycloak is not initialized.')
