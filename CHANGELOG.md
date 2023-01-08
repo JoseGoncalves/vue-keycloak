@@ -1,3 +1,5 @@
+## [1.8.4](https://github.com/JoseGoncalves/vue-keycloak/compare/v1.8.3...v1.8.4) (2023-01-08)
+
 ## [1.8.3](https://github.com/JoseGoncalves/vue-keycloak/compare/v1.8.2...v1.8.3) (2023-01-06)
 
 
