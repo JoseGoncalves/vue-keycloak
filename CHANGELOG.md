@@ -1,3 +1,10 @@
+## [1.9.1](https://github.com/JoseGoncalves/vue-keycloak/compare/v1.9.0...v1.9.1) (2023-05-04)
+
+
+### Bug Fixes
+
+* Fix release ([55f2322](https://github.com/JoseGoncalves/vue-keycloak/commit/55f23226f9764bb3631fee2e222fdf8148f8cdb6))
+
 # [1.9.0](https://github.com/JoseGoncalves/vue-keycloak/compare/v1.8.4...v1.9.0) (2023-05-04)
 
 
