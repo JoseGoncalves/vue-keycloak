@@ -1,3 +1,16 @@
+# [1.9.0](https://github.com/JoseGoncalves/vue-keycloak/compare/v1.8.4...v1.9.0) (2023-05-04)
+
+
+### Bug Fixes
+
+* downgraded semantic-release to support legacy authentication using NPM_USERNAME and NPM_PASSWORD ([4755ca4](https://github.com/JoseGoncalves/vue-keycloak/commit/4755ca4b367d39adc6bb2dd9235f63ce7b0cce22))
+
+
+### Features
+
+* Stop using deprecated functionalities of Keycloak JS ([6577272](https://github.com/JoseGoncalves/vue-keycloak/commit/657727249bb8abd53cb59323206e8e4053286187))
+* upgrade keycloak-js to 21.1.1 ([023b0bd](https://github.com/JoseGoncalves/vue-keycloak/commit/023b0bd8305d30f1aff372ce5395b90dc94cf0e2))
+
 ## [1.8.4](https://github.com/JoseGoncalves/vue-keycloak/compare/v1.8.3...v1.8.4) (2023-01-08)
 
 ## [1.8.3](https://github.com/JoseGoncalves/vue-keycloak/compare/v1.8.2...v1.8.3) (2023-01-06)
