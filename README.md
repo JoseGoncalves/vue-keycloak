@@ -90,16 +90,21 @@ app.use(vueKeycloak, async () => {
 
 This function checks if the token is still valid and will update it if it is expired.
 
-> Have a look at [vueAxios](https://github.com/baloise/vue-axios) plugin.
+A typical usage for this function is to be called before every API call, using a request interceptor in your HTTP client library.
+
+> Have a look at the [useAxios](https://vueuse.org/integrations/useAxios/) wrapper for [Axios](https://axios-http.com/).
 
 ```typescript
-import { $axios } from '@baloise/vue-axios'
+import axios from 'axios'
+import { useAxios } from '@vueuse/integrations/useAxios'
 import { getToken } from '@josempgon/vue-keycloak'
 
-const axiosApiInstance = $axios.create()
+// Create an instance of axios with the base URL read from the environment
+const baseURL = process.env.API_URL
+const instance = axios.create({ baseURL })
 
 // Request interceptor for API calls
-axiosApiInstance.interceptors.request.use(
+instance.interceptors.request.use(
   async config => {
     const token = await getToken()
     config.headers = {
@@ -111,6 +116,14 @@ axiosApiInstance.interceptors.request.use(
     Promise.reject(error)
   },
 )
+
+// Utility methods for a CRUD API
+const useCreate = (headers = {}) => useAxios({ method: 'POST', headers }, instance)
+const useRead = () => useAxios({ method: 'GET' }, instance)
+const useUpdate = (headers = {}) => useAxios({ method: 'PUT', headers }, instance)
+const useDelete = () => useAxios({ method: 'DELETE' }, instance)
+
+export { useCreate, useRead, useUpdate, useDelete }
 ```
 
 ## Composition API
