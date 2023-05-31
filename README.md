@@ -128,21 +128,15 @@ export { useCreate, useRead, useUpdate, useDelete }
 
 ## Composition API
 
-```typescript
-import { computed, defineComponent } from 'vue'
+```vue
+<script setup>
+import { computed } from 'vue'
 import { useKeycloak } from '@josempgon/vue-keycloak'
 
-export default defineComponent({
-  setup() {
-    const { hasRoles, isPending } = useKeycloak()
+const { hasRoles } = useKeycloak()
 
-    const hasAccess = computed(() => hasRoles(['RoleName']))
-
-    return {
-      hasAccess,
-    }
-  },
-})
+const hasAccess = computed(() => hasRoles(['RoleName']))
+</script>
 ```
 
 ### useKeycloak
