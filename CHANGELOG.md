@@ -1,3 +1,10 @@
+# [1.11.0](https://github.com/JoseGoncalves/vue-keycloak/compare/v1.10.0...v1.11.0) (2023-09-28)
+
+
+### Features
+
+* fix release ([c6acfcc](https://github.com/JoseGoncalves/vue-keycloak/commit/c6acfcc53d969a816b7e0ab55d0190c06f5c3452))
+
 # [1.10.0](https://github.com/JoseGoncalves/vue-keycloak/compare/v1.9.1...v1.10.0) (2023-09-28)
 
 
