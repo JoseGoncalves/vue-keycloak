@@ -17,7 +17,7 @@
 
 ### Features
 
-* upgrade keycloak-js to 21.1.1 ([bd28b6d](https://github.com/JoseGoncalves/vue-keycloak/commit/bd28b6d99e5b22795f1ba1f104341d12ae4bb0b8))
+* upgrade keycloak-js to 21.1.2 ([bd28b6d](https://github.com/JoseGoncalves/vue-keycloak/commit/bd28b6d99e5b22795f1ba1f104341d12ae4bb0b8))
 
 ## [1.9.1](https://github.com/JoseGoncalves/vue-keycloak/compare/v1.9.0...v1.9.1) (2023-05-04)
 
