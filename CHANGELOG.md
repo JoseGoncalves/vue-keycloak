@@ -1,3 +1,10 @@
+## [1.11.1](https://github.com/JoseGoncalves/vue-keycloak/compare/v1.11.0...v1.11.1) (2023-09-28)
+
+
+### Bug Fixes
+
+* add compatibility with keycloak-js v20 ([7c1d52d](https://github.com/JoseGoncalves/vue-keycloak/commit/7c1d52d3806de77f7ac2b3d11caa7df4d85486e2))
+
 # [1.11.0](https://github.com/JoseGoncalves/vue-keycloak/compare/v1.10.0...v1.11.0) (2023-09-28)
 
 
