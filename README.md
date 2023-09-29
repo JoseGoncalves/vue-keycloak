@@ -4,7 +4,7 @@
     <img width="200px" src="https://vuejs.org/images/logo.png" />
   </td>
   <td style="border: none;">
-    <h1 style="font-size: 10em">+</h1>
+    ➕
   </td>
   <td style="border: none;">
     <img width="200px" src="https://www.keycloak.org/resources/images/keycloak_icon_512px.svg" />
