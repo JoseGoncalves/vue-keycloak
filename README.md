@@ -141,12 +141,13 @@ const hasAccess = computed(() => hasRoles(['RoleName']))
 
 ### useKeycloak
 
-The `useKeycloak` function exposes the following reactive state.
+The `useKeycloak` function exposes the following data.
 
 ```typescript
 import { useKeycloak } from '@josempgon/vue-keycloak'
 
 const {
+  // Reactive State
   isAuthenticated,
   isPending,
   hasFailed,
@@ -155,6 +156,8 @@ const {
   username,
   roles,
   resourceRoles,
+
+  // Object Instances
   keycloak,
 
   // Functions
@@ -162,6 +165,7 @@ const {
   hasResourceRoles,
 } = useKeycloak()
 ```
+#### Reactive state
 
 | State           | Type                           | Description                                                         |
 | --------------- | ------------------------------ | ------------------------------------------------------------------- |
@@ -173,6 +177,11 @@ const {
 | username        | `Ref<string>`                  | `username` the name of our user.                                    |
 | roles           | `Ref<string[]>`                | `roles` is a list of the users roles.                               |
 | resourceRoles   | `Ref<Record<string, string[]>` | `resourceRoles` is a list of the users roles in specific resources. |
+
+#### Object instances
+
+| Instance        | Type                           | Description                                                         |
+| --------------- | ------------------------------ | ------------------------------------------------------------------- |
 | keycloak        | `Keycloak.KeycloakInstance`    | `keycloak` is the instance of the keycloak-js adapter.              |
 
 #### Functions
