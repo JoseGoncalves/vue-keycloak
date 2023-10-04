@@ -26,7 +26,7 @@ Install the wrapper library for the [Keycloak JavaScript adapter](https://www.ke
 npm install @josempgon/vue-keycloak
 ```
 
-## Use plugin
+## Use Plugin
 
 Import the library into your `src/main.ts` file or any other entry point.
 
@@ -84,7 +84,11 @@ app.use(vueKeycloak, async () => {
 })
 ```
 
-## getToken
+## Use Token
+
+A helper function is exported to manage the authentication token.
+
+### getToken
 
 This function checks if the token is still valid and will update it if it is expired.
 
@@ -163,7 +167,7 @@ const {
   hasResourceRoles,
 } = useKeycloak()
 ```
-#### Reactive state
+#### Reactive State
 
 | State           | Type                           | Description                                                         |
 | --------------- | ------------------------------ | ------------------------------------------------------------------- |
@@ -176,7 +180,7 @@ const {
 | roles           | `Ref<string[]>`                | `roles` is a list of the users roles.                               |
 | resourceRoles   | `Ref<Record<string, string[]>` | `resourceRoles` is a list of the users roles in specific resources. |
 
-#### Object instances
+#### Object Instances
 
 | Instance        | Type                           | Description                                                         |
 | --------------- | ------------------------------ | ------------------------------------------------------------------- |
