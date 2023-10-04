@@ -84,8 +84,6 @@ app.use(vueKeycloak, async () => {
 })
 ```
 
-> It is also possible to access the keycloak instance with `getKeycloak()`
-
 ## getToken
 
 This function checks if the token is still valid and will update it if it is expired.
