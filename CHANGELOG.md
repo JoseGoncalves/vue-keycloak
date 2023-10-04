@@ -1,6 +1,10 @@
 # [2.0.0](https://github.com/JoseGoncalves/vue-keycloak/compare/v1.11.1...v2.0.0) (2023-10-04)
 
 
+### Breaking Changes
+
+* no need to export getKeycloak() as the keycloak instance is exposed in useKeycloak() ([0f04e4c](https://github.com/JoseGoncalves/vue-keycloak/commit/0f04e4c9292ae5c3d70cb5517e4452cd05354cac))
+
 ### Features
 
 * broader keycloak-js peer dependency (compatible with 20.x, 21.x & 22.x) ([fcfef2c](https://github.com/JoseGoncalves/vue-keycloak/commit/fcfef2cbe4afeae0352f40fbf43f2f8435348e80))
