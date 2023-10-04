@@ -1,3 +1,11 @@
+# [2.0.0](https://github.com/JoseGoncalves/vue-keycloak/compare/v1.11.1...v2.0.0) (2023-10-04)
+
+
+### Features
+
+* broader keycloak-js peer dependency (compatible with 20.x, 21.x & 22.x) ([fcfef2c](https://github.com/JoseGoncalves/vue-keycloak/commit/fcfef2cbe4afeae0352f40fbf43f2f8435348e80))
+* upgrade keycloak-js to 22.0.4 ([99ed3e6](https://github.com/JoseGoncalves/vue-keycloak/commit/99ed3e692e7d26e0a977c433ae796c9ab8645b66))
+
 ## [1.11.1](https://github.com/JoseGoncalves/vue-keycloak/compare/v1.11.0...v1.11.1) (2023-09-28)
 
 
