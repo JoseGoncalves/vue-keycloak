@@ -102,7 +102,7 @@ import { useAxios } from '@vueuse/integrations/useAxios'
 import { getToken } from '@josempgon/vue-keycloak'
 
 // Create an instance of axios with the base URL read from the environment
-const baseURL = process.env.API_URL
+const baseURL = import.meta.env.VITE_API_URL
 const instance = axios.create({ baseURL })
 
 // Request interceptor for API calls
