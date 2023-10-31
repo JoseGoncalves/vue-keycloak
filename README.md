@@ -7,7 +7,7 @@
     ➕
   </td>
   <td style="border: none;">
-    <img width="200px" src="https://www.keycloak.org/resources/images/keycloak_icon_512px.svg" />
+    <img width="200px" src="https://www.keycloak.org/resources/images/icon.svg" />
   </td>
 </tr>
 </table>
