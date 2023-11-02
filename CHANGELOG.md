@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/JoseGoncalves/vue-keycloak/compare/v2.0.0...v2.0.1) (2023-11-02)
+
+
+### Bug Fixes
+
+* validate realm_access claim existence in token ([2f6a1ba](https://github.com/JoseGoncalves/vue-keycloak/commit/2f6a1ba75ddbcca1f7319aae46a9980b52fe274b))
+
 # [2.0.0](https://github.com/JoseGoncalves/vue-keycloak/compare/v1.11.1...v2.0.0) (2023-10-04)
 
 
