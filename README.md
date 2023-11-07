@@ -109,9 +109,7 @@ const instance = axios.create({ baseURL })
 instance.interceptors.request.use(
   async config => {
     const token = await getToken()
-    config.headers = {
-      Authorization: `Bearer ${token}`,
-    }
+    config.headers['Authorization'] = `Bearer ${token}`
     return config
   },
   error => {
