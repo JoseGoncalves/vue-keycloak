@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/JoseGoncalves/vue-keycloak/compare/v2.0.1...v2.1.0) (2023-11-21)
+
+
+### Features
+
+* add optional minValidity parameter to getToken() ([7f7dbbb](https://github.com/JoseGoncalves/vue-keycloak/commit/7f7dbbb86b30ae3b3b47bef70089839840ac6b26))
+
 ## [2.0.1](https://github.com/JoseGoncalves/vue-keycloak/compare/v2.0.0...v2.0.1) (2023-11-02)
 
 
