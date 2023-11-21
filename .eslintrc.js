@@ -14,6 +14,9 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 2020,
   },
+  rules: {
+    '@typescript-eslint/no-inferrable-types': ['error', { ignoreParameters: true }],
+  },
   overrides: [
     {
       files: ['**/src/**/*.test.{j,t}s?(x)'],

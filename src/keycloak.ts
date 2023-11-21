@@ -10,17 +10,17 @@ export function getKeycloak(): Keycloak.KeycloakInstance {
   return $keycloak as Keycloak.KeycloakInstance
 }
 
-export async function getToken(): Promise<string> {
-  return updateToken()
+export async function getToken(minValidity: number = 10): Promise<string> {
+  return updateToken(minValidity)
 }
 
-export async function updateToken(): Promise<string> {
+export async function updateToken(minValidity: number): Promise<string> {
   if (!$keycloak) {
     throw new Error('Keycloak is not initialized.')
   }
 
   try {
-    await $keycloak.updateToken(10)
+    await $keycloak.updateToken(minValidity)
     setToken($keycloak.token as string)
   } catch (error) {
     hasFailed(true)
