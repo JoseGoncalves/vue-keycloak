@@ -1,3 +1,11 @@
+# [2.2.0](https://github.com/JoseGoncalves/vue-keycloak/compare/v2.1.0...v2.2.0) (2023-11-23)
+
+
+### Features
+
+* upgrade jwt-decode ([4318123](https://github.com/JoseGoncalves/vue-keycloak/commit/43181238bf4defa871a6773164d8c6d113bde35d))
+* upgrade keycloak-js to 23.0.0 ([863cf73](https://github.com/JoseGoncalves/vue-keycloak/commit/863cf739f00cd007ba414ab049e4c775e3ecb5b5))
+
 # [2.1.0](https://github.com/JoseGoncalves/vue-keycloak/compare/v2.0.1...v2.1.0) (2023-11-21)
 
 
