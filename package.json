@@ -42,7 +42,7 @@
   "license": "Apache-2.0",
   "peerDependencies": {
     "jwt-decode": "^4.0.0",
-    "keycloak-js": "20 - 22",
+    "keycloak-js": "20 - 23",
     "vue": "^3.2.45"
   },
   "devDependencies": {
@@ -61,7 +61,7 @@
     "jest": "^29.5.0",
     "jest-environment-jsdom": "^29.5.0",
     "jwt-decode": "^4.0.0",
-    "keycloak-js": "^22.0.5",
+    "keycloak-js": "^23.0.0",
     "prettier": "^2.8.8",
     "rimraf": "^3.0.2",
     "rollup": "^2.79.1",
