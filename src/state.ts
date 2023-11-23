@@ -1,5 +1,5 @@
 import { reactive } from 'vue'
-import jwtDecode from 'jwt-decode'
+import { jwtDecode } from 'jwt-decode'
 
 export interface KeycloakState<T = unknown> {
   isAuthenticated: boolean
