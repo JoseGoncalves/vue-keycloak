@@ -40,15 +40,15 @@ Apply the library to the vue app instance.
 const app = createApp(App)
 
 app.use(vueKeycloak, {
+  config: {
+    url: 'http://keycloak-server/auth',
+    realm: 'myrealm',
+    clientId: 'myapp',
+  },
   initOptions: {
     flow: 'standard', // default
     checkLoginIframe: false, // default
     onLoad: 'login-required', // default
-  }
-  config: {
-    url: 'http://keycloak-server/auth',
-    realm: 'myrealm',
-    clientId: 'myapp'
   }
 })
 ```
@@ -63,8 +63,8 @@ app.use(vueKeycloak, '/keycloak.json')
 
 | Config      | Type                           | Description                              |
 | ----------- | ------------------------------ | ---------------------------------------- |
-| initOptions | `Keycloak.KeycloakInitOptions` | `initOptions` is Keycloak init options.  |
-| config      | `Keycloak.KeycloakConfig`      | `config` is the Keycloak configuration.  |
+| config      | `Keycloak.KeycloakConfig`      | `config` is the [Keycloak configuration](https://github.com/keycloak/keycloak/blob/main/js/libs/keycloak-js/dist/keycloak.d.ts#L27-L40).  |
+| initOptions | `Keycloak.KeycloakInitOptions` | `initOptions` is [Keycloak init options](https://github.com/keycloak/keycloak/blob/main/js/libs/keycloak-js/dist/keycloak.d.ts#L55-L211).  |
 
 Use the example below to generate dynamic Keycloak configuration.
 
