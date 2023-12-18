@@ -11,7 +11,10 @@ export default {
     {
       dir: 'dist/',
       format: 'commonjs',
-      preferConst: true,
+      generatedCode: {
+        constBindings: true,
+      },
+      interop: 'compat',
       sourcemap: true,
     },
   ],
