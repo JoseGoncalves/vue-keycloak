@@ -64,7 +64,7 @@ app.use(vueKeycloak, '/keycloak.json')
 | Config      | Type                           | Description                              |
 | ----------- | ------------------------------ | ---------------------------------------- |
 | config      | `Keycloak.KeycloakConfig`      | `config` is the [Keycloak configuration](https://github.com/keycloak/keycloak/blob/main/js/libs/keycloak-js/dist/keycloak.d.ts#L27-L40).  |
-| initOptions | `Keycloak.KeycloakInitOptions` | `initOptions` is [Keycloak init options](https://github.com/keycloak/keycloak/blob/main/js/libs/keycloak-js/dist/keycloak.d.ts#L55-L211).  |
+| initOptions | `Keycloak.KeycloakInitOptions` | `initOptions` is [Keycloak init options](https://github.com/keycloak/keycloak/blob/main/js/libs/keycloak-js/dist/keycloak.d.ts#L55-L216).  |
 
 Use the example below to generate dynamic Keycloak configuration.
 
