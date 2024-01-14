@@ -1,12 +1,12 @@
 import { reactive } from 'vue'
-import { jwtDecode } from 'jwt-decode'
+import type { KeycloakTokenParsed } from 'keycloak-js'
 
-export interface KeycloakState<T = unknown> {
+export interface KeycloakState {
   isAuthenticated: boolean
   hasFailed: boolean
   isPending: boolean
   token: string
-  decodedToken: T
+  decodedToken: KeycloakTokenParsed
   username: string
   roles: string[]
   resourceRoles: Record<string, string[]>
@@ -23,17 +23,9 @@ export const state = reactive<KeycloakState>({
   resourceRoles: {},
 })
 
-interface TokenContent {
-  preferred_username: string
-  realm_access: {
-    roles: string[]
-  }
-  resource_access: Record<string, { roles: string[] }>
-}
-
-export const setToken = (token: string): void => {
+export const setToken = (token: string, tokenParsed: KeycloakTokenParsed): void => {
   state.token = token
-  const content = jwtDecode<TokenContent>(state.token)
+  const content = tokenParsed
   state.decodedToken = content
   state.roles = content.realm_access ? content.realm_access.roles : []
   state.username = content.preferred_username
