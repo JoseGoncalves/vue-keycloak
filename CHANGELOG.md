@@ -1,3 +1,10 @@
+# [2.3.0](https://github.com/JoseGoncalves/vue-keycloak/compare/v2.2.0...v2.3.0) (2024-01-14)
+
+
+### Features
+
+* use tokenParsed instead of jwt-decode ([4a7e5be](https://github.com/JoseGoncalves/vue-keycloak/commit/4a7e5be6e4182ee9293cb0f7689ccae5a436d33d))
+
 # [2.2.0](https://github.com/JoseGoncalves/vue-keycloak/compare/v2.1.0...v2.2.0) (2023-11-23)
 
 
