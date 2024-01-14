@@ -167,16 +167,16 @@ const {
 ```
 #### Reactive State
 
-| State           | Type                           | Description                                                         |
-| --------------- | ------------------------------ | ------------------------------------------------------------------- |
-| isAuthenticated | `Ref<boolean>`                 | If `true` the user is authenticated.                                |
-| isPending       | `Ref<boolean>`                 | If `true` the authentication request is still pending.              |
-| hasFailed       | `Ref<boolean>`                 | If `true` authentication request has failed.                        |
-| token           | `Ref<string>`                  | `token` is the raw value of the JWT token.                          |
-| decodedToken    | `Ref<T>`                       | `decodedToken` is the decoded value of the JWT token.               |
-| username        | `Ref<string>`                  | `username` the name of our user.                                    |
-| roles           | `Ref<string[]>`                | `roles` is a list of the users roles.                               |
-| resourceRoles   | `Ref<Record<string, string[]>` | `resourceRoles` is a list of the users roles in specific resources. |
+| State           | Type                                | Description                                                         |
+| --------------- | ----------------------------------- | ------------------------------------------------------------------- |
+| isAuthenticated | `Ref<boolean>`                      | If `true` the user is authenticated.                                |
+| isPending       | `Ref<boolean>`                      | If `true` the authentication request is still pending.              |
+| hasFailed       | `Ref<boolean>`                      | If `true` authentication request has failed.                        |
+| token           | `Ref<string>`                       | `token` is the raw value of the JWT token.                          |
+| decodedToken    | `Ref<Keycloak.KeycloakTokenParsed>` | `decodedToken` is the decoded value of the JWT token.               |
+| username        | `Ref<string>`                       | `username` the name of our user.                                    |
+| roles           | `Ref<string[]>`                     | `roles` is a list of the users roles.                               |
+| resourceRoles   | `Ref<Record<string, string[]>`      | `resourceRoles` is a list of the users roles in specific resources. |
 
 #### Object Instances
 
