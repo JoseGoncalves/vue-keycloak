@@ -1,8 +1,7 @@
+/* eslint-env node */
+
 module.exports = {
   root: true,
-  env: {
-    node: true,
-  },
   plugins: ['vue'],
   extends: [
     'plugin:vue/vue3-essential',

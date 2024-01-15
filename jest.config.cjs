@@ -1,3 +1,5 @@
+/* eslint-env node */
+
 module.exports = {
   testEnvironment: 'jsdom',
   roots: ['<rootDir>/src'],
