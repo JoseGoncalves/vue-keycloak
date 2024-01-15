@@ -18,5 +18,5 @@ export default {
       sourcemap: true,
     },
   ],
-  external: ['keycloak-js', 'jwt-decode', 'vue'],
+  external: ['keycloak-js', 'vue'],
 }
