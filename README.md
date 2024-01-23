@@ -56,10 +56,10 @@ app.use(vueKeycloak, '/keycloak.json')
 
 ### Configuration
 
-| Config      | Type                           | Required | Description                              |
-| ----------- | ------------------------------ | -------- | ---------------------------------------- |
-| config      | `Keycloak.KeycloakConfig`      | Yes      | `config` is the [Keycloak configuration](https://github.com/keycloak/keycloak/blob/main/js/libs/keycloak-js/dist/keycloak.d.ts#L27-L40).  |
-| initOptions | `Keycloak.KeycloakInitOptions` | No       | `initOptions` is [Keycloak init options](https://github.com/keycloak/keycloak/blob/main/js/libs/keycloak-js/dist/keycloak.d.ts#L55-L216).  |
+| Config      | Type                                          | Required | Description                              |
+| ----------- | --------------------------------------------- | -------- | ---------------------------------------- |
+| config      | [`Keycloak.KeycloakConfig`][Config]           | Yes      | `config` is the Keycloak configuration.  |
+| initOptions | [`Keycloak.KeycloakInitOptions`][InitOptions] | No       | `initOptions` is Keycloak init options.  |
 
 #### `initOptions` Default Value
 
@@ -173,22 +173,22 @@ const {
 ```
 #### Reactive State
 
-| State           | Type                                | Description                                                         |
-| --------------- | ----------------------------------- | ------------------------------------------------------------------- |
-| isAuthenticated | `Ref<boolean>`                      | If `true` the user is authenticated.                                |
-| isPending       | `Ref<boolean>`                      | If `true` the authentication request is still pending.              |
-| hasFailed       | `Ref<boolean>`                      | If `true` authentication request has failed.                        |
-| token           | `Ref<string>`                       | `token` is the raw value of the JWT token.                          |
-| decodedToken    | `Ref<Keycloak.KeycloakTokenParsed>` | `decodedToken` is the decoded value of the JWT token.               |
-| username        | `Ref<string>`                       | `username` the name of our user.                                    |
-| roles           | `Ref<string[]>`                     | `roles` is a list of the users roles.                               |
-| resourceRoles   | `Ref<Record<string, string[]>`      | `resourceRoles` is a list of the users roles in specific resources. |
+| State           | Type                                                   | Description                                                         |
+| --------------- | ------------------------------------------------------ | ------------------------------------------------------------------- |
+| isAuthenticated | `Ref<boolean>`                                         | If `true` the user is authenticated.                                |
+| isPending       | `Ref<boolean>`                                         | If `true` the authentication request is still pending.              |
+| hasFailed       | `Ref<boolean>`                                         | If `true` authentication request has failed.                        |
+| token           | `Ref<string>`                                          | `token` is the raw value of the JWT token.                          |
+| decodedToken    | `Ref<`[`Keycloak.KeycloakTokenParsed`][TokenParsed]`>` | `decodedToken` is the decoded value of the JWT token.               |
+| username        | `Ref<string>`                                          | `username` the name of our user.                                    |
+| roles           | `Ref<string[]>`                                        | `roles` is a list of the users roles.                               |
+| resourceRoles   | `Ref<Record<string, string[]>`                         | `resourceRoles` is a list of the users roles in specific resources. |
 
 #### Object Instances
 
-| Instance        | Type                           | Description                                                         |
-| --------------- | ------------------------------ | ------------------------------------------------------------------- |
-| keycloak        | `Keycloak.KeycloakInstance`    | `keycloak` is the instance of the keycloak-js adapter.              |
+| Instance        | Type                                    | Description                                                     |
+| --------------- | --------------------------------------- | --------------------------------------------------------------- |
+| keycloak        | [`Keycloak.KeycloakInstance`][Instance] | `keycloak` is the instance of the keycloak-js adapter.          |
 
 #### Functions
 
@@ -200,3 +200,8 @@ const {
 # License
 
 Apache-2.0 Licensed | Copyright © 2021-present Gery Hirschfeld & Contributors
+
+[Config]: https://github.com/keycloak/keycloak/blob/main/js/libs/keycloak-js/dist/keycloak.d.ts#L27-L40
+[InitOptions]: https://github.com/keycloak/keycloak/blob/main/js/libs/keycloak-js/dist/keycloak.d.ts#L55-L216
+[TokenParsed]: https://github.com/keycloak/keycloak/blob/main/js/libs/keycloak-js/dist/keycloak.d.ts#L338-L353
+[Instance]: https://github.com/keycloak/keycloak/blob/main/js/libs/keycloak-js/dist/keycloak.d.ts#L366
