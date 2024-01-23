@@ -96,7 +96,13 @@ A helper function is exported to manage the authentication token.
 
 ### getToken
 
-This function checks if the token is still valid and will update it if it is expired.
+This function returns a promise that resolves with the current authentication token.
+
+| Function         | Type                                             |
+| ---------------- | ------------------------------------------------ |
+| getToken         | `(minValidity?: number) => Promise<string>`      |
+
+The token will be refreshed if expires within `minValidity` seconds. The `minValidity` parameter is optional and defaults to 10. If -1 is passed as `minValidity`, the token will be forcibly refreshed.
 
 A typical usage for this function is to be called before every API call, using a request interceptor in your HTTP client library.
 
