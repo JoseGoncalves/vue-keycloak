@@ -100,11 +100,8 @@ This function checks if the token is still valid and will update it if it is exp
 
 A typical usage for this function is to be called before every API call, using a request interceptor in your HTTP client library.
 
-> Have a look at the [useAxios](https://vueuse.org/integrations/useAxios/) wrapper for [Axios](https://axios-http.com/).
-
 ```typescript
 import axios from 'axios'
-import { useAxios } from '@vueuse/integrations/useAxios'
 import { getToken } from '@josempgon/vue-keycloak'
 
 // Create an instance of axios with the base URL read from the environment
@@ -122,14 +119,6 @@ instance.interceptors.request.use(
     Promise.reject(error)
   },
 )
-
-// Utility methods for a CRUD API
-const useCreate = (headers = {}) => useAxios({ method: 'POST', headers }, instance)
-const useRead = () => useAxios({ method: 'GET' }, instance)
-const useUpdate = (headers = {}) => useAxios({ method: 'PUT', headers }, instance)
-const useDelete = () => useAxios({ method: 'DELETE' }, instance)
-
-export { useCreate, useRead, useUpdate, useDelete }
 ```
 
 ## Composition API
