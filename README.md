@@ -175,9 +175,9 @@ const {
 | hasFailed       | `Ref<boolean>`                                         | If `true` authentication request has failed.                        |
 | token           | `Ref<string>`                                          | `token` is the raw value of the JWT token.                          |
 | decodedToken    | `Ref<`[`Keycloak.KeycloakTokenParsed`][TokenParsed]`>` | `decodedToken` is the decoded value of the JWT token.               |
-| username        | `Ref<string>`                                          | `username` the name of our user.                                    |
-| roles           | `Ref<string[]>`                                        | `roles` is a list of the users roles.                               |
-| resourceRoles   | `Ref<Record<string, string[]>`                         | `resourceRoles` is a list of the users roles in specific resources. |
+| username        | `Ref<string>`                                          | `username` is the name of our user.                                 |
+| roles           | `Ref<string[]>`                                        | `roles` is a list of the user's roles.                              |
+| resourceRoles   | `Ref<Record<string, string[]>`                         | `resourceRoles` is a list of the user's roles in specific resources.|
 
 #### Object Instances
 
