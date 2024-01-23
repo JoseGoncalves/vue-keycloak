@@ -44,11 +44,6 @@ app.use(vueKeycloak, {
     url: 'http://keycloak-server/auth',
     realm: 'myrealm',
     clientId: 'myapp',
-  },
-  initOptions: {
-    flow: 'standard', // default
-    checkLoginIframe: false, // default
-    onLoad: 'login-required', // default
   }
 })
 ```
@@ -61,11 +56,22 @@ app.use(vueKeycloak, '/keycloak.json')
 
 ### Configuration
 
-| Config      | Type                           | Description                              |
-| ----------- | ------------------------------ | ---------------------------------------- |
-| config      | `Keycloak.KeycloakConfig`      | `config` is the [Keycloak configuration](https://github.com/keycloak/keycloak/blob/main/js/libs/keycloak-js/dist/keycloak.d.ts#L27-L40).  |
-| initOptions | `Keycloak.KeycloakInitOptions` | `initOptions` is [Keycloak init options](https://github.com/keycloak/keycloak/blob/main/js/libs/keycloak-js/dist/keycloak.d.ts#L55-L216).  |
+| Config      | Type                           | Required | Description                              |
+| ----------- | ------------------------------ | -------- | ---------------------------------------- |
+| config      | `Keycloak.KeycloakConfig`      | Yes      | `config` is the [Keycloak configuration](https://github.com/keycloak/keycloak/blob/main/js/libs/keycloak-js/dist/keycloak.d.ts#L27-L40).  |
+| initOptions | `Keycloak.KeycloakInitOptions` | No       | `initOptions` is [Keycloak init options](https://github.com/keycloak/keycloak/blob/main/js/libs/keycloak-js/dist/keycloak.d.ts#L55-L216).  |
 
+#### `initOptions` Default Value
+
+```typescript
+{
+  flow: 'standard',
+  checkLoginIframe: false,
+  onLoad: 'login-required',
+}
+```
+
+#### Dynamic Keycloak Configuration
 Use the example below to generate dynamic Keycloak configuration.
 
 ```typescript
