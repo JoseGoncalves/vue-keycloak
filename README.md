@@ -56,7 +56,7 @@ app.use(vueKeycloak, '/keycloak.json')
 
 ### Configuration
 
-| Config      | Type                                          | Required | Description                              |
+| Object      | Type                                          | Required | Description                              |
 | ----------- | --------------------------------------------- | -------- | ---------------------------------------- |
 | config      | [`Keycloak.KeycloakConfig`][Config]           | Yes      | `config` is the Keycloak configuration.  |
 | initOptions | [`Keycloak.KeycloakInitOptions`][InitOptions] | No       | `initOptions` is Keycloak init options.  |
@@ -197,6 +197,6 @@ const {
 Apache-2.0 Licensed | Copyright © 2021-present Gery Hirschfeld & Contributors
 
 [Config]: https://github.com/keycloak/keycloak/blob/main/js/libs/keycloak-js/dist/keycloak.d.ts#L27-L40
-[InitOptions]: https://github.com/keycloak/keycloak/blob/main/js/libs/keycloak-js/dist/keycloak.d.ts#L55-L216
-[TokenParsed]: https://github.com/keycloak/keycloak/blob/main/js/libs/keycloak-js/dist/keycloak.d.ts#L338-L353
-[Instance]: https://github.com/keycloak/keycloak/blob/main/js/libs/keycloak-js/dist/keycloak.d.ts#L366
+[InitOptions]: https://github.com/keycloak/keycloak/blob/main/js/libs/keycloak-js/dist/keycloak.d.ts#L55-L215
+[TokenParsed]: https://github.com/keycloak/keycloak/blob/main/js/libs/keycloak-js/dist/keycloak.d.ts#L337-L352
+[Instance]: https://github.com/keycloak/keycloak/blob/main/js/libs/keycloak-js/dist/keycloak.d.ts#L365
