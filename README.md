@@ -58,8 +58,8 @@ app.use(vueKeycloak, '/keycloak.json')
 
 | Object      | Type                                          | Required | Description                              |
 | ----------- | --------------------------------------------- | -------- | ---------------------------------------- |
-| config      | [`Keycloak.KeycloakConfig`][Config]           | Yes      | `config` is the Keycloak configuration.  |
-| initOptions | [`Keycloak.KeycloakInitOptions`][InitOptions] | No       | `initOptions` is Keycloak init options.  |
+| config      | [`Keycloak.KeycloakConfig`][Config]           | Yes      | Keycloak configuration.                  |
+| initOptions | [`Keycloak.KeycloakInitOptions`][InitOptions] | No       | Keycloak init options.                   |
 
 #### `initOptions` Default Value
 
@@ -171,17 +171,17 @@ const {
 | isAuthenticated | `Ref<boolean>`                                         | If `true` the user is authenticated.                                |
 | isPending       | `Ref<boolean>`                                         | If `true` the authentication request is still pending.              |
 | hasFailed       | `Ref<boolean>`                                         | If `true` authentication request has failed.                        |
-| token           | `Ref<string>`                                          | `token` is the raw value of the JWT token.                          |
-| decodedToken    | `Ref<`[`Keycloak.KeycloakTokenParsed`][TokenParsed]`>` | `decodedToken` is the decoded value of the JWT token.               |
-| username        | `Ref<string>`                                          | `username` is the name of our user.                                 |
-| roles           | `Ref<string[]>`                                        | `roles` is a list of the user's roles.                              |
-| resourceRoles   | `Ref<Record<string, string[]>`                         | `resourceRoles` is a list of the user's roles in specific resources.|
+| token           | `Ref<string>`                                          | Raw value of the JWT token.                                         |
+| decodedToken    | `Ref<`[`Keycloak.KeycloakTokenParsed`][TokenParsed]`>` | Decoded value of the JWT token.                                     |
+| username        | `Ref<string>`                                          | Name of the user.                                                   |
+| roles           | `Ref<string[]>`                                        | List of the user's roles.                                           |
+| resourceRoles   | `Ref<Record<string, string[]>`                         | List of the user's roles in specific resources.                     |
 
 #### Object Instances
 
 | Instance        | Type                                    | Description                                                     |
 | --------------- | --------------------------------------- | --------------------------------------------------------------- |
-| keycloak        | [`Keycloak.KeycloakInstance`][Instance] | `keycloak` is the instance of the keycloak-js adapter.          |
+| keycloak        | [`Keycloak.KeycloakInstance`][Instance] | Instance of the keycloak-js adapter.                            |
 
 #### Functions
 
