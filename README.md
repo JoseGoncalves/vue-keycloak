@@ -48,12 +48,6 @@ app.use(vueKeycloak, {
 })
 ```
 
-Or use a JSON file with the configs.
-
-```typescript
-app.use(vueKeycloak, '/keycloak.json')
-```
-
 ### Configuration
 
 | Object      | Type                                          | Required | Description                              |
