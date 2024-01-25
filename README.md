@@ -96,11 +96,9 @@ A helper function is exported to manage the authentication token.
 
 ### getToken
 
-This function returns a promise that resolves with the current authentication token.
-
-| Function         | Type                                             |
-| ---------------- | ------------------------------------------------ |
-| getToken         | `(minValidity?: number) => Promise<string>`      |
+| Function         | Type                                             | Description                                                               |
+| ---------------- | ------------------------------------------------ | ------------------------------------------------------------------------- |
+| getToken         | `(minValidity?: number) => Promise<string>`      | Returns a promise that resolves with the current<br>authentication token. |
 
 The token will be refreshed if expires within `minValidity` seconds. The `minValidity` parameter is optional and defaults to 10. If -1 is passed as `minValidity`, the token will be forcibly refreshed.
 
@@ -187,10 +185,10 @@ const {
 
 #### Functions
 
-| Function         | Type                                             | Description                                                                        |
-| ---------------- | ------------------------------------------------ | ---------------------------------------------------------------------------------- |
-| hasRoles         | `(roles: string[]) => boolean`                   | `hasRoles` returns true if the user has all the given roles.                       |
-| hasResourceRoles | `(roles: string[], resource: string) => boolean` | `hasResourceRoles` returns true if the user has all the given roles in a resource. |
+| Function         | Type                                             | Description                                                        |
+| ---------------- | ------------------------------------------------ | ------------------------------------------------------------------ |
+| hasRoles         | `(roles: string[]) => boolean`                   | Returns true if the user has all the given roles.                  |
+| hasResourceRoles | `(roles: string[], resource: string) => boolean` | Returns true if the user has all the given roles<br>in a resource. |
 
 # License
 
