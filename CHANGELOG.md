@@ -1,3 +1,10 @@
+## [2.3.1](https://github.com/JoseGoncalves/vue-keycloak/compare/v2.3.0...v2.3.1) (2024-01-27)
+
+
+### Bug Fixes
+
+* use conditional exports in package.json to support vitest ([2c995c7](https://github.com/JoseGoncalves/vue-keycloak/commit/2c995c7a003fc0b17f6fe2f33d0536635ab21cab))
+
 # [2.3.0](https://github.com/JoseGoncalves/vue-keycloak/compare/v2.2.0...v2.3.0) (2024-01-14)
 
 
