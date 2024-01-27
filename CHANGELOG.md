@@ -1,3 +1,10 @@
+## [2.3.2](https://github.com/JoseGoncalves/vue-keycloak/compare/v2.3.1...v2.3.2) (2024-01-27)
+
+
+### Bug Fixes
+
+* some tools still don't parse package.exports, so reintroduce package.main for full compatibility. ([4a5dbb2](https://github.com/JoseGoncalves/vue-keycloak/commit/4a5dbb233c32314be5867e6022fc7320578d9465))
+
 ## [2.3.1](https://github.com/JoseGoncalves/vue-keycloak/compare/v2.3.0...v2.3.1) (2024-01-27)
 
 
