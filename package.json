@@ -31,6 +31,7 @@
     "release": "semantic-release --no-ci"
   },
   "type": "module",
+  "main": "./dist/index.js",
   "exports": {
     "require": "./dist/index.js",
     "import": "./dist/index.esm.js"
