@@ -3,14 +3,14 @@ export default {
   output: [
     {
       dir: 'dist/',
-      entryFileNames: '[name].esm.js',
-      chunkFileNames: '[name]-[hash].esm.js',
+      entryFileNames: '[name].mjs',
       format: 'es',
       sourcemap: true,
     },
     {
       dir: 'dist/',
-      format: 'commonjs',
+      entryFileNames: '[name].cjs',
+      format: 'cjs',
       generatedCode: {
         constBindings: true,
       },
