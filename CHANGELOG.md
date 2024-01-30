@@ -1,3 +1,10 @@
+## [2.3.3](https://github.com/JoseGoncalves/vue-keycloak/compare/v2.3.2...v2.3.3) (2024-01-30)
+
+
+### Bug Fixes
+
+* set typings inside package.json "exports" to allow proper building in typescript projects ([c5691d0](https://github.com/JoseGoncalves/vue-keycloak/commit/c5691d0f24968a39ebd3bb16c45af2529af9e8c9))
+
 ## [2.3.2](https://github.com/JoseGoncalves/vue-keycloak/compare/v2.3.1...v2.3.2) (2024-01-27)
 
 
