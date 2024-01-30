@@ -34,9 +34,9 @@
   "main": "./dist/index.cjs",
   "exports": {
     "require": "./dist/index.cjs",
-    "import": "./dist/index.mjs"
+    "import": "./dist/index.mjs",
+    "types": "./dist/types/index.d.ts"
   },
-  "types": "./dist/types/index.d.ts",
   "files": [
     "dist/"
   ],
