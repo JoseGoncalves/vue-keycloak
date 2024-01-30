@@ -11,6 +11,7 @@ export interface KeycloakComposable {
   token: Ref<string>
   decodedToken: Ref<KeycloakTokenParsed>
   username: Ref<string>
+  userId: Ref<string>
   roles: Ref<string[]>
   resourceRoles: Ref<Record<string, string[]>>
   keycloak: KeycloakInstance

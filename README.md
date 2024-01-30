@@ -150,6 +150,7 @@ const {
   token,
   decodedToken,
   username,
+  userId,
   roles,
   resourceRoles,
 
@@ -170,7 +171,8 @@ const {
 | hasFailed       | `Ref<boolean>`                                         | If `true` authentication request has failed.                        |
 | token           | `Ref<string>`                                          | Raw value of the JWT token.                                         |
 | decodedToken    | `Ref<`[`Keycloak.KeycloakTokenParsed`][TokenParsed]`>` | Decoded value of the JWT token.                                     |
-| username        | `Ref<string>`                                          | Name of the user.                                                   |
+| username        | `Ref<string>`                                          | Username. Extracted from decodedToken['preferred_username']         |
+| userId          | `Ref<string>`                                          | User identifier. Extracted from decodedToken['sub']                 |
 | roles           | `Ref<string[]>`                                        | List of the user's roles.                                           |
 | resourceRoles   | `Ref<Record<string, string[]>`                         | List of the user's roles in specific resources.                     |
 
