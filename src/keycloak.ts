@@ -7,7 +7,7 @@ type KeycloakInstance = Keycloak.KeycloakInstance | undefined
 let $keycloak: KeycloakInstance = undefined
 
 export function getKeycloak(): Keycloak.KeycloakInstance {
-  return $keycloak as Keycloak.KeycloakInstance
+  return $keycloak
 }
 
 export async function getToken(minValidity: number = 10): Promise<string> {

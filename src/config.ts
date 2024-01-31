@@ -5,7 +5,7 @@ export function loadJsonConfig<T>(url: string): Promise<T> {
     xhttp.onreadystatechange = function () {
       if (this.readyState == 4 && this.status == 200) {
         const jsonResponse = this.responseText
-        const response = JSON.parse(jsonResponse)
+        const response = JSON.parse(jsonResponse) as T
         resolve(response)
       } else {
         reject('Could not load ' + url + ' file')
