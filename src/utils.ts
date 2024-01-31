@@ -1,7 +1,5 @@
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function isPromise(promise: any): boolean {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-  return !isNil(promise) && typeof promise.then === 'function'
+export function isPromise(promise: unknown): boolean {
+  return !isNil(promise) && typeof (promise as Promise<unknown>).then === 'function'
 }
 
 export function isFunction(fun: unknown): boolean {
