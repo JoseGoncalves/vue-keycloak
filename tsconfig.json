@@ -16,7 +16,7 @@
     "noUnusedParameters": true,
     "outDir": "dist-transpiled",
     "declarationDir": "dist/types",
-    "removeComments": false,
+    "removeComments": true,
     "sourceMap": true,
     "jsx": "react",
     "types": ["@types/jest"]
