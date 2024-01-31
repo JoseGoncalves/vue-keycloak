@@ -23,7 +23,7 @@
     "build:compile": "tsc -p .",
     "build:bundle": "rollup --config rollup.config.js",
     "clean": "npm run build:clean && rimraf node_modules",
-    "lint": "eslint . --ext .vue,.js,.cjs,.mjs,.ts --ignore-path .gitignore",
+    "lint": "eslint . --ext .vue,.js,.cjs,.mjs,.ts",
     "lint:fix": "npm run lint -- --fix",
     "prettier": "prettier \"**/*.{vue,js,cjs,mjs,ts}\"",
     "format": "npm run prettier -- --write",
