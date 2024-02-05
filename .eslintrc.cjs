@@ -3,11 +3,11 @@
 module.exports = {
   root: true,
   parserOptions: {
-    ecmaVersion: 'latest',
+    ecmaVersion: 2019,
     parser: '@typescript-eslint/parser',
   },
-  plugins: ['@typescript-eslint', 'vue'],
-  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'plugin:vue/vue3-recommended', 'prettier'],
+  plugins: ['@typescript-eslint'],
+  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'prettier'],
   overrides: [
     {
       files: ['src/**/*.ts'],
@@ -15,7 +15,7 @@ module.exports = {
       parserOptions: {
         project: './tsconfig.json',
       },
-      extends: ['plugin:@typescript-eslint/recommended-type-checked'],
+      extends: ['plugin:@typescript-eslint/recommended-type-checked', 'prettier'],
     },
     {
       files: ['src/**/*.test.ts'],
