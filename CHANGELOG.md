@@ -1,3 +1,16 @@
+# [2.4.0](https://github.com/JoseGoncalves/vue-keycloak/compare/v2.3.3...v2.4.0) (2024-02-06)
+
+
+### Bug Fixes
+
+* fixed composable typings ([bdfdeaf](https://github.com/JoseGoncalves/vue-keycloak/commit/bdfdeafeb892aa4165f182af2048394b93f63127))
+
+
+### Features
+
+* added 'userId' field to the reactive state ([732524d](https://github.com/JoseGoncalves/vue-keycloak/commit/732524dc0983d44b72064ca6527f2b4a22e5e67f))
+* changed build target to es2019 ([95d9c3e](https://github.com/JoseGoncalves/vue-keycloak/commit/95d9c3e9af392daa81fb1d79b87f2a73ef90738d))
+
 ## [2.3.3](https://github.com/JoseGoncalves/vue-keycloak/compare/v2.3.2...v2.3.3) (2024-01-30)
 
 
