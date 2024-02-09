@@ -1,4 +1,5 @@
-import type { KeycloakInstance, KeycloakTokenParsed } from 'keycloak-js'
+import type Keycloak from 'keycloak-js'
+import type { KeycloakTokenParsed } from 'keycloak-js'
 import { toRefs, Ref } from 'vue'
 import { getKeycloak } from './keycloak'
 import { KeycloakState, state } from './state'
@@ -14,7 +15,7 @@ export interface KeycloakComposable {
   userId: Ref<string>
   roles: Ref<string[]>
   resourceRoles: Ref<Record<string, string[]>>
-  keycloak: KeycloakInstance
+  keycloak: Keycloak
   hasRoles: (roles: string[]) => boolean
   hasResourceRoles: (roles: string[], resource: string) => boolean
 }

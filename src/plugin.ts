@@ -1,12 +1,13 @@
 import { Plugin } from 'vue'
+import type { KeycloakConfig, KeycloakInitOptions } from 'keycloak-js'
 import { defaultInitConfig } from './const'
 import { createKeycloak, initKeycloak } from './keycloak'
 import { isPromise, isFunction, isNil, isString } from './utils'
 import { loadJsonConfig } from './config'
 
 interface KeycloakPluginConfig {
-  config: Keycloak.KeycloakConfig
-  initOptions?: Keycloak.KeycloakInitOptions
+  config: KeycloakConfig
+  initOptions?: KeycloakInitOptions
 }
 
 type KeycloakConfigFactory = () => KeycloakPluginConfig
@@ -30,11 +31,11 @@ export const vueKeycloak: Plugin = {
     }
 
     if (isNil(keycloakPluginConfig.config)) {
-      throw new Error('The Keycloak.KeycloakConfig is required')
+      throw new Error('The KeycloakConfig is required')
     }
 
     const keycloakConfig = keycloakPluginConfig.config
-    const keycloakInitOptions: Keycloak.KeycloakInitOptions = !isNil(keycloakPluginConfig.initOptions)
+    const keycloakInitOptions: KeycloakInitOptions = !isNil(keycloakPluginConfig.initOptions)
       ? { ...defaultInitConfig, ...keycloakPluginConfig.initOptions }
       : defaultInitConfig
 

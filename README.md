@@ -55,8 +55,8 @@ app.use(vueKeycloak, {
 
 | Object      | Type                                          | Required | Description                              |
 | ----------- | --------------------------------------------- | -------- | ---------------------------------------- |
-| config      | [`Keycloak.KeycloakConfig`][Config]           | Yes      | Keycloak configuration.                  |
-| initOptions | [`Keycloak.KeycloakInitOptions`][InitOptions] | No       | Keycloak init options.                   |
+| config      | [`KeycloakConfig`][Config]                    | Yes      | Keycloak configuration.                  |
+| initOptions | [`KeycloakInitOptions`][InitOptions]          | No       | Keycloak init options.                   |
 
 #### `initOptions` Default Value
 
@@ -170,7 +170,7 @@ const {
 | isPending       | `Ref<boolean>`                                         | If `true` the authentication request is still pending.              |
 | hasFailed       | `Ref<boolean>`                                         | If `true` authentication request has failed.                        |
 | token           | `Ref<string>`                                          | Raw value of the JWT token.                                         |
-| decodedToken    | `Ref<`[`Keycloak.KeycloakTokenParsed`][TokenParsed]`>` | Decoded value of the JWT token.                                     |
+| decodedToken    | `Ref<`[`KeycloakTokenParsed`][TokenParsed]`>`          | Decoded value of the JWT token.                                     |
 | username        | `Ref<string>`                                          | Username. Extracted from `decodedToken['preferred_username']`.      |
 | userId          | `Ref<string>`                                          | User identifier. Extracted from `decodedToken['sub']`.              |
 | roles           | `Ref<string[]>`                                        | List of the user's roles.                                           |
@@ -180,7 +180,7 @@ const {
 
 | Instance        | Type                                    | Description                                                     |
 | --------------- | --------------------------------------- | --------------------------------------------------------------- |
-| keycloak        | [`Keycloak.KeycloakInstance`][Instance] | Instance of the keycloak-js adapter.                            |
+| keycloak        | [`Keycloak`][Instance]                  | Instance of the keycloak-js adapter.                            |
 
 #### Functions
 
@@ -196,4 +196,4 @@ Apache-2.0 Licensed | Copyright © 2021-present Gery Hirschfeld & Contributors
 [Config]: https://github.com/keycloak/keycloak/blob/main/js/libs/keycloak-js/dist/keycloak.d.ts#L27-L40
 [InitOptions]: https://github.com/keycloak/keycloak/blob/main/js/libs/keycloak-js/dist/keycloak.d.ts#L55-L215
 [TokenParsed]: https://github.com/keycloak/keycloak/blob/main/js/libs/keycloak-js/dist/keycloak.d.ts#L337-L352
-[Instance]: https://github.com/keycloak/keycloak/blob/main/js/libs/keycloak-js/dist/keycloak.d.ts#L365
+[Instance]: https://github.com/keycloak/keycloak/blob/main/js/libs/keycloak-js/dist/keycloak.d.ts#L371-L650

@@ -44,7 +44,7 @@ describe('vueKeycloak', () => {
     try {
       await vueKeycloak.install(appMock, {})
     } catch (error) {
-      expect(error.message).toBe('The Keycloak.KeycloakConfig is required')
+      expect(error.message).toBe('The KeycloakConfig is required')
     }
   })
 
@@ -52,7 +52,7 @@ describe('vueKeycloak', () => {
     try {
       await vueKeycloak.install(appMock, { config: {} })
     } catch (error) {
-      expect(error.message).toBe('Client ID is missing in Keycloak.KeycloakConfig')
+      expect(error.message).toBe('Client ID is missing in KeycloakConfig')
     }
   })
 
@@ -60,7 +60,7 @@ describe('vueKeycloak', () => {
     try {
       await vueKeycloak.install(appMock, { config: { clientId: 'abc' } })
     } catch (error) {
-      expect(error.message).toBe('REALM is missing in Keycloak.KeycloakConfig')
+      expect(error.message).toBe('REALM is missing in KeycloakConfig')
     }
   })
 
@@ -68,7 +68,7 @@ describe('vueKeycloak', () => {
     try {
       await vueKeycloak.install(appMock, { config: { clientId: 'abc', realm: 'abc' } })
     } catch (error) {
-      expect(error.message).toBe('URL is missing in Keycloak.KeycloakConfig')
+      expect(error.message).toBe('URL is missing in KeycloakConfig')
     }
   })
 

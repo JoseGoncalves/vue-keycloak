@@ -1,5 +1,6 @@
 import { createKeycloak, getToken, initKeycloak } from './keycloak'
-import Keycloak, { KeycloakConfig } from 'keycloak-js'
+import Keycloak from 'keycloak-js'
+import type { KeycloakConfig } from 'keycloak-js'
 import { hasFailed, isAuthenticated, isPending, setToken } from './state'
 import { defaultInitConfig } from './const'
 
