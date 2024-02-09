@@ -32,7 +32,7 @@ export async function updateToken(minValidity: number): Promise<string> {
 
 export function createKeycloak(config: KeycloakConfig | string): Keycloak {
   $keycloak = new Keycloak(config)
-  return getKeycloak()
+  return $keycloak
 }
 
 export async function initKeycloak(initConfig: KeycloakInitOptions): Promise<void> {
