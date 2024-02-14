@@ -1,3 +1,23 @@
+## [2.5.0](https://github.com/JoseGoncalves/vue-keycloak/compare/v2.4.0...v2.5.0) (2024-02-14)
+
+
+### Features
+
+* broader keycloak-js peer dependency (compatible with versions 18 to 23) ([ee32817](https://github.com/JoseGoncalves/vue-keycloak/commit/ee328177b17d5e242dd8bdd6604577a4a7ff5422))
+* drop support to load config with an HTTP request ([1c56a68](https://github.com/JoseGoncalves/vue-keycloak/commit/1c56a689a6fb5624bf2bc66d6e9e5daaeb497692))
+
+
+### Bug Fixes
+
+* fix Intellisense not resolving module ([094bad2](https://github.com/JoseGoncalves/vue-keycloak/commit/094bad20663e654718f9471bc1b865580437b55a))
+
+
+### Internal
+
+* reformat eslint config ([65f9a51](https://github.com/JoseGoncalves/vue-keycloak/commit/65f9a517fa2574bd749558ace12a5663754d9370))
+* replace deprecated KeycloakInstance with Keycloak ([80eeafd](https://github.com/JoseGoncalves/vue-keycloak/commit/80eeafd19a95862317f0983785e9ba427ba149d3))
+* replace getKeycloak call with $keycloak in createKeycloak ([83773c2](https://github.com/JoseGoncalves/vue-keycloak/commit/83773c24b62f4f272f0fc144ea604153034becfa))
+
 # [2.4.0](https://github.com/JoseGoncalves/vue-keycloak/compare/v2.3.3...v2.4.0) (2024-02-06)
 
 

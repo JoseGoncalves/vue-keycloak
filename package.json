@@ -1,6 +1,6 @@
 {
   "name": "@josempgon/vue-keycloak",
-  "version": "2.4.0",
+  "version": "2.5.0",
   "description": "Keycloak plugin for Vue 3 and Composition API",
   "author": {
     "name": "Gery Hirschfeld",
