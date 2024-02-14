@@ -1,4 +1,4 @@
-## [2.5.0](https://github.com/JoseGoncalves/vue-keycloak/compare/v2.4.0...v2.5.0) (2024-02-14)
+# [2.5.0](https://github.com/JoseGoncalves/vue-keycloak/compare/v2.4.0...v2.5.0) (2024-02-14)
 
 
 ### Features
