@@ -17,13 +17,13 @@
 [![npm bundle size](https://img.shields.io/bundlephobia/min/%40josempgon%2Fvue-keycloak)](https://bundlephobia.com/package/@josempgon/vue-keycloak)
 [![NPM Downloads](https://img.shields.io/npm/dm/%40josempgon%2Fvue-keycloak)](https://npm-stat.com/charts.html?package=%40josempgon%2Fvue-keycloak)
 
-A small wrapper library for the [Keycloak JavaScript adapter](https://www.keycloak.org/docs/latest/securing_apps/#_javascript_adapter).
+A small Vue wrapper library for the [Keycloak JavaScript adapter](https://www.keycloak.org/docs/latest/securing_apps/#_javascript_adapter).
 
-> The library is made for [Vue 3](https://vuejs.org/) and the [Composition API](https://vuejs.org/guide/extras/composition-api-faq.html#what-is-composition-api).
+> This library is made for [Vue 3](https://vuejs.org/) with the [Composition API](https://vuejs.org/guide/extras/composition-api-faq.html#what-is-composition-api).
 
 ## Instalation
 
-Install the wrapper library for the [Keycloak JavaScript adapter](https://www.keycloak.org/docs/latest/securing_apps/#_javascript_adapter) with npm.
+Install the library with npm.
 
 ```bash
 npm install @josempgon/vue-keycloak
@@ -31,13 +31,13 @@ npm install @josempgon/vue-keycloak
 
 ## Use Plugin
 
-Import the library into your `src/main.ts` file or any other entry point.
+Import the library into your Vue app entry point.
 
 ```typescript
 import { vueKeycloak } from '@josempgon/vue-keycloak'
 ```
 
-Apply the library to the vue app instance.
+Apply the library to the Vue app instance.
 
 ```typescript
 const app = createApp(App)
