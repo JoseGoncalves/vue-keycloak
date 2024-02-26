@@ -184,10 +184,10 @@ const {
 
 #### Functions
 
-| Function         | Type                                                      | Description                                                     |
-| ---------------- | --------------------------------------------------------- | --------------------------------------------------------------- |
-| hasRoles         | <pre>(roles: string[]) => boolean</pre>                   | Returns true if the user has all the given roles.               |
-| hasResourceRoles | <pre>(roles: string[], resource: string) => boolean</pre> | Returns true if the user has all the given roles in a resource. |
+| Function         | Type                                                      | Description                                                       |
+| ---------------- | --------------------------------------------------------- | ----------------------------------------------------------------- |
+| hasRoles         | <pre>(roles: string[]) => boolean</pre>                   | Returns `true` if the user has all the given roles.               |
+| hasResourceRoles | <pre>(roles: string[], resource: string) => boolean</pre> | Returns `true` if the user has all the given roles in a resource. |
 
 # License
 
