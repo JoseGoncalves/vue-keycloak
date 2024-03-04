@@ -48,7 +48,7 @@
   ],
   "license": "Apache-2.0",
   "peerDependencies": {
-    "keycloak-js": "18 - 23",
+    "keycloak-js": "18 - 24",
     "vue": "^3.2.47"
   },
   "devDependencies": {
@@ -62,7 +62,7 @@
     "eslint-config-prettier": "^9.1.0",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
-    "keycloak-js": "^23.0.7",
+    "keycloak-js": "^24.0.0",
     "prettier": "^3.2.5",
     "rimraf": "^5.0.5",
     "rollup": "^3.29.4",
