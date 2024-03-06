@@ -89,13 +89,13 @@ app.use(vueKeycloak, async () => {
 
 ## Use Token
 
-A helper function is exported to manage the authentication token.
+A helper function is exported to manage the access token.
 
 ### getToken
 
 | Function         | Type                                                   | Description                                                            |
 | ---------------- | ------------------------------------------------------ | ---------------------------------------------------------------------- |
-| getToken         | <pre>(minValidity?: number) => Promise\<string\></pre> | Returns a promise that resolves with the current authentication token. |
+| getToken         | <pre>(minValidity?: number) => Promise\<string\></pre> | Returns a promise that resolves with the current access token.         |
 
 The token will be refreshed if expires within `minValidity` seconds. The `minValidity` parameter is optional and defaults to 10. If -1 is passed as `minValidity`, the token will be forcibly refreshed.
 
@@ -169,8 +169,8 @@ const {
 | isAuthenticated | `Ref<boolean>`                                         | If `true` the user is authenticated.                                |
 | isPending       | `Ref<boolean>`                                         | If `true` the authentication request is still pending.              |
 | hasFailed       | `Ref<boolean>`                                         | If `true` authentication request has failed.                        |
-| token           | `Ref<string>`                                          | Raw value of the JWT token.                                         |
-| decodedToken    | `Ref<`[`KeycloakTokenParsed`][TokenParsed]`>`          | Decoded value of the JWT token.                                     |
+| token           | `Ref<string>`                                          | Raw value of the access token.                                      |
+| decodedToken    | `Ref<`[`KeycloakTokenParsed`][TokenParsed]`>`          | Decoded value of the access token.                                  |
 | username        | `Ref<string>`                                          | Username. Extracted from `decodedToken['preferred_username']`.      |
 | userId          | `Ref<string>`                                          | User identifier. Extracted from `decodedToken['sub']`.              |
 | roles           | `Ref<string[]>`                                        | List of the user's roles.                                           |
