@@ -73,15 +73,16 @@ Use the example below to generate dynamic Keycloak configuration.
 
 ```typescript
 app.use(vueKeycloak, async () => {
+  const authBaseUrl = await getAuthBaseUrl()
   return {
     config: {
-      url: (await getAuthBaseUrl()) + '/auth',
+      url: `${authBaseUrl}/auth`,
       realm: 'myrealm',
       clientId: 'myapp',
     },
     initOptions: {
       onLoad: 'check-sso',
-      silentCheckSsoRedirectUri: window.location.origin + '/assets/silent-check-sso.html',
+      silentCheckSsoRedirectUri: `${window.location.origin}/assets/silent-check-sso.html`,
     },
   }
 })
