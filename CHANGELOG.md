@@ -1,3 +1,10 @@
+## [2.7.0](https://github.com/JoseGoncalves/vue-keycloak/compare/v2.6.0...v2.7.0) (2024-06-11)
+
+
+### Features
+
+* add support to Keycloak 25 ([0300a86](https://github.com/JoseGoncalves/vue-keycloak/commit/0300a86f1c530d7fff63debb81b9f4d05a5070f0))
+
 # [2.6.0](https://github.com/JoseGoncalves/vue-keycloak/compare/v2.5.0...v2.6.0) (2024-03-04)
 
 
