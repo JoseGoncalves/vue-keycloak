@@ -5,14 +5,14 @@
 
 * add support to Keycloak 25 ([0300a86](https://github.com/JoseGoncalves/vue-keycloak/commit/0300a86f1c530d7fff63debb81b9f4d05a5070f0))
 
-# [2.6.0](https://github.com/JoseGoncalves/vue-keycloak/compare/v2.5.0...v2.6.0) (2024-03-04)
+## [2.6.0](https://github.com/JoseGoncalves/vue-keycloak/compare/v2.5.0...v2.6.0) (2024-03-04)
 
 
 ### Features
 
 * add support to Keycloak 24 ([27427bb](https://github.com/JoseGoncalves/vue-keycloak/commit/27427bb39c84a4b5b04211b31c8e65b046ff0b7e))
 
-# [2.5.0](https://github.com/JoseGoncalves/vue-keycloak/compare/v2.4.0...v2.5.0) (2024-02-14)
+## [2.5.0](https://github.com/JoseGoncalves/vue-keycloak/compare/v2.4.0...v2.5.0) (2024-02-14)
 
 
 ### Features
@@ -32,7 +32,7 @@
 * replace deprecated KeycloakInstance with Keycloak ([80eeafd](https://github.com/JoseGoncalves/vue-keycloak/commit/80eeafd19a95862317f0983785e9ba427ba149d3))
 * replace getKeycloak call with $keycloak in createKeycloak ([83773c2](https://github.com/JoseGoncalves/vue-keycloak/commit/83773c24b62f4f272f0fc144ea604153034becfa))
 
-# [2.4.0](https://github.com/JoseGoncalves/vue-keycloak/compare/v2.3.3...v2.4.0) (2024-02-06)
+## [2.4.0](https://github.com/JoseGoncalves/vue-keycloak/compare/v2.3.3...v2.4.0) (2024-02-06)
 
 
 ### Features
@@ -45,35 +45,35 @@
 
 * fixed composable typings ([bdfdeaf](https://github.com/JoseGoncalves/vue-keycloak/commit/bdfdeafeb892aa4165f182af2048394b93f63127))
 
-## [2.3.3](https://github.com/JoseGoncalves/vue-keycloak/compare/v2.3.2...v2.3.3) (2024-01-30)
+### [2.3.3](https://github.com/JoseGoncalves/vue-keycloak/compare/v2.3.2...v2.3.3) (2024-01-30)
 
 
 ### Bug Fixes
 
 * set typings inside package.json "exports" to allow proper building in typescript projects ([c5691d0](https://github.com/JoseGoncalves/vue-keycloak/commit/c5691d0f24968a39ebd3bb16c45af2529af9e8c9))
 
-## [2.3.2](https://github.com/JoseGoncalves/vue-keycloak/compare/v2.3.1...v2.3.2) (2024-01-27)
+### [2.3.2](https://github.com/JoseGoncalves/vue-keycloak/compare/v2.3.1...v2.3.2) (2024-01-27)
 
 
 ### Bug Fixes
 
 * some tools still don't parse package.exports, so reintroduce package.main for full compatibility. ([4a5dbb2](https://github.com/JoseGoncalves/vue-keycloak/commit/4a5dbb233c32314be5867e6022fc7320578d9465))
 
-## [2.3.1](https://github.com/JoseGoncalves/vue-keycloak/compare/v2.3.0...v2.3.1) (2024-01-27)
+### [2.3.1](https://github.com/JoseGoncalves/vue-keycloak/compare/v2.3.0...v2.3.1) (2024-01-27)
 
 
 ### Bug Fixes
 
 * use conditional exports in package.json to support vitest ([2c995c7](https://github.com/JoseGoncalves/vue-keycloak/commit/2c995c7a003fc0b17f6fe2f33d0536635ab21cab))
 
-# [2.3.0](https://github.com/JoseGoncalves/vue-keycloak/compare/v2.2.0...v2.3.0) (2024-01-14)
+## [2.3.0](https://github.com/JoseGoncalves/vue-keycloak/compare/v2.2.0...v2.3.0) (2024-01-14)
 
 
 ### Features
 
 * use tokenParsed instead of jwt-decode ([4a7e5be](https://github.com/JoseGoncalves/vue-keycloak/commit/4a7e5be6e4182ee9293cb0f7689ccae5a436d33d))
 
-# [2.2.0](https://github.com/JoseGoncalves/vue-keycloak/compare/v2.1.0...v2.2.0) (2023-11-23)
+## [2.2.0](https://github.com/JoseGoncalves/vue-keycloak/compare/v2.1.0...v2.2.0) (2023-11-23)
 
 
 ### Features
@@ -81,14 +81,14 @@
 * upgrade jwt-decode ([4318123](https://github.com/JoseGoncalves/vue-keycloak/commit/43181238bf4defa871a6773164d8c6d113bde35d))
 * upgrade keycloak-js to 23.0.0 ([863cf73](https://github.com/JoseGoncalves/vue-keycloak/commit/863cf739f00cd007ba414ab049e4c775e3ecb5b5))
 
-# [2.1.0](https://github.com/JoseGoncalves/vue-keycloak/compare/v2.0.1...v2.1.0) (2023-11-21)
+## [2.1.0](https://github.com/JoseGoncalves/vue-keycloak/compare/v2.0.1...v2.1.0) (2023-11-21)
 
 
 ### Features
 
 * add optional minValidity parameter to getToken() ([7f7dbbb](https://github.com/JoseGoncalves/vue-keycloak/commit/7f7dbbb86b30ae3b3b47bef70089839840ac6b26))
 
-## [2.0.1](https://github.com/JoseGoncalves/vue-keycloak/compare/v2.0.0...v2.0.1) (2023-11-02)
+### [2.0.1](https://github.com/JoseGoncalves/vue-keycloak/compare/v2.0.0...v2.0.1) (2023-11-02)
 
 
 ### Bug Fixes
@@ -114,28 +114,28 @@
 
 * add compatibility with keycloak-js v20 ([7c1d52d](https://github.com/JoseGoncalves/vue-keycloak/commit/7c1d52d3806de77f7ac2b3d11caa7df4d85486e2))
 
-# [1.11.0](https://github.com/JoseGoncalves/vue-keycloak/compare/v1.10.0...v1.11.0) (2023-09-28)
+## [1.11.0](https://github.com/JoseGoncalves/vue-keycloak/compare/v1.10.0...v1.11.0) (2023-09-28)
 
 
 ### Features
 
 * upgrade keycloak-js to 22.0.3 ([7a913a3](https://github.com/JoseGoncalves/vue-keycloak/commit/7a913a34e382a1c7049c5917fa27ec41bd9a050b))
 
-# [1.10.0](https://github.com/JoseGoncalves/vue-keycloak/compare/v1.9.1...v1.10.0) (2023-07-17)
+## [1.10.0](https://github.com/JoseGoncalves/vue-keycloak/compare/v1.9.1...v1.10.0) (2023-07-17)
 
 
 ### Features
 
 * upgrade keycloak-js to 21.1.2 ([bd28b6d](https://github.com/JoseGoncalves/vue-keycloak/commit/bd28b6d99e5b22795f1ba1f104341d12ae4bb0b8))
 
-## [1.9.1](https://github.com/JoseGoncalves/vue-keycloak/compare/v1.9.0...v1.9.1) (2023-05-04)
+### [1.9.1](https://github.com/JoseGoncalves/vue-keycloak/compare/v1.9.0...v1.9.1) (2023-05-04)
 
 
 ### Bug Fixes
 
 * Fix release ([55f2322](https://github.com/JoseGoncalves/vue-keycloak/commit/55f23226f9764bb3631fee2e222fdf8148f8cdb6))
 
-# [1.9.0](https://github.com/JoseGoncalves/vue-keycloak/compare/v1.8.4...v1.9.0) (2023-05-04)
+## [1.9.0](https://github.com/JoseGoncalves/vue-keycloak/compare/v1.8.4...v1.9.0) (2023-05-04)
 
 
 ### Features
@@ -148,30 +148,30 @@
 
 * downgraded semantic-release to support legacy authentication using NPM_USERNAME and NPM_PASSWORD ([4755ca4](https://github.com/JoseGoncalves/vue-keycloak/commit/4755ca4b367d39adc6bb2dd9235f63ce7b0cce22))
 
-## [1.8.4](https://github.com/JoseGoncalves/vue-keycloak/compare/v1.8.3...v1.8.4) (2023-01-08)
+### [1.8.4](https://github.com/JoseGoncalves/vue-keycloak/compare/v1.8.3...v1.8.4) (2023-01-08)
 
-## [1.8.3](https://github.com/JoseGoncalves/vue-keycloak/compare/v1.8.2...v1.8.3) (2023-01-06)
+### [1.8.3](https://github.com/JoseGoncalves/vue-keycloak/compare/v1.8.2...v1.8.3) (2023-01-06)
 
 
 ### Bug Fixes
 
 * removal of callback setting ([652a60e](https://github.com/JoseGoncalves/vue-keycloak/commit/652a60e4b631c69903e3b2e49864dfdf1f9e9bab))
 
-## [1.8.2](https://github.com/JoseGoncalves/vue-keycloak/compare/v1.8.1...v1.8.2) (2023-01-05)
+### [1.8.2](https://github.com/JoseGoncalves/vue-keycloak/compare/v1.8.1...v1.8.2) (2023-01-05)
 
 
 ### Bug Fixes
 
 * added check for required config ([93d0a75](https://github.com/JoseGoncalves/vue-keycloak/commit/93d0a7566d26c97477f061098365178c8cd50ceb))
 
-## [1.8.1](https://github.com/JoseGoncalves/vue-keycloak/compare/v1.8.0...v1.8.1) (2023-01-05)
+### [1.8.1](https://github.com/JoseGoncalves/vue-keycloak/compare/v1.8.0...v1.8.1) (2023-01-05)
 
 
 ### Bug Fixes
 
 * update README and build environment ([877dc45](https://github.com/JoseGoncalves/vue-keycloak/commit/877dc451752f46ceae8eb1780acb4454bf5a254f))
 
-# [1.8.0](https://github.com/JoseGoncalves/vue-keycloak/compare/v1.7.1...v1.8.0) (2023-01-03)
+## [1.8.0](https://github.com/JoseGoncalves/vue-keycloak/compare/v1.7.1...v1.8.0) (2023-01-03)
 
 
 ### Features
