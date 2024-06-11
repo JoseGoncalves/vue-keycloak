@@ -48,7 +48,9 @@
       "@semantic-release/git",
       {
         "assets": ["package.json", "package-lock.json", "CHANGELOG.md"],
-        "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+        "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}",
+        "gpgSign": true,
+        "gpgSignKey": "~/.ssh/id_ed25519"
       }
     ],
     "@semantic-release/github"
