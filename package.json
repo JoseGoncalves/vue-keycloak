@@ -13,7 +13,7 @@
   "homepage": "https://github.com/JoseGoncalves/vue-keycloak",
   "repository": {
     "type": "git",
-    "url": "git@github.com:JoseGoncalves/vue-keycloak.git"
+    "url": "git+ssh://git@github.com/JoseGoncalves/vue-keycloak.git"
   },
   "scripts": {
     "test": "jest",
