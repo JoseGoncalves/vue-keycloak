@@ -3,7 +3,7 @@ import Keycloak from 'keycloak-js'
 import type { KeycloakConfig, KeycloakInitOptions } from 'keycloak-js'
 import { defaultInitConfig } from './const'
 import { createKeycloak, initKeycloak } from './keycloak'
-import { isPromise, isFunction, isNil } from './utils'
+import { isPromise, isFunction, isNil, noop } from './utils'
 
 interface KeycloakPluginConfig {
   config: KeycloakConfig
@@ -43,8 +43,8 @@ export const vueKeycloak: Plugin = {
     app.config.globalProperties.$keycloak = _keycloak
 
     const {
-      onBeforeInit = () => {},
-      onComplete = () => {},
+      onBeforeInit = noop,
+      onComplete = noop,
     } = keycloakPluginConfig
 
     onBeforeInit(_keycloak)
