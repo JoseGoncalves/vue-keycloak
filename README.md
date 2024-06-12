@@ -55,10 +55,10 @@ app.use(vueKeycloak, {
 
 | Object       | Type                                          | Required | Description                                |
 | ------------ | --------------------------------------------- | -------- | ------------------------------------------ |
-| config        | [`KeycloakConfig`][Config]                      | Yes      | Keycloak configuration.                     |
+| config       | [`KeycloakConfig`][Config]                    | Yes      | Keycloak configuration.                    |
 | initOptions  | [`KeycloakInitOptions`][InitOptions]          | No       | Keycloak init options.                     |
 | onBeforeInit | <pre>(keycloak: Keycloak) => void</pre>       | No       | Callback after keycloak instance creation. |
-| onComplete   | <pre>(keycloak: Keycloak) => void</pre>       | No       | Callback after first initialization.        |
+| onComplete   | <pre>(keycloak: Keycloak) => void</pre>       | No       | Callback after first initialization.       |
 
 #### `initOptions` Default Value
 
@@ -91,12 +91,20 @@ app.use(vueKeycloak, async () => {
 ```
 
 ### `onBeforeInit` callback
-
 This callback can be used to interact with the keycloak instance like registering [`callbacks`][Callbacks] on the keycloak instance.
 
 ### `onComplete` callback
-
 This callback can be used to continue after the first initialization.
+
+```typescript
+...
+  onComplete() {
+    app.use(router);
+
+    app.mount('#app');
+  }
+...
+```
 
 ## Use Token
 
