@@ -53,10 +53,12 @@ app.use(vueKeycloak, {
 
 ### Configuration
 
-| Object      | Type                                          | Required | Description                              |
-| ----------- | --------------------------------------------- | -------- | ---------------------------------------- |
-| config      | [`KeycloakConfig`][Config]                    | Yes      | Keycloak configuration.                  |
-| initOptions | [`KeycloakInitOptions`][InitOptions]          | No       | Keycloak init options.                   |
+| Object       | Type                                          | Required | Description                                |
+| ------------ | --------------------------------------------- | -------- | ------------------------------------------ |
+| config        | [`KeycloakConfig`][Config]                      | Yes      | Keycloak configuration.                     |
+| initOptions  | [`KeycloakInitOptions`][InitOptions]          | No       | Keycloak init options.                     |
+| onBeforeInit | <pre>(keycloak: Keycloak) => void</pre>       | No       | Callback after keycloak instance creation. |
+| onComplete   | <pre>(keycloak: Keycloak) => void</pre>       | No       | Callback after first initialization.        |
 
 #### `initOptions` Default Value
 
@@ -87,6 +89,14 @@ app.use(vueKeycloak, async () => {
   }
 })
 ```
+
+### `onBeforeInit` callback
+
+This callback can be used to interact with the keycloak instance like registering [`callbacks`][Callbacks] on the keycloak instance.
+
+### `onComplete` callback
+
+This callback can be used to continue after the first initialization.
 
 ## Use Token
 
@@ -163,6 +173,7 @@ const {
   hasResourceRoles,
 } = useKeycloak()
 ```
+
 #### Reactive State
 
 | State           | Type                                                   | Description                                                         |
@@ -198,3 +209,4 @@ Apache-2.0 Licensed | Copyright © 2021-present Gery Hirschfeld & Contributors
 [InitOptions]: https://github.com/keycloak/keycloak/blob/main/js/libs/keycloak-js/dist/keycloak.d.ts#L55-L215
 [TokenParsed]: https://github.com/keycloak/keycloak/blob/main/js/libs/keycloak-js/dist/keycloak.d.ts#L337-L352
 [Instance]: https://github.com/keycloak/keycloak/blob/main/js/libs/keycloak-js/dist/keycloak.d.ts#L371-L650
+[Callbacks]: https://github.com/keycloak/keycloak/blob/main/js/libs/keycloak-js/dist/keycloak.d.ts#L496

@@ -1,4 +1,5 @@
 import { Plugin } from 'vue'
+import Keycloak from 'keycloak-js'
 import type { KeycloakConfig, KeycloakInitOptions } from 'keycloak-js'
 import { defaultInitConfig } from './const'
 import { createKeycloak, initKeycloak } from './keycloak'
@@ -7,6 +8,8 @@ import { isPromise, isFunction, isNil } from './utils'
 interface KeycloakPluginConfig {
   config: KeycloakConfig
   initOptions?: KeycloakInitOptions
+  onBeforeInit?: (keycloak: Keycloak) => void
+  onComplete?: (keycloak: Keycloak) => void
 }
 
 type KeycloakConfigFactory = () => KeycloakPluginConfig
@@ -39,6 +42,13 @@ export const vueKeycloak: Plugin = {
     const _keycloak = createKeycloak(keycloakConfig)
     app.config.globalProperties.$keycloak = _keycloak
 
+    const {
+      onBeforeInit = () => {},
+      onComplete = () => {},
+    } = keycloakPluginConfig
+
+    onBeforeInit(_keycloak)
     await initKeycloak(keycloakInitOptions)
+    onComplete(_keycloak)
   },
 }
