@@ -88,6 +88,55 @@ app.use(vueKeycloak, async () => {
 })
 ```
 
+### Use with vue-router
+If you need to wait for authentication to complete before proceeding with your Vue app setup, for instance, because you are using the `vue-router` package and need to initialize the router only after the authentication process is completed, you should initialize your app in the following way:
+
+**router/index.ts**
+```typescript
+import { createRouter, createWebHistory } from 'vue-router'
+
+const routes = [ /* Your routes */ ]
+
+const initRouter = () => {
+  const history = createWebHistory(import.meta.env.BASE_URL)
+  return createRouter({ history, routes })
+}
+
+export { initRouter }
+```
+
+**main.ts**
+```typescript
+import { createApp } from 'vue'
+import { vueKeycloak } from '@josempgon/vue-keycloak'
+import App from './App.vue'
+import { initRouter } from './router'
+
+const app = createApp(App)
+
+await vueKeycloak.install(app, {
+  config: {
+    url: 'http://keycloak-server/auth',
+    realm: 'myrealm',
+    clientId: 'myapp',
+  },
+})
+
+app.use(initRouter())
+app.mount('#app')
+```
+
+If you are building for a browser that does not support [Top-level await](https://caniuse.com/mdn-javascript_operators_await_top_level), you should wrap the Vue plugin and router initialization in an async [IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE):
+
+```typescript
+(async () => {
+  await vueKeycloak.install(app, options);
+
+  app.use(initRouter());
+  app.mount('#app');
+})();
+```
+
 ## Use Token
 
 A helper function is exported to manage the access token.
