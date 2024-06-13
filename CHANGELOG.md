@@ -1,3 +1,10 @@
+## [2.7.1](https://github.com/JoseGoncalves/vue-keycloak/compare/v2.7.0...v2.7.1) (2024-06-13)
+
+
+### Bug Fixes
+
+* expose plugin install method for typescript ([5ad9d99](https://github.com/JoseGoncalves/vue-keycloak/commit/5ad9d999ebcc241ad6b2ec5ae09bd486cac0ef4e))
+
 ## [2.7.0](https://github.com/JoseGoncalves/vue-keycloak/compare/v2.6.0...v2.7.0) (2024-06-11)
 
 
