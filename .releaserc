@@ -16,6 +16,10 @@
         "presetConfig": {
           "types": [
             {
+              "type": "breaking",
+              "section": "Breaking Changes"
+            },
+            {
               "type": "feat",
               "section": "Features"
             },
