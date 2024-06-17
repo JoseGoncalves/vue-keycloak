@@ -194,6 +194,7 @@ import { useKeycloak } from '@josempgon/vue-keycloak'
 
 const {
   // Reactive State
+  keycloak,
   isAuthenticated,
   isPending,
   hasFailed,
@@ -204,9 +205,6 @@ const {
   roles,
   resourceRoles,
 
-  // Object Instances
-  keycloak,
-
   // Functions
   hasRoles,
   hasResourceRoles,
@@ -216,6 +214,7 @@ const {
 
 | State           | Type                                                   | Description                                                         |
 | --------------- | ------------------------------------------------------ | ------------------------------------------------------------------- |
+| keycloak        | `Ref<`[`Keycloak`][Instance]`>`                        | Instance of the keycloak-js adapter.                            |
 | isAuthenticated | `Ref<boolean>`                                         | If `true` the user is authenticated.                                |
 | isPending       | `Ref<boolean>`                                         | If `true` the authentication request is still pending.              |
 | hasFailed       | `Ref<boolean>`                                         | If `true` authentication request has failed.                        |
@@ -225,12 +224,6 @@ const {
 | userId          | `Ref<string>`                                          | User identifier. Extracted from `decodedToken['sub']`.              |
 | roles           | `Ref<string[]>`                                        | List of the user's roles.                                           |
 | resourceRoles   | `Ref<Record<string, string[]>`                         | List of the user's roles in specific resources.                     |
-
-#### Object Instances
-
-| Instance        | Type                                    | Description                                                     |
-| --------------- | --------------------------------------- | --------------------------------------------------------------- |
-| keycloak        | [`Keycloak`][Instance]                  | Instance of the keycloak-js adapter.                            |
 
 #### Functions
 

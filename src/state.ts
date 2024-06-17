@@ -1,7 +1,9 @@
 import { reactive } from 'vue'
 import type { KeycloakTokenParsed } from 'keycloak-js'
+import { KeycloakInstance } from './keycloak'
 
 export interface KeycloakState {
+  keycloak: KeycloakInstance
   isAuthenticated: boolean
   hasFailed: boolean
   isPending: boolean
@@ -14,16 +16,21 @@ export interface KeycloakState {
 }
 
 export const state = reactive<KeycloakState>({
+  keycloak: undefined as KeycloakInstance,
   isAuthenticated: false,
   hasFailed: false,
   isPending: false,
   token: '',
-  decodedToken: {},
+  decodedToken: {} as KeycloakTokenParsed,
   username: '',
   userId: '',
   roles: [] as string[],
   resourceRoles: {},
 })
+
+export const setKeycloak = (value: KeycloakInstance): void => {
+  state.keycloak = value
+}
 
 export const setToken = (token: string, tokenParsed: KeycloakTokenParsed): void => {
   state.token = token

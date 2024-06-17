@@ -7,6 +7,7 @@ import { defaultInitConfig } from './const'
 jest.mock('keycloak-js', () => jest.fn())
 jest.mock('./state', () => {
   return {
+    setKeycloak: jest.fn(),
     setToken: jest.fn(),
     hasFailed: jest.fn(),
     isPending: jest.fn(),
@@ -64,7 +65,7 @@ describe('keyckoak', () => {
     })
   })
 
-  describe('createKeycloak & getKeycloak', () => {
+  describe('createKeycloak', () => {
     test('should define a new keycloak instance and return it', () => {
       const result = createKeycloak(keycloakConfig)
 
