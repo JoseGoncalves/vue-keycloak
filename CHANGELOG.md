@@ -1,3 +1,21 @@
+## [3.0.0](https://github.com/JoseGoncalves/vue-keycloak/compare/v2.7.1...v3.0.0) (2024-06-17)
+
+
+### Breaking Changes
+
+* keycloak is now a reactive reference to the keycloak-js adapter instance ([a199c5d](https://github.com/JoseGoncalves/vue-keycloak/commit/a199c5d7b5fdcf9ecbfa4b996d67b0b673d475e5))
+* minimum Vue version is 3.4.0 ([d7e9a18](https://github.com/JoseGoncalves/vue-keycloak/commit/d7e9a18ff36d37e5a61ae0327d7297ecfb6a2762))
+
+
+### Bug Fixes
+
+* fixed VueKeycloakPluginConfig type ([9e4b6ba](https://github.com/JoseGoncalves/vue-keycloak/commit/9e4b6bad1d3f35f94102400fda15233a1ffb1380))
+
+
+### Internal
+
+* remove unnecessary isPromise check on plugin install ([086f8e3](https://github.com/JoseGoncalves/vue-keycloak/commit/086f8e3766afa7b1fe460fcfebb7013d00a854e0))
+
 ## [2.7.1](https://github.com/JoseGoncalves/vue-keycloak/compare/v2.7.0...v2.7.1) (2024-06-13)
 
 
