@@ -1,19 +1,9 @@
-import { isPromise, isFunction, isNil } from './utils'
+import { isFunction, isNil } from './utils'
 
 describe('util', () => {
   const obj = {}
   const fun = (): void => undefined
   const prom = new Promise(() => undefined)
-
-  describe('isPromise', () => {
-    test('should return true if it is a valid promise', () => {
-      expect(isPromise(prom)).toBe(true)
-      expect(isPromise(fun)).toBe(false)
-      expect(isPromise(obj)).toBe(false)
-      expect(isPromise(undefined)).toBe(false)
-      expect(isPromise(null)).toBe(false)
-    })
-  })
 
   describe('isFunction', () => {
     test('should return true if it is a valid function', () => {
