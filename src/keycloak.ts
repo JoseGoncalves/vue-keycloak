@@ -26,7 +26,7 @@ export async function updateToken(minValidity: number): Promise<string> {
   return $keycloak.token
 }
 
-export function createKeycloak(config: KeycloakConfig | string): Keycloak {
+export function createKeycloak(config: KeycloakConfig): Keycloak {
   $keycloak = new Keycloak(config)
   setKeycloak($keycloak)
   return $keycloak
