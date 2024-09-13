@@ -1,3 +1,10 @@
+## [3.0.1](https://github.com/JoseGoncalves/vue-keycloak/compare/v3.0.0...v3.0.1) (2024-09-13)
+
+
+### Bug Fixes
+
+* corrected config param type in createKeycloak ([11c311f](https://github.com/JoseGoncalves/vue-keycloak/commit/11c311f1d127e1916d79c15b20e032ee11c7b529))
+
 ## [3.0.0](https://github.com/JoseGoncalves/vue-keycloak/compare/v2.7.1...v3.0.0) (2024-06-17)
 
 
