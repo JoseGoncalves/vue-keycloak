@@ -17,7 +17,7 @@
 [![npm bundle size](https://img.shields.io/bundlephobia/min/%40josempgon%2Fvue-keycloak)](https://bundlephobia.com/package/@josempgon/vue-keycloak)
 [![NPM Downloads](https://img.shields.io/npm/dm/%40josempgon%2Fvue-keycloak)](https://npm-stat.com/charts.html?package=%40josempgon%2Fvue-keycloak)
 
-A small Vue wrapper library for the [Keycloak JavaScript adapter](https://www.keycloak.org/docs/latest/securing_apps/#_javascript_adapter).
+A small Vue wrapper library for the [Keycloak JavaScript adapter](https://www.keycloak.org/securing-apps/javascript-adapter).
 
 > This library is made for [Vue 3](https://vuejs.org/) with the [Composition API](https://vuejs.org/guide/extras/composition-api-faq.html#what-is-composition-api).
 
