@@ -45,8 +45,8 @@ const app = createApp(App)
 app.use(vueKeycloak, {
   config: {
     url: 'http://keycloak-server/auth',
-    realm: 'myrealm',
-    clientId: 'myapp',
+    realm: 'my-realm',
+    clientId: 'my-app',
   }
 })
 ```
@@ -77,8 +77,8 @@ app.use(vueKeycloak, async () => {
   return {
     config: {
       url: `${authBaseUrl}/auth`,
-      realm: 'myrealm',
-      clientId: 'myapp',
+      realm: 'my-realm',
+      clientId: 'my-app',
     },
     initOptions: {
       onLoad: 'check-sso',
@@ -117,8 +117,8 @@ const app = createApp(App)
 await vueKeycloak.install(app, {
   config: {
     url: 'http://keycloak-server/auth',
-    realm: 'myrealm',
-    clientId: 'myapp',
+    realm: 'my-realm',
+    clientId: 'my-app',
   },
 })
 
