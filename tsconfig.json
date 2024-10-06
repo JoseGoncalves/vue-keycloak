@@ -3,7 +3,7 @@
     "declaration": true,
     "esModuleInterop": true,
     "target": "es2019",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "noImplicitAny": true,
     "outDir": "dist-transpiled",
     "declarationDir": "dist/types",
