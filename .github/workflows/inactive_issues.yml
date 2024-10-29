@@ -1,24 +1,25 @@
 name: Close inactive issues
 on:
   schedule:
-    - cron: "30 6 * * *"
+    - cron: '30 6 * * *'
+
+permissions:
+  issues: write
+  pull-requests: write
 
 jobs:
   close-issues:
     runs-on: ubuntu-latest
-    permissions:
-      issues: write
-      pull-requests: write
     steps:
       - uses: actions/stale@v9
         with:
           days-before-issue-stale: 21
           days-before-issue-close: 7
-          stale-issue-label: "stale"
+          stale-issue-label: 'stale'
           stale-issue-message: >
             This issue was marked as stale because it had no recent activity.
             It will be closed soon if no further activity occurs.
-          close-issue-message: "This issue was closed because it had no recent activity."
+          close-issue-message: 'This issue was closed because it had no recent activity.'
           days-before-pr-stale: -1
           days-before-pr-close: -1
           repo-token: ${{ secrets.GITHUB_TOKEN }}
