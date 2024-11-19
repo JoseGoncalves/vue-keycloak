@@ -44,7 +44,7 @@ const app = createApp(App)
 
 app.use(vueKeycloak, {
   config: {
-    url: 'http://keycloak-server/auth',
+    url: 'http://keycloak-server',
     realm: 'my-realm',
     clientId: 'my-app',
   }
@@ -76,7 +76,7 @@ app.use(vueKeycloak, async () => {
   const authBaseUrl = await getAuthBaseUrl()
   return {
     config: {
-      url: `${authBaseUrl}/auth`,
+      url: `${authBaseUrl}`,
       realm: 'my-realm',
       clientId: 'my-app',
     },
@@ -116,7 +116,7 @@ const app = createApp(App)
 
 await vueKeycloak.install(app, {
   config: {
-    url: 'http://keycloak-server/auth',
+    url: 'http://keycloak-server',
     realm: 'my-realm',
     clientId: 'my-app',
   },
