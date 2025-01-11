@@ -1,0 +1,3 @@
+.github/
+*.md
+package-lock.json

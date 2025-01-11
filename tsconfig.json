@@ -8,7 +8,7 @@
     "outDir": "dist-transpiled",
     "declarationDir": "dist/types",
     "removeComments": true,
-    "sourceMap": true,
+    "sourceMap": true
   },
   "include": ["src/**/*.ts"],
   "exclude": ["node_modules", "src/**/*.test.ts"]
