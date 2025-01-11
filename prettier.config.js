@@ -1,6 +1,4 @@
-/* eslint-env node */
-
-module.exports = {
+export default {
   arrowParens: 'avoid',
   printWidth: 120,
   quoteProps: 'consistent',
