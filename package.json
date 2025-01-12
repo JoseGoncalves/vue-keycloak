@@ -62,7 +62,7 @@
     "keycloak-js": "^26.0.7",
     "prettier": "^3.4.2",
     "rimraf": "^5.0.10",
-    "rollup": "^3.29.4",
+    "rollup": "^3.29.5",
     "semantic-release": "^22.0.12",
     "ts-jest": "^29.2.5",
     "typescript": "^5.7.3",
