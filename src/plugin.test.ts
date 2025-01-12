@@ -11,6 +11,7 @@ jest.mock('./keycloak', () => {
 })
 
 describe('vueKeycloak', () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let appMock: any
   const keycloakConfig: KeycloakConfig = {
     clientId: 'abc',

@@ -19,7 +19,7 @@ export async function updateToken(minValidity: number): Promise<string> {
   try {
     await $keycloak.updateToken(minValidity)
     setToken($keycloak.token, $keycloak.tokenParsed)
-  } catch (error) {
+  } catch {
     hasFailed(true)
     throw new Error('Failed to refresh the token, or the session has expired')
   }
@@ -40,7 +40,7 @@ export async function initKeycloak(initConfig: KeycloakInitOptions): Promise<voi
     if (!isNil($keycloak.token)) {
       setToken($keycloak.token, $keycloak.tokenParsed)
     }
-  } catch (error) {
+  } catch {
     hasFailed(true)
     isAuthenticated(false)
     throw new Error('Could not read access token')
