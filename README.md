@@ -249,7 +249,7 @@ const {
 
 Apache-2.0 Licensed | Copyright © 2021-present Gery Hirschfeld & Contributors
 
-[Config]: https://github.com/keycloak/keycloak/blob/main/js/libs/keycloak-js/lib/keycloak.d.ts#L27-L40
-[InitOptions]: https://github.com/keycloak/keycloak/blob/main/js/libs/keycloak-js/lib/keycloak.d.ts#L55-L211
-[TokenParsed]: https://github.com/keycloak/keycloak/blob/main/js/libs/keycloak-js/lib/keycloak.d.ts#L333-L348
-[Instance]: https://github.com/keycloak/keycloak/blob/main/js/libs/keycloak-js/lib/keycloak.d.ts#L367-L653
+[Config]: https://github.com/keycloak/keycloak-js/blob/main/lib/keycloak.d.ts#L27-L40
+[InitOptions]: https://github.com/keycloak/keycloak-js/blob/main/lib/keycloak.d.ts#L55-L211
+[TokenParsed]: https://github.com/keycloak/keycloak-js/blob/main/lib/keycloak.d.ts#L333-L348
+[Instance]: https://github.com/keycloak/keycloak-js/blob/main/lib/keycloak.d.ts#L367-L653
