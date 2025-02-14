@@ -21,12 +21,24 @@ A small Vue wrapper library for the [Keycloak JavaScript adapter](https://www.ke
 
 > This library is made for [Vue 3](https://vuejs.org/) with the [Composition API](https://vuejs.org/guide/extras/composition-api-faq.html#what-is-composition-api).
 
-## Instalation
+## Installation
 
-Install the library with npm.
+Using npm:
 
 ```bash
 npm install @josempgon/vue-keycloak
+```
+
+Using yarn:
+
+```bash
+yarn add @josempgon/vue-keycloak keycloak-js
+```
+
+Using pnpm:
+
+```bash
+pnpm add @josempgon/vue-keycloak keycloak-js
 ```
 
 ## Use Plugin
