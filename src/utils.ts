@@ -1,3 +1,7 @@
+export function isArray(value: unknown): boolean {
+  return Array.isArray(value)
+}
+
 export function isFunction(fun: unknown): boolean {
   return !isNil(fun) && typeof fun === 'function'
 }

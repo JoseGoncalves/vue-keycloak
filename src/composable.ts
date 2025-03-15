@@ -2,7 +2,7 @@ import type { KeycloakTokenParsed } from 'keycloak-js'
 import { toRefs, Ref } from 'vue'
 import { KeycloakInstance } from './keycloak'
 import { KeycloakState, state } from './state'
-import { isNil } from './utils'
+import { isArray, isNil } from './utils'
 
 export interface KeycloakComposable {
   keycloak: Ref<KeycloakInstance>
@@ -23,13 +23,13 @@ export const useKeycloak = (): KeycloakComposable => {
   return {
     ...toRefs<KeycloakState>(state),
     hasRoles: (roles: string[]) =>
-      !isNil(roles) && state.isAuthenticated && roles.every(role => state.roles.includes(role)),
+      isArray(roles) && state.isAuthenticated && roles.every(role => state.roles.includes(role)),
     hasResourceRoles: (roles: string[], resource: string) =>
-      !isNil(roles) &&
+      isArray(roles) &&
       !isNil(resource) &&
       state.isAuthenticated &&
       !isNil(state.resourceRoles) &&
-      !isNil(state.resourceRoles[resource]) &&
+      isArray(state.resourceRoles[resource]) &&
       roles.every(role => state.resourceRoles[resource].includes(role)),
   }
 }
