@@ -1,3 +1,9 @@
+## [3.1.1](https://github.com/JoseGoncalves/vue-keycloak/compare/v3.1.0...v3.1.1) (2025-03-16)
+
+### Bug Fixes
+
+* better roles type checking in hasRoles() & hasResourceRoles() ([80d4ca6](https://github.com/JoseGoncalves/vue-keycloak/commit/80d4ca6e8488ebed7b2949b41280b0e93a883d84))
+
 ## [3.1.0](https://github.com/JoseGoncalves/vue-keycloak/compare/v3.0.1...v3.1.0) (2024-10-06)
 
 
