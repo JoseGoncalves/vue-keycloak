@@ -3,7 +3,7 @@ export function isArray(value: unknown): boolean {
 }
 
 export function isFunction(fun: unknown): boolean {
-  return !isNil(fun) && typeof fun === 'function'
+  return typeof fun === 'function'
 }
 
 export function isNil(value: unknown): boolean {
