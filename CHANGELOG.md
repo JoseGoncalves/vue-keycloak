@@ -1,3 +1,14 @@
+## [3.2.0](https://github.com/JoseGoncalves/vue-keycloak/compare/v3.1.1...v3.2.0) (2025-04-15)
+
+### Features
+
+* improved error handling and return error info in composable ([ef5fb01](https://github.com/JoseGoncalves/vue-keycloak/commit/ef5fb01e16672853e7655dd4770a81e0cb38a844))
+
+### Internal
+
+* remove redundant check in isFunction() ([a988899](https://github.com/JoseGoncalves/vue-keycloak/commit/a9888998522f02e044bb399a6a18ff43702ae2d3))
+* use ShallowRef for non-primitive types ([9b76cb0](https://github.com/JoseGoncalves/vue-keycloak/commit/9b76cb07a2a1daa3200c86d6bc0db3f4b653f923))
+
 ## [3.1.1](https://github.com/JoseGoncalves/vue-keycloak/compare/v3.1.0...v3.1.1) (2025-03-16)
 
 ### Bug Fixes
