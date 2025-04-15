@@ -223,17 +223,17 @@ const {
 
 | State           | Type                                                   | Description                                                         |
 | --------------- | ------------------------------------------------------ | ------------------------------------------------------------------- |
-| keycloak        | `ShallowRef<`[`Keycloak`][Instance]`>`                 | Instance of the keycloak-js adapter.                                |
+| keycloak        | `Ref<`[`Keycloak`][Instance]`>`                        | Instance of the keycloak-js adapter.                                |
 | isAuthenticated | `Ref<boolean>`                                         | If `true` the user is authenticated.                                |
 | isPending       | `Ref<boolean>`                                         | If `true` the authentication request is still pending.              |
 | hasFailed       | `Ref<boolean>`                                         | If `true` an error ocurred on initialization or Keycloak request.   |
-| error           | `ShallowRef<Error>`                                    | Info on error that ocurred (null if no error)                       |
+| error           | `Ref<Error>`                                           | Info on error that ocurred (null if no error)                       |
 | token           | `Ref<string>`                                          | Raw value of the access token.                                      |
-| decodedToken    | `ShallowRef<`[`KeycloakTokenParsed`][TokenParsed]`>`   | Decoded value of the access token.                                  |
+| decodedToken    | `Ref<`[`KeycloakTokenParsed`][TokenParsed]`>`          | Decoded value of the access token.                                  |
 | username        | `Ref<string>`                                          | Username. Extracted from `decodedToken['preferred_username']`.      |
 | userId          | `Ref<string>`                                          | User identifier. Extracted from `decodedToken['sub']`.              |
-| roles           | `ShallowRef<string[]>`                                 | List of the user's roles.                                           |
-| resourceRoles   | `ShallowRef<Record<string, string[]>`                  | List of the user's roles in specific resources.                     |
+| roles           | `Ref<string[]>`                                        | List of the user's roles.                                           |
+| resourceRoles   | `Ref<Record<string, string[]>`                         | List of the user's roles in specific resources.                     |
 
 #### Functions
 
