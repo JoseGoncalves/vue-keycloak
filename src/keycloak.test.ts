@@ -55,13 +55,9 @@ describe('keyckoak', () => {
       }))
 
       createKeycloak(keycloakConfig)
+      await getToken()
 
-      try {
-        await getToken()
-      } catch (error) {
-        expect(hasFailed).toBeCalledWith(true)
-        expect(error.message).toBe('Failed to refresh the token, or the session has expired')
-      }
+      expect(hasFailed).toBeCalledWith(true, undefined)
     })
   })
 
@@ -113,16 +109,13 @@ describe('keyckoak', () => {
       }))
 
       createKeycloak(keycloakConfig)
-      try {
-        await initKeycloak(defaultInitConfig)
-      } catch (error) {
-        expect(error.message).toBe('Could not read access token')
-        expect(hasFailed).toBeCalledTimes(1)
-        expect(isPending).toBeCalledTimes(2)
-        expect(isPending).toBeCalledWith(false)
-        expect(hasFailed).toBeCalledWith(true)
-        expect(isAuthenticated).toBeCalledWith(false)
-      }
+      await initKeycloak(defaultInitConfig)
+
+      expect(hasFailed).toBeCalledTimes(1)
+      expect(isPending).toBeCalledTimes(2)
+      expect(isPending).toBeCalledWith(false)
+      expect(hasFailed).toBeCalledWith(true, undefined)
+      expect(isAuthenticated).toBeCalledWith(false)
     })
   })
 })

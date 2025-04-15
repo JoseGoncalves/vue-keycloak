@@ -8,6 +8,7 @@ export interface KeycloakComposable {
   keycloak: Ref<KeycloakInstance>
   isAuthenticated: Ref<boolean>
   hasFailed: Ref<boolean>
+  error: Ref<Error>
   isPending: Ref<boolean>
   token: Ref<string>
   decodedToken: Ref<KeycloakTokenParsed>

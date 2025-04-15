@@ -1,10 +1,11 @@
-import { isArray, isFunction, isNil } from './utils'
+import { isArray, isFunction, isNil, isString } from './utils'
 
 describe('util', () => {
   const arr: unknown[] = []
   const obj = {}
   const fun = (): void => undefined
   const prom = new Promise(() => undefined)
+  const str = 'adsf'
 
   describe('isArray', () => {
     test('should return true if it is an Array', () => {
@@ -14,6 +15,7 @@ describe('util', () => {
       expect(isArray(obj)).toBe(false)
       expect(isArray(undefined)).toBe(false)
       expect(isArray(null)).toBe(false)
+      expect(isArray(str)).toBe(false)
     })
   })
 
@@ -25,6 +27,7 @@ describe('util', () => {
       expect(isFunction(obj)).toBe(false)
       expect(isFunction(undefined)).toBe(false)
       expect(isFunction(null)).toBe(false)
+      expect(isFunction(str)).toBe(false)
     })
   })
 
@@ -36,6 +39,18 @@ describe('util', () => {
       expect(isNil(prom)).toBe(false)
       expect(isNil(arr)).toBe(false)
       expect(isNil(obj)).toBe(false)
+      expect(isNil(str)).toBe(false)
+    })
+  })
+
+  describe('isString', () => {
+    test('should return true if it is a valid string', () => {
+      expect(isString(str)).toBe(true)
+      expect(isString(undefined)).toBe(false)
+      expect(isString(null)).toBe(false)
+      expect(isString(fun)).toBe(false)
+      expect(isString(prom)).toBe(false)
+      expect(isString(obj)).toBe(false)
     })
   })
 })

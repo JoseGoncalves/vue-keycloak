@@ -12,23 +12,22 @@ export async function getToken(minValidity: number = 10): Promise<string> {
 }
 
 export async function updateToken(minValidity: number): Promise<string> {
-  if (!$keycloak) {
-    throw new Error('Keycloak is not initialized.')
-  }
-
   try {
     await $keycloak.updateToken(minValidity)
     setToken($keycloak.token, $keycloak.tokenParsed)
-  } catch {
-    hasFailed(true)
-    throw new Error('Failed to refresh the token, or the session has expired')
+  } catch (err) {
+    hasFailed(true, err)
   }
   return $keycloak.token
 }
 
 export function createKeycloak(config: KeycloakConfig): Keycloak {
-  $keycloak = new Keycloak(config)
-  setKeycloak($keycloak)
+  try {
+    $keycloak = new Keycloak(config)
+    setKeycloak($keycloak)
+  } catch (err) {
+    hasFailed(true, err)
+  }
   return $keycloak
 }
 
@@ -40,10 +39,9 @@ export async function initKeycloak(initConfig: KeycloakInitOptions): Promise<voi
     if (!isNil($keycloak.token)) {
       setToken($keycloak.token, $keycloak.tokenParsed)
     }
-  } catch {
-    hasFailed(true)
+  } catch (err) {
     isAuthenticated(false)
-    throw new Error('Could not read access token')
+    hasFailed(true, err)
   } finally {
     isPending(false)
   }

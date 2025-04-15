@@ -2,6 +2,7 @@ import { KeycloakConfig } from 'keycloak-js'
 import { vueKeycloak } from './plugin'
 import { createKeycloak, initKeycloak } from './keycloak'
 import { defaultInitConfig } from './const'
+import { state } from './state'
 
 jest.mock('./keycloak', () => {
   return {
@@ -31,46 +32,21 @@ describe('vueKeycloak', () => {
     ;(initKeycloak as jest.Mock).mockClear()
     ;(createKeycloak as jest.Mock).mockImplementation(() => ({ isMyKeycloak: true }))
     ;(initKeycloak as jest.Mock).mockImplementation(() => undefined)
+    jest.spyOn(console, 'error').mockImplementation(() => {})
   })
 
-  test('should throw an error if plugin config is nil', async () => {
-    try {
-      await vueKeycloak.install(appMock)
-    } catch (error) {
-      expect(error.message).toBe('The VueKeycloakPluginConfig is required')
-    }
+  test('should have error if plugin config is nil', async () => {
+    await vueKeycloak.install(appMock)
+
+    expect(state.hasFailed).toBe(true)
+    expect(state.error.message).toBe('The VueKeycloakPluginConfig is required')
   })
 
-  test('should throw an error if keycloak config is nil', async () => {
-    try {
-      await vueKeycloak.install(appMock, {})
-    } catch (error) {
-      expect(error.message).toBe('The KeycloakConfig is required')
-    }
-  })
+  test('should have error if keycloak config is nil', async () => {
+    await vueKeycloak.install(appMock, {})
 
-  test('should throw an error if client id is nil', async () => {
-    try {
-      await vueKeycloak.install(appMock, { config: {} })
-    } catch (error) {
-      expect(error.message).toBe('Client ID is missing in KeycloakConfig')
-    }
-  })
-
-  test('should throw an error if realm is nil', async () => {
-    try {
-      await vueKeycloak.install(appMock, { config: { clientId: 'abc' } })
-    } catch (error) {
-      expect(error.message).toBe('REALM is missing in KeycloakConfig')
-    }
-  })
-
-  test('should throw an error if url is nil', async () => {
-    try {
-      await vueKeycloak.install(appMock, { config: { clientId: 'abc', realm: 'abc' } })
-    } catch (error) {
-      expect(error.message).toBe('URL is missing in KeycloakConfig')
-    }
+    expect(state.hasFailed).toBe(true)
+    expect(state.error.message).toBe('The KeycloakConfig is required')
   })
 
   test('should set globalProperties', async () => {

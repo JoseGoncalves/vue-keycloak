@@ -21,6 +21,7 @@ describe('state', () => {
   test('should have the correct inital values', () => {
     expect(state.isAuthenticated).toBe(false)
     expect(state.hasFailed).toBe(false)
+    expect(state.error).toBe(null)
     expect(state.isPending).toBe(false)
     expect(state.token).toBe('')
     expect(state.username).toBe('')

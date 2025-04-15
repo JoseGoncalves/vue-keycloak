@@ -1,11 +1,13 @@
 import { reactive } from 'vue'
 import type { KeycloakTokenParsed } from 'keycloak-js'
 import { KeycloakInstance } from './keycloak'
+import { isString } from './utils'
 
 export interface KeycloakState {
   keycloak: KeycloakInstance
   isAuthenticated: boolean
   hasFailed: boolean
+  error: Error
   isPending: boolean
   token: string
   decodedToken: KeycloakTokenParsed
@@ -19,6 +21,7 @@ export const state = reactive<KeycloakState>({
   keycloak: undefined as KeycloakInstance,
   isAuthenticated: false,
   hasFailed: false,
+  error: null,
   isPending: false,
   token: '',
   decodedToken: {} as KeycloakTokenParsed,
@@ -44,8 +47,22 @@ export const setToken = (token: string, tokenParsed: KeycloakTokenParsed): void 
     : {}
 }
 
-export const hasFailed = (value: boolean): void => {
+type ErrorString = { error: string }
+type ErrorLike = Error | ErrorString | string
+
+export const hasFailed = (value: boolean, err: ErrorLike): void => {
   state.hasFailed = value
+  if (err instanceof Error) {
+    state.error = err
+  } else if (isString((err as ErrorString)?.error)) {
+    state.error = new Error((err as ErrorString).error)
+  } else if (isString(err)) {
+    state.error = new Error(err as string)
+  } else {
+    state.error = new Error('Unknown')
+  }
+  state.error.name = '[vue-keycloak]'
+  console.error(state.error)
 }
 
 export const isPending = (value: boolean): void => {
