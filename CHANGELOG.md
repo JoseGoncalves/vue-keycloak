@@ -1,3 +1,9 @@
+## [3.2.1](https://github.com/JoseGoncalves/vue-keycloak/compare/v3.2.0...v3.2.1) (2025-04-15)
+
+### Bug Fixes
+
+* Revert "use ShallowRef for non-primitive types" ([5d4ef42](https://github.com/JoseGoncalves/vue-keycloak/commit/5d4ef42a887615ca563cba2c6f1654a56165432b))
+
 ## [3.2.0](https://github.com/JoseGoncalves/vue-keycloak/compare/v3.1.1...v3.2.0) (2025-04-15)
 
 ### Features
