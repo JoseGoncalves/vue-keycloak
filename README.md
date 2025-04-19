@@ -81,12 +81,12 @@ app.use(vueKeycloak, {
 ```
 
 #### Dynamic Keycloak Configuration
-Use the example below to generate dynamic Keycloak configuration.
+Use the example below to generate a dynamic Keycloak configuration. In that example the Keycloak adapter is initialized in silent `check-sso` mode. Be aware that this mode could have limited functionality with recent browser versions (check [Modern Browsers with Tracking Protection](https://www.keycloak.org/securing-apps/javascript-adapter#_modern_browsers) for additional info).
 
 ```typescript
 app.use(vueKeycloak, async () => {
   const url = await getAuthBaseUrl()
-  const silentCheckSsoRedirectUri = `${window.location.origin}/assets/silent-check-sso.html`
+  const silentCheckSsoRedirectUri = `${location.origin}/silent-check-sso.html`
   return {
     config: {
       url,
