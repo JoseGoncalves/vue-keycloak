@@ -1,3 +1,9 @@
+## [3.3.0](https://github.com/JoseGoncalves/vue-keycloak/compare/v3.2.1...v3.3.0) (2025-04-30)
+
+### Features
+
+* provide a meaningful error message even if keycloak-js does not throw one ([fd237f9](https://github.com/JoseGoncalves/vue-keycloak/commit/fd237f9e22722243306128c2ef796414fe1cd991))
+
 ## [3.2.1](https://github.com/JoseGoncalves/vue-keycloak/compare/v3.2.0...v3.2.1) (2025-04-15)
 
 ### Bug Fixes
