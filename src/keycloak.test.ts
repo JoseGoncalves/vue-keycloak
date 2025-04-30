@@ -57,7 +57,7 @@ describe('keyckoak', () => {
       createKeycloak(keycloakConfig)
       await getToken()
 
-      expect(hasFailed).toBeCalledWith(true, undefined)
+      expect(hasFailed).toBeCalledWith(true, expect.any(Error))
     })
   })
 
@@ -114,7 +114,7 @@ describe('keyckoak', () => {
       expect(hasFailed).toBeCalledTimes(1)
       expect(isPending).toBeCalledTimes(2)
       expect(isPending).toBeCalledWith(false)
-      expect(hasFailed).toBeCalledWith(true, undefined)
+      expect(hasFailed).toBeCalledWith(true, expect.any(Error))
       expect(isAuthenticated).toBeCalledWith(false)
     })
   })
