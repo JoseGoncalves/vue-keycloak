@@ -53,14 +53,14 @@ describe('vueKeycloak', () => {
     await vueKeycloak.install(appMock, { config: keycloakConfig })
 
     expect(appMock.config.globalProperties.$keycloak).toBeDefined()
-    expect(createKeycloak as jest.Mock).toBeCalled()
-    expect(initKeycloak as jest.Mock).toBeCalled()
+    expect(createKeycloak as jest.Mock).toHaveBeenCalled()
+    expect(initKeycloak as jest.Mock).toHaveBeenCalled()
   })
 
   test('should call init with the default config', async () => {
     await vueKeycloak.install(appMock, { config: keycloakConfig })
 
-    expect(initKeycloak as jest.Mock).toBeCalledWith(defaultInitConfig)
+    expect(initKeycloak as jest.Mock).toHaveBeenCalledWith(defaultInitConfig)
   })
 
   test('should call init config and extend the default config', async () => {
@@ -71,6 +71,6 @@ describe('vueKeycloak', () => {
       },
     })
 
-    expect(initKeycloak as jest.Mock).toBeCalledWith({ ...defaultInitConfig, flow: 'my-flow' })
+    expect(initKeycloak as jest.Mock).toHaveBeenCalledWith({ ...defaultInitConfig, flow: 'my-flow' })
   })
 })

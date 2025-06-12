@@ -57,7 +57,7 @@ describe('keyckoak', () => {
       createKeycloak(keycloakConfig)
       await getToken()
 
-      expect(hasFailed).toBeCalledWith(true, expect.any(Error))
+      expect(hasFailed).toHaveBeenCalledWith(true, expect.any(Error))
     })
   })
 
@@ -66,7 +66,7 @@ describe('keyckoak', () => {
       const result = createKeycloak(keycloakConfig)
 
       expect(result.token).toBe('abc')
-      expect(Keycloak).toBeCalledWith(keycloakConfig)
+      expect(Keycloak).toHaveBeenCalledWith(keycloakConfig)
     })
   })
 
@@ -79,10 +79,10 @@ describe('keyckoak', () => {
       createKeycloak(keycloakConfig)
       await initKeycloak(defaultInitConfig)
 
-      expect(hasFailed).toBeCalledTimes(0)
-      expect(isPending).toBeCalledTimes(2)
-      expect(isPending).toBeCalledWith(false)
-      expect(isAuthenticated).toBeCalledWith(true)
+      expect(hasFailed).toHaveBeenCalledTimes(0)
+      expect(isPending).toHaveBeenCalledTimes(2)
+      expect(isPending).toHaveBeenCalledWith(false)
+      expect(isAuthenticated).toHaveBeenCalledWith(true)
     })
 
     test('should set isAuthenticated to false, due to login failure ', async () => {
@@ -95,10 +95,10 @@ describe('keyckoak', () => {
       createKeycloak(keycloakConfig)
       await initKeycloak(defaultInitConfig)
 
-      expect(hasFailed).toBeCalledTimes(0)
-      expect(isPending).toBeCalledTimes(2)
-      expect(isPending).toBeCalledWith(false)
-      expect(isAuthenticated).toBeCalledWith(false)
+      expect(hasFailed).toHaveBeenCalledTimes(0)
+      expect(isPending).toHaveBeenCalledTimes(2)
+      expect(isPending).toHaveBeenCalledWith(false)
+      expect(isAuthenticated).toHaveBeenCalledWith(false)
     })
 
     test('should set isAuthenticated to false, due to invalid token', async () => {
@@ -111,11 +111,11 @@ describe('keyckoak', () => {
       createKeycloak(keycloakConfig)
       await initKeycloak(defaultInitConfig)
 
-      expect(hasFailed).toBeCalledTimes(1)
-      expect(isPending).toBeCalledTimes(2)
-      expect(isPending).toBeCalledWith(false)
-      expect(hasFailed).toBeCalledWith(true, expect.any(Error))
-      expect(isAuthenticated).toBeCalledWith(false)
+      expect(hasFailed).toHaveBeenCalledTimes(1)
+      expect(isPending).toHaveBeenCalledTimes(2)
+      expect(isPending).toHaveBeenCalledWith(false)
+      expect(hasFailed).toHaveBeenCalledWith(true, expect.any(Error))
+      expect(isAuthenticated).toHaveBeenCalledWith(false)
     })
   })
 })
