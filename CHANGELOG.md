@@ -1,3 +1,14 @@
+## [3.3.1](https://github.com/JoseGoncalves/vue-keycloak/compare/v3.3.0...v3.3.1) (2025-06-17)
+
+### Bug Fixes
+
+* reject getToken() promise on undefined token ([0afeec8](https://github.com/JoseGoncalves/vue-keycloak/commit/0afeec8aa07729b19c8e1d35183337909462c412))
+
+### Internal
+
+* use globalIgnores() in ESLint config ([64856ee](https://github.com/JoseGoncalves/vue-keycloak/commit/64856ee044efbe2e107666e08c08167711f4c583))
+* use stricter typescript-eslint rules ([3697e65](https://github.com/JoseGoncalves/vue-keycloak/commit/3697e65fe9eea3d51c3f22ee7d89c1543e3f1646))
+
 ## [3.3.0](https://github.com/JoseGoncalves/vue-keycloak/compare/v3.2.1...v3.3.0) (2025-04-30)
 
 ### Features
