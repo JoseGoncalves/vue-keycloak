@@ -23,7 +23,7 @@ export async function getToken(minValidity = 10): Promise<string> {
   return updateToken(minValidity)
 }
 
-export function createKeycloak(config: KeycloakConfig): Keycloak {
+export function createKeycloak(config: KeycloakConfig): KeycloakInstance {
   try {
     $keycloak = new Keycloak(config)
     setKeycloak($keycloak)
