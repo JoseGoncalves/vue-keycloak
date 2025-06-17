@@ -11,10 +11,12 @@ async function updateToken(minValidity: number): Promise<string> {
   try {
     await $keycloak.updateToken(minValidity)
     setToken($keycloak.token, $keycloak.tokenParsed)
+    return $keycloak.token
   } catch (err) {
-    hasFailed(true, isNil(err) ? new Error('Failed to refresh the access token') : err)
+    const rejectionReason = isNil(err) ? new Error('Failed to refresh the access token') : err
+    hasFailed(true, rejectionReason)
+    throw rejectionReason
   }
-  return $keycloak.token
 }
 
 export async function getToken(minValidity: number = 10): Promise<string> {
