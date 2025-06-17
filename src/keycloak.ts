@@ -19,7 +19,7 @@ async function updateToken(minValidity: number): Promise<string> {
   }
 }
 
-export async function getToken(minValidity: number = 10): Promise<string> {
+export async function getToken(minValidity = 10): Promise<string> {
   return updateToken(minValidity)
 }
 

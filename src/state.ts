@@ -47,7 +47,9 @@ export const setToken = (token: string, tokenParsed: KeycloakTokenParsed): void 
     : {}
 }
 
-type ErrorString = { error: string }
+interface ErrorString {
+  error: string
+}
 type ErrorLike = Error | ErrorString | string
 
 export const hasFailed = (value: boolean, err: ErrorLike): void => {
