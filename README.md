@@ -244,7 +244,10 @@ const {
 
 # License
 
-Apache-2.0 Licensed | Copyright © 2021-present Gery Hirschfeld & Contributors
+This project is licensed under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).
+
+Originally developed by Gery Hirschfeld (2021).
+Maintained and extended by José Miguel Gonçalves (2021-present).
 
 [Config]: https://github.com/keycloak/keycloak-js/blob/26.2.0/lib/keycloak.d.ts#L27-L40
 [InitOptions]: https://github.com/keycloak/keycloak-js/blob/26.2.0/lib/keycloak.d.ts#L55-L211
