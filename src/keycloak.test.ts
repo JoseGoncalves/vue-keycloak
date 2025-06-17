@@ -48,14 +48,15 @@ describe('keyckoak', () => {
       expect(token).toBe('abc')
     })
 
-    test('should set hasFailed to true if it could not login', async () => {
+    test('should throw an error and set hasFailed to true if token could not be refreshed', async () => {
       ;(Keycloak as jest.Mock).mockImplementation(() => ({
         token: 'abc',
         updateToken: jest.fn().mockImplementation(() => Promise.reject()),
       }))
 
       createKeycloak(keycloakConfig)
-      await getToken()
+
+      await expect(getToken()).rejects.toThrow(/^Failed to refresh the access token$/)
 
       expect(hasFailed).toHaveBeenCalledWith(true, expect.any(Error))
     })
