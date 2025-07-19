@@ -51,22 +51,22 @@
     "vue": "^3.4.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.30.1",
+    "@eslint/js": "^9.31.0",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "@types/jest": "^30.0.0",
     "conventional-changelog-conventionalcommits": "^9.1.0",
-    "eslint": "^9.30.1",
+    "eslint": "^9.31.0",
     "jest": "^30.0.4",
     "jest-environment-jsdom": "^30.0.4",
     "keycloak-js": "^26.2.0",
     "prettier": "^3.6.2",
     "rimraf": "^6.0.1",
-    "rollup": "^4.44.2",
-    "semantic-release": "^24.2.6",
+    "rollup": "^4.45.1",
+    "semantic-release": "^24.2.7",
     "ts-jest": "^29.4.0",
     "typescript": "~5.8.3",
-    "typescript-eslint": "^8.36.0",
+    "typescript-eslint": "^8.37.0",
     "vue": "^3.5.17"
   }
 }
