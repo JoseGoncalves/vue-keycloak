@@ -1,3 +1,10 @@
+## [3.3.2](https://github.com/JoseGoncalves/vue-keycloak/compare/v3.3.1...v3.3.2) (2025-10-15)
+
+### Bug Fixes
+
+* change the return type of createKeycloak() to indicate that it may fail ([7d88d23](https://github.com/JoseGoncalves/vue-keycloak/commit/7d88d23eb9f5540a0d32de5b9ee143926c0b9837))
+* support keycloak-js v26.2.1 ([1282b8b](https://github.com/JoseGoncalves/vue-keycloak/commit/1282b8ba8e580ab5e673af46b381e3f7aa1b0739))
+
 ## [3.3.1](https://github.com/JoseGoncalves/vue-keycloak/compare/v3.3.0...v3.3.1) (2025-06-17)
 
 ### Bug Fixes
