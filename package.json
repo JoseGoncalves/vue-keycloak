@@ -43,6 +43,7 @@
   "keywords": [
     "vue",
     "keycloak",
+    "keycloak-js",
     "composition-api"
   ],
   "license": "Apache-2.0",
