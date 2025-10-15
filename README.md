@@ -250,7 +250,7 @@ Originally developed by Gery Hirschfeld (2021).
 
 Maintained and extended by José Miguel Gonçalves (2021-present).
 
-[Config]: https://github.com/keycloak/keycloak-js/blob/26.2.0/lib/keycloak.d.ts#L27-L40
-[InitOptions]: https://github.com/keycloak/keycloak-js/blob/26.2.0/lib/keycloak.d.ts#L55-L211
-[TokenParsed]: https://github.com/keycloak/keycloak-js/blob/26.2.0/lib/keycloak.d.ts#L333-L348
-[Instance]: https://github.com/keycloak/keycloak-js/blob/26.2.0/lib/keycloak.d.ts#L367-L653
+[Config]: https://github.com/keycloak/keycloak-js/blob/26.2.1/lib/keycloak.d.ts#L27-L40
+[InitOptions]: https://github.com/keycloak/keycloak-js/blob/26.2.1/lib/keycloak.d.ts#L82-L231
+[TokenParsed]: https://github.com/keycloak/keycloak-js/blob/26.2.1/lib/keycloak.d.ts#L360-L375
+[Instance]: https://github.com/keycloak/keycloak-js/blob/26.2.1/lib/keycloak.d.ts#L399-L685
