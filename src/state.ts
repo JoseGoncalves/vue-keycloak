@@ -1,10 +1,9 @@
-import { reactive } from 'vue'
+import { shallowRef, reactive } from 'vue'
 import type { KeycloakTokenParsed } from 'keycloak-js'
 import { KeycloakInstance } from './keycloak'
 import { isString } from './utils'
 
 export interface KeycloakState {
-  keycloak: KeycloakInstance
   isAuthenticated: boolean
   hasFailed: boolean
   error: Error
@@ -17,8 +16,9 @@ export interface KeycloakState {
   resourceRoles: Record<string, string[]>
 }
 
+export const keycloak = shallowRef<KeycloakInstance>()
+
 export const state = reactive<KeycloakState>({
-  keycloak: undefined as KeycloakInstance,
   isAuthenticated: false,
   hasFailed: false,
   error: null,
@@ -32,7 +32,7 @@ export const state = reactive<KeycloakState>({
 })
 
 export const setKeycloak = (value: KeycloakInstance): void => {
-  state.keycloak = value
+  keycloak.value = value
 }
 
 export const setToken = (token: string, tokenParsed: KeycloakTokenParsed): void => {

@@ -1,11 +1,12 @@
 import type { KeycloakTokenParsed } from 'keycloak-js'
-import { toRefs, Ref } from 'vue'
+import type { ShallowRef, Ref } from 'vue'
+import { toRefs } from 'vue'
 import { KeycloakInstance } from './keycloak'
-import { KeycloakState, state } from './state'
+import { KeycloakState, keycloak, state } from './state'
 import { isArray, isNil } from './utils'
 
 export interface KeycloakComposable {
-  keycloak: Ref<KeycloakInstance>
+  keycloak: ShallowRef<KeycloakInstance>
   isAuthenticated: Ref<boolean>
   hasFailed: Ref<boolean>
   error: Ref<Error>
@@ -22,6 +23,7 @@ export interface KeycloakComposable {
 
 export const useKeycloak = (): KeycloakComposable => {
   return {
+    keycloak,
     ...toRefs<KeycloakState>(state),
     hasRoles: (roles: string[]) =>
       isArray(roles) && state.isAuthenticated && roles.every(role => state.roles.includes(role)),

@@ -223,7 +223,7 @@ const {
 
 | State           | Type                                                   | Description                                                         |
 | --------------- | ------------------------------------------------------ | ------------------------------------------------------------------- |
-| keycloak        | `Ref<`[`Keycloak`][Instance]`>`                        | Instance of the keycloak-js adapter.                                |
+| keycloak        | `ShallowRef<`[`Keycloak`][Instance]`>`                 | Instance of the keycloak-js adapter.                                |
 | isAuthenticated | `Ref<boolean>`                                         | If `true` the user is authenticated.                                |
 | isPending       | `Ref<boolean>`                                         | If `true` the authentication request is still pending.              |
 | hasFailed       | `Ref<boolean>`                                         | If `true` an error ocurred on initialization or Keycloak request.   |
