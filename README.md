@@ -221,28 +221,6 @@ button {
 
 The `useKeycloak` function exposes the following data.
 
-```typescript
-import { useKeycloak } from '@josempgon/vue-keycloak'
-
-const {
-  // Reactive State
-  keycloak,
-  isAuthenticated,
-  isPending,
-  hasFailed,
-  error,
-  token,
-  decodedToken,
-  username,
-  userId,
-  roles,
-  resourceRoles,
-
-  // Functions
-  hasRoles,
-  hasResourceRoles,
-} = useKeycloak()
-```
 #### Reactive State
 
 | State           | Type                                                   | Description                                                         |
