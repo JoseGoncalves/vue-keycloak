@@ -184,13 +184,37 @@ instance.interceptors.request.use(
 
 ```vue
 <script setup>
-import { computed } from 'vue'
-import { useKeycloak } from '@josempgon/vue-keycloak'
+import { useKeycloak } from '@josempgon/vue-keycloak';
 
-const { hasRoles } = useKeycloak()
-
-const hasAccess = computed(() => hasRoles(['RoleName']))
+const { isPending, isAuthenticated, error, username, userId, keycloak } = useKeycloak();
 </script>
+
+<template>
+  <div v-if="isPending">
+    <h2>Loading...</h2>
+  </div>
+  <div v-if="isAuthenticated">
+    <h1>Welcome to Your Keycloak Secured Vue.js App</h1>
+    <h2>User: {{ username }}</h2>
+    <h2>User ID: {{ userId }}</h2>
+    <div>
+      <button @click="keycloak.logout">Logout</button>
+    </div>
+  </div>
+  <div v-if="error">
+    <h2>Authentication Error</h2>
+    <h3>{{ error }}</h3>
+  </div>
+</template>
+
+<style>
+#app {
+  text-align: center;
+}
+button {
+  cursor: pointer;
+}
+</style>
 ```
 
 ### useKeycloak
