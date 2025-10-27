@@ -1,0 +1,37 @@
+version: 2
+updates:
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'daily'
+    open-pull-requests-limit: 10
+    commit-message:
+      prefix: 'chore'
+    ignore:
+      - dependency-name: 'vue'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'keycloak-js'
+        update-types: ['version-update:semver-major']
+    groups:
+      eslint:
+        patterns:
+          - 'eslint'
+          - '@eslint/*'
+          - 'typescript-eslint*'
+      testing:
+        patterns:
+          - 'jest*'
+          - '@types/jest'
+          - 'ts-jest'
+      formatting:
+        patterns:
+          - 'prettier'
+      build:
+        patterns:
+          - 'rollup'
+          - 'typescript'
+      release:
+        patterns:
+          - 'semantic-release*'
+          - '@semantic-release/*'
+          - 'conventional-changelog*'
