@@ -14,26 +14,31 @@ updates:
         update-types: ['version-update:semver-major']
       - dependency-name: 'semantic-release'
         update-types: ['version-update:semver-major']
+      - dependency-name: '@semantic-release/*'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'conventional-changelog-*'
+        update-types: ['version-update:semver-major']
     groups:
-      eslint:
+      lint:
         patterns:
           - 'eslint'
           - '@eslint/*'
           - 'typescript-eslint*'
-      testing:
+      test:
         patterns:
           - 'jest*'
           - '@types/jest'
           - 'ts-jest'
-      formatting:
+      format:
         patterns:
           - 'prettier'
       build:
         patterns:
           - 'rollup'
           - 'typescript'
+          - 'rimraf'
       release:
         patterns:
-          - 'semantic-release*'
+          - 'semantic-release'
           - '@semantic-release/*'
-          - 'conventional-changelog*'
+          - 'conventional-changelog-*'
