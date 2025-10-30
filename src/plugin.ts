@@ -1,4 +1,4 @@
-import { App, ObjectPlugin } from 'vue'
+import type { App, ObjectPlugin } from 'vue'
 import type { KeycloakConfig, KeycloakInitOptions } from 'keycloak-js'
 import { hasFailed } from './state'
 import { defaultInitConfig } from './const'

@@ -1,8 +1,9 @@
 import type { KeycloakTokenParsed } from 'keycloak-js'
 import type { ShallowRef, Ref } from 'vue'
 import { toRefs } from 'vue'
-import { KeycloakInstance } from './keycloak'
-import { KeycloakState, keycloak, state } from './state'
+import type { KeycloakInstance } from './keycloak'
+import type { KeycloakState } from './state'
+import { keycloak, state } from './state'
 import { isArray, isNil } from './utils'
 
 export interface KeycloakComposable {

@@ -1,6 +1,6 @@
 import { shallowRef, reactive } from 'vue'
 import type { KeycloakTokenParsed } from 'keycloak-js'
-import { KeycloakInstance } from './keycloak'
+import type { KeycloakInstance } from './keycloak'
 import { isString } from './utils'
 
 export interface KeycloakState {

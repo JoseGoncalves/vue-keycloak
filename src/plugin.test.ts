@@ -1,4 +1,4 @@
-import { KeycloakConfig } from 'keycloak-js'
+import type { KeycloakConfig } from 'keycloak-js'
 import { vueKeycloak } from './plugin'
 import { createKeycloak, initKeycloak } from './keycloak'
 import { defaultInitConfig } from './const'

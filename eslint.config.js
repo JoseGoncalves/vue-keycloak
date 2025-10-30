@@ -13,4 +13,9 @@ export default tseslint.config(
       '@typescript-eslint/no-empty-function': 'off',
     },
   },
+  {
+    rules: {
+      '@typescript-eslint/consistent-type-imports': 'error',
+    },
+  },
 )
