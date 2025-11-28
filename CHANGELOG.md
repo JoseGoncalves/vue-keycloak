@@ -1,3 +1,9 @@
+## [3.3.3](https://github.com/JoseGoncalves/vue-keycloak/compare/v3.3.2...v3.3.3) (2025-11-28)
+
+### Bug Fixes
+
+* use 'import type' for type only imports ([6478cd7](https://github.com/JoseGoncalves/vue-keycloak/commit/6478cd76a31149c667b04d843421c9697a070510))
+
 ## [3.3.2](https://github.com/JoseGoncalves/vue-keycloak/compare/v3.3.1...v3.3.2) (2025-10-15)
 
 ### Bug Fixes
