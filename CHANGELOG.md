@@ -1,3 +1,9 @@
+## [3.3.4](https://github.com/JoseGoncalves/vue-keycloak/compare/v3.3.3...v3.3.4) (2025-12-02)
+
+### Bug Fixes
+
+* widen Node engine range to >=24.10.0 ([2a1b0c0](https://github.com/JoseGoncalves/vue-keycloak/commit/2a1b0c06c0cc1976016fcd75ddc14a90c67d47aa))
+
 ## [3.3.3](https://github.com/JoseGoncalves/vue-keycloak/compare/v3.3.2...v3.3.3) (2025-11-28)
 
 ### Bug Fixes
