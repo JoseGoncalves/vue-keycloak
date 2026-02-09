@@ -18,6 +18,10 @@ updates:
         update-types: ['version-update:semver-major']
       - dependency-name: 'conventional-changelog-*'
         update-types: ['version-update:semver-major']
+      - dependency-name: 'eslint'
+        update-types: ['version-update:semver-major']
+      - dependency-name: '@eslint/*'
+        update-types: ['version-update:semver-major']
     groups:
       lint:
         patterns:
