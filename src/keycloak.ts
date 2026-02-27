@@ -8,6 +8,9 @@ export type KeycloakInstance = Keycloak | undefined
 let $keycloak: KeycloakInstance = undefined
 
 async function updateToken(minValidity: number): Promise<string> {
+  if (isNil($keycloak)) {
+    throw new Error('[vue-keycloak] Keycloak is not initialised. Call createKeycloak() first.')
+  }
   try {
     await $keycloak.updateToken(minValidity)
     setToken($keycloak.token, $keycloak.tokenParsed)

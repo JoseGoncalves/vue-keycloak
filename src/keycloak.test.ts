@@ -37,6 +37,12 @@ describe('keyckoak', () => {
   })
 
   describe('getToken', () => {
+    test('should throw a clear error if called before createKeycloak', async () => {
+      jest.resetModules()
+      const { getToken: getFreshToken } = await import('./keycloak')
+      await expect(getFreshToken()).rejects.toThrow(/Keycloak is not initialised/)
+    })
+
     test('should return the new token', async () => {
       ;(Keycloak as jest.Mock).mockImplementation(() => ({
         ...mockKeycloak,
