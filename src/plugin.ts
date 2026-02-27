@@ -1,6 +1,6 @@
 import type { App, ObjectPlugin } from 'vue'
 import type { KeycloakConfig, KeycloakInitOptions } from 'keycloak-js'
-import { hasFailed } from './state'
+import { hasFailed, isPending } from './state'
 import { defaultInitConfig } from './const'
 import { createKeycloak, initKeycloak } from './keycloak'
 import { isFunction, isNil } from './utils'
@@ -16,7 +16,10 @@ type VueKeycloakPluginConfig = KeycloakPluginConfig | KeycloakConfigAsyncFactory
 
 export const vueKeycloak: ObjectPlugin = {
   install: async (app: App, options: VueKeycloakPluginConfig) => {
+    isPending(true)
+
     if (isNil(options)) {
+      isPending(false)
       hasFailed(true, new Error('The VueKeycloakPluginConfig is required'))
       return
     }
@@ -29,6 +32,7 @@ export const vueKeycloak: ObjectPlugin = {
     }
 
     if (isNil(keycloakPluginConfig.config)) {
+      isPending(false)
       hasFailed(true, new Error('The KeycloakConfig is required'))
       return
     }
