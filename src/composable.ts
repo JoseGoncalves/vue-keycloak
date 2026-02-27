@@ -27,9 +27,10 @@ export const useKeycloak = (): KeycloakComposable => {
     keycloak,
     ...toRefs<KeycloakState>(state),
     hasRoles: (roles: string[]) =>
-      isArray(roles) && state.isAuthenticated && roles.every(role => state.roles.includes(role)),
+      isArray(roles) && roles.length > 0 && state.isAuthenticated && roles.every(role => state.roles.includes(role)),
     hasResourceRoles: (roles: string[], resource: string) =>
       isArray(roles) &&
+      roles.length > 0 &&
       !isNil(resource) &&
       state.isAuthenticated &&
       !isNil(state.resourceRoles) &&
