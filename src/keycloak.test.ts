@@ -15,7 +15,7 @@ jest.mock('./state', () => {
   }
 })
 
-describe('keyckoak', () => {
+describe('keycloak', () => {
   const keycloakConfig: KeycloakConfig = {
     clientId: 'abc',
     realm: 'abc',
