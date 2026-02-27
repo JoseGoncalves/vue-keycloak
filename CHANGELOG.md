@@ -1,3 +1,11 @@
+## [3.3.5](https://github.com/JoseGoncalves/vue-keycloak/compare/v3.3.4...v3.3.5) (2026-02-27)
+
+### Bug Fixes
+
+* hasRoles and hasResourceRoles return false for empty roles array ([edd34cf](https://github.com/JoseGoncalves/vue-keycloak/commit/edd34cf270d242aaf73beebe90b04bf615bbadf9))
+* set isPending to true at the start of plugin install ([873c6a3](https://github.com/JoseGoncalves/vue-keycloak/commit/873c6a3933297a19eebcab9f7d8ede90de1a4862))
+* throw a clear error when getToken is called before createKeycloak ([29f3469](https://github.com/JoseGoncalves/vue-keycloak/commit/29f346917c2b4a9da0e47893e28f12b047119acb))
+
 ## [3.3.4](https://github.com/JoseGoncalves/vue-keycloak/compare/v3.3.3...v3.3.4) (2025-12-02)
 
 ### Bug Fixes
