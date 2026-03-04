@@ -16,10 +16,16 @@
 [![NPM Version](https://img.shields.io/npm/v/%40josempgon%2Fvue-keycloak)](https://www.npmjs.com/package/@josempgon/vue-keycloak)
 [![npm bundle size](https://img.shields.io/bundlephobia/min/%40josempgon%2Fvue-keycloak?cacheSeconds=10800)](https://bundlephobia.com/package/@josempgon/vue-keycloak)
 [![NPM Downloads](https://img.shields.io/npm/dm/%40josempgon%2Fvue-keycloak?cacheSeconds=10800)](https://npm-stat.com/charts.html?package=%40josempgon%2Fvue-keycloak)
+[![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue?logo=typescript)](https://www.typescriptlang.org/)
 
 A small Vue wrapper library for the [Keycloak JavaScript adapter](https://www.keycloak.org/securing-apps/javascript-adapter).
 
 > This library is made for [Vue 3](https://vuejs.org/) with the [Composition API](https://vuejs.org/guide/extras/composition-api-faq.html#what-is-composition-api).
+
+## Requirements
+
+- [Vue](https://vuejs.org/) 3.4+
+- [keycloak-js](https://www.npmjs.com/package/keycloak-js) 18–26
 
 ## Installation
 
@@ -80,6 +86,8 @@ app.use(vueKeycloak, {
 }
 ```
 
+User-provided `initOptions` are **merged** with the defaults above, so you only need to specify values you want to override.
+
 #### Dynamic Keycloak Configuration
 Use the example below to generate a dynamic Keycloak configuration. In that example the Keycloak adapter is initialized in silent `check-sso` mode. Be aware that this mode could have limited functionality with recent browser versions (check [Modern Browsers with Tracking Protection](https://www.keycloak.org/securing-apps/javascript-adapter#_modern_browsers) for additional info).
 
@@ -101,8 +109,10 @@ app.use(vueKeycloak, async () => {
 })
 ```
 
+When using `silentCheckSsoRedirectUri`, you must serve a `silent-check-sso.html` file at that path. See the [Keycloak documentation](https://www.keycloak.org/securing-apps/javascript-adapter#_silent_check_sso) for the required file contents.
+
 ### Use with vue-router
-If you need to wait for authentication to complete before proceeding with your Vue app setup, for instance, because you are using the `vue-router` package and need to initialize the router only after the authentication process is completed, you should initialize your app in the following way:
+`app.use()` does not await async plugins, so if you need authentication to complete before the rest of your app setup (e.g. router initialization), call `vueKeycloak.install` directly and await it:
 
 **router/index.js**
 ```typescript
@@ -228,14 +238,14 @@ The `useKeycloak` function exposes the following data.
 | keycloak        | `ShallowRef<`[`Keycloak`][Instance]`>`                 | Instance of the keycloak-js adapter.                                |
 | isAuthenticated | `Ref<boolean>`                                         | If `true` the user is authenticated.                                |
 | isPending       | `Ref<boolean>`                                         | If `true` the authentication request is still pending.              |
-| hasFailed       | `Ref<boolean>`                                         | If `true` an error ocurred on initialization or Keycloak request.   |
-| error           | `Ref<Error>`                                           | Info on error that ocurred (null if no error)                       |
+| hasFailed       | `Ref<boolean>`                                         | If `true` an error occurred on initialization or Keycloak request.  |
+| error           | `Ref<Error>`                                           | Info on error that occurred (null if no error)                      |
 | token           | `Ref<string>`                                          | Raw value of the access token.                                      |
 | decodedToken    | `Ref<`[`KeycloakTokenParsed`][TokenParsed]`>`          | Decoded value of the access token.                                  |
 | username        | `Ref<string>`                                          | Username. Extracted from `decodedToken['preferred_username']`.      |
 | userId          | `Ref<string>`                                          | User identifier. Extracted from `decodedToken['sub']`.              |
 | roles           | `Ref<string[]>`                                        | List of the user's roles.                                           |
-| resourceRoles   | `Ref<Record<string, string[]>`                         | List of the user's roles in specific resources.                     |
+| resourceRoles   | `Ref<Record<string, string[]>>`                        | List of the user's roles in specific resources.                     |
 
 #### Functions
 
