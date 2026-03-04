@@ -109,7 +109,7 @@ app.use(vueKeycloak, async () => {
 })
 ```
 
-When using `silentCheckSsoRedirectUri`, you must serve a `silent-check-sso.html` file at that path. See the [Keycloak documentation](https://www.keycloak.org/securing-apps/javascript-adapter#_silent_check_sso) for the required file contents.
+When using `silentCheckSsoRedirectUri`, you must serve a `silent-check-sso.html` file at that path. See the [Keycloak documentation](https://www.keycloak.org/securing-apps/javascript-adapter#_using_the_adapter) for the required file contents.
 
 ### Use with vue-router
 `app.use()` does not await async plugins, so if you need authentication to complete before the rest of your app setup (e.g. router initialization), call `vueKeycloak.install` directly and await it:
