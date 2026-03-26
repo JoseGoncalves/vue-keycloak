@@ -14,8 +14,8 @@
 
 # vue-keycloak
 [![NPM Version](https://img.shields.io/npm/v/%40josempgon%2Fvue-keycloak)](https://www.npmjs.com/package/@josempgon/vue-keycloak)
-[![npm bundle size](https://img.shields.io/bundlephobia/min/%40josempgon%2Fvue-keycloak?cacheSeconds=10800)](https://bundlephobia.com/package/@josempgon/vue-keycloak)
-[![NPM Downloads](https://img.shields.io/npm/dm/%40josempgon%2Fvue-keycloak?cacheSeconds=10800)](https://npm-stat.com/charts.html?package=%40josempgon%2Fvue-keycloak)
+[![npm bundle size](https://img.shields.io/bundlephobia/min/%40josempgon%2Fvue-keycloak?cacheSeconds=21600)](https://bundlephobia.com/package/@josempgon/vue-keycloak)
+[![NPM Downloads](https://img.shields.io/npm/dm/%40josempgon%2Fvue-keycloak?cacheSeconds=21600)](https://npm-stat.com/charts.html?package=%40josempgon%2Fvue-keycloak)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue?logo=typescript)](https://www.typescriptlang.org/)
 
 A small Vue wrapper library for the [Keycloak JavaScript adapter](https://www.keycloak.org/securing-apps/javascript-adapter).
