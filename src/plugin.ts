@@ -26,7 +26,13 @@ export const vueKeycloak: ObjectPlugin = {
 
     let keycloakPluginConfig: KeycloakPluginConfig
     if (isFunction(options)) {
-      keycloakPluginConfig = await (options as KeycloakConfigAsyncFactory)()
+      try {
+        keycloakPluginConfig = await (options as KeycloakConfigAsyncFactory)()
+      } catch (err) {
+        isPending(false)
+        hasFailed(true, isNil(err) ? new Error('The KeycloakConfigAsyncFactory failed') : err)
+        return
+      }
     } else {
       keycloakPluginConfig = options as KeycloakPluginConfig
     }
