@@ -1,3 +1,10 @@
+## [3.3.6](https://github.com/JoseGoncalves/vue-keycloak/compare/v3.3.5...v3.3.6) (2026-05-19)
+
+### Bug Fixes
+
+* guard initKeycloak against missing keycloak instance ([45033fe](https://github.com/JoseGoncalves/vue-keycloak/commit/45033feb73f8e49c9711858618985f7e5e528d7c))
+* handle async config factory rejection in plugin install ([2f237f5](https://github.com/JoseGoncalves/vue-keycloak/commit/2f237f55beed3213d583762fb10588604bdc5fdb))
+
 ## [3.3.5](https://github.com/JoseGoncalves/vue-keycloak/compare/v3.3.4...v3.3.5) (2026-02-27)
 
 ### Bug Fixes
