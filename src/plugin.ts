@@ -43,8 +43,6 @@ export const vueKeycloak: ObjectPlugin = {
       : defaultInitConfig
 
     const _keycloak = createKeycloak(keycloakConfig)
-    if (isNil(_keycloak)) return
-
     app.config.globalProperties.$keycloak = _keycloak
 
     await initKeycloak(keycloakInitOptions)

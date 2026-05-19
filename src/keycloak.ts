@@ -39,6 +39,10 @@ export function createKeycloak(config: KeycloakConfig): KeycloakInstance {
 export async function initKeycloak(initConfig: KeycloakInitOptions): Promise<void> {
   try {
     isPending(true)
+    if (isNil($keycloak)) {
+      hasFailed(true, new Error('Keycloak is not initialised. Call createKeycloak() first.'))
+      return
+    }
     const _isAuthenticated = await $keycloak.init(initConfig)
     isAuthenticated(_isAuthenticated)
     if (!isNil($keycloak.token)) {
