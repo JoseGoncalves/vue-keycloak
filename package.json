@@ -74,8 +74,7 @@
     "babel-plugin-istanbul": "^8.0.2"
   },
   "engines": {
-    "node": "^22.14.0 || >=24.10.0",
-    "npm": "^11.6.3"
+    "node": "^22.11.0 || >=24.11.0"
   },
   "allowScripts": {
     "unrs-resolver@1.12.1": true
