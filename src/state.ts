@@ -6,7 +6,7 @@ import { isString } from './utils'
 export interface KeycloakState {
   isAuthenticated: boolean
   hasFailed: boolean
-  error: Error
+  error: Error | null
   isPending: boolean
   token: string
   decodedToken: KeycloakTokenParsed
