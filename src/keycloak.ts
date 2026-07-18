@@ -6,6 +6,7 @@ import { isNil } from './utils'
 export type KeycloakInstance = Keycloak | undefined
 
 let $keycloak: KeycloakInstance = undefined
+let creationFailed = false
 
 async function updateToken(minValidity: number): Promise<string> {
   if (isNil($keycloak)) {
@@ -27,10 +28,13 @@ export async function getToken(minValidity = 10): Promise<string> {
 }
 
 export function createKeycloak(config: KeycloakConfig): KeycloakInstance {
+  creationFailed = false
   try {
     $keycloak = new Keycloak(config)
     setKeycloak($keycloak)
   } catch (err) {
+    $keycloak = undefined
+    creationFailed = true
     hasFailed(true, isNil(err) ? new Error('Failed to create the keycloak adapter') : err)
   }
   return $keycloak
@@ -40,7 +44,10 @@ export async function initKeycloak(initConfig: KeycloakInitOptions): Promise<voi
   try {
     isPending(true)
     if (isNil($keycloak)) {
-      hasFailed(true, new Error('Keycloak is not initialised. Call createKeycloak() first.'))
+      // createKeycloak() already reported why the adapter is missing; don't mask it.
+      if (!creationFailed) {
+        hasFailed(true, new Error('Keycloak is not initialised. Call createKeycloak() first.'))
+      }
       return
     }
     const _isAuthenticated = await $keycloak.init(initConfig)

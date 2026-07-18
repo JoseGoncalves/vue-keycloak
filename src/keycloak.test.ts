@@ -124,5 +124,31 @@ describe('keycloak', () => {
       expect(hasFailed).toHaveBeenCalledWith(true, expect.any(Error))
       expect(isAuthenticated).toHaveBeenCalledWith(false)
     })
+
+    test('should keep the createKeycloak error instead of reporting a missing instance', async () => {
+      const creationError = new Error('Invalid realm URL')
+      ;(Keycloak as jest.Mock).mockImplementation(() => {
+        throw creationError
+      })
+
+      createKeycloak(keycloakConfig)
+      await initKeycloak(defaultInitConfig)
+
+      expect(hasFailed).toHaveBeenCalledTimes(1)
+      expect(hasFailed).toHaveBeenCalledWith(true, creationError)
+    })
+
+    test('should report a missing instance if createKeycloak was never called', async () => {
+      jest.resetModules()
+      const { initKeycloak: initFreshKeycloak } = await import('./keycloak')
+      const { hasFailed: hasFreshFailed } = await import('./state')
+
+      await initFreshKeycloak(defaultInitConfig)
+
+      expect(hasFreshFailed).toHaveBeenCalledWith(
+        true,
+        expect.objectContaining({ message: 'Keycloak is not initialised. Call createKeycloak() first.' }),
+      )
+    })
   })
 })
