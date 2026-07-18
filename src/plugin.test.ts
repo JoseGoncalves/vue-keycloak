@@ -39,14 +39,14 @@ describe('vueKeycloak', () => {
     await vueKeycloak.install(appMock)
 
     expect(state.hasFailed).toBe(true)
-    expect(state.error.message).toBe('The VueKeycloakPluginConfig is required')
+    expect(state.error?.message).toBe('The VueKeycloakPluginConfig is required')
   })
 
   test('should have error if keycloak config is nil', async () => {
     await vueKeycloak.install(appMock, {})
 
     expect(state.hasFailed).toBe(true)
-    expect(state.error.message).toBe('The KeycloakConfig is required')
+    expect(state.error?.message).toBe('The KeycloakConfig is required')
   })
 
   test('should have error if async factory rejects', async () => {
@@ -54,7 +54,7 @@ describe('vueKeycloak', () => {
     await vueKeycloak.install(appMock, failingFactory)
 
     expect(state.hasFailed).toBe(true)
-    expect(state.error.message).toBe('factory boom')
+    expect(state.error?.message).toBe('factory boom')
     expect(createKeycloak as jest.Mock).not.toHaveBeenCalled()
     expect(initKeycloak as jest.Mock).not.toHaveBeenCalled()
   })
@@ -64,7 +64,7 @@ describe('vueKeycloak', () => {
     await vueKeycloak.install(appMock, failingFactory)
 
     expect(state.hasFailed).toBe(true)
-    expect(state.error.message).toBe('The KeycloakConfigAsyncFactory failed')
+    expect(state.error?.message).toBe('The KeycloakConfigAsyncFactory failed')
   })
 
   test('should set globalProperties', async () => {

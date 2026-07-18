@@ -4,7 +4,7 @@
     "esModuleInterop": true,
     "target": "es2019",
     "moduleResolution": "bundler",
-    "noImplicitAny": true,
+    "strict": true,
     "outDir": "dist-transpiled",
     "declarationDir": "dist/types",
     "removeComments": true,

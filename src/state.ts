@@ -40,8 +40,8 @@ export const setToken = (token: string, tokenParsed: KeycloakTokenParsed): void 
   const content = tokenParsed
   state.decodedToken = content
   state.roles = content.realm_access ? content.realm_access.roles : []
-  state.username = content.preferred_username as string
-  state.userId = content.sub
+  state.username = (content.preferred_username ?? '') as string
+  state.userId = content.sub ?? ''
   state.resourceRoles = content.resource_access
     ? Object.fromEntries(Object.entries(content.resource_access).map(([key, value]) => [key, value.roles]))
     : {}
@@ -59,16 +59,15 @@ export const clearToken = (): void => {
 interface ErrorString {
   error: string
 }
-type ErrorLike = Error | ErrorString | string
 
-export const hasFailed = (value: boolean, err: ErrorLike): void => {
+export const hasFailed = (value: boolean, err: unknown): void => {
   state.hasFailed = value
   if (err instanceof Error) {
     state.error = err
   } else if (isString((err as ErrorString)?.error)) {
     state.error = new Error((err as ErrorString).error)
   } else if (isString(err)) {
-    state.error = new Error(err as string)
+    state.error = new Error(err)
   } else {
     state.error = new Error('Unknown')
   }

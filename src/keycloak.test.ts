@@ -25,6 +25,7 @@ describe('keycloak', () => {
 
   const mockKeycloak = {
     token: 'abc',
+    tokenParsed: { sub: 'abc' },
     updateToken: jest.fn().mockImplementation(() => Promise.resolve()),
     init: jest.fn().mockImplementation(() => Promise.resolve(true)),
   }
@@ -76,7 +77,7 @@ describe('keycloak', () => {
     test('should define a new keycloak instance and return it', () => {
       const result = createKeycloak(keycloakConfig)
 
-      expect(result.token).toBe('abc')
+      expect(result?.token).toBe('abc')
       expect(Keycloak).toHaveBeenCalledWith(keycloakConfig)
     })
   })

@@ -9,13 +9,18 @@ let $keycloak: KeycloakInstance = undefined
 let creationFailed = false
 
 async function updateToken(minValidity: number): Promise<string> {
-  if (isNil($keycloak)) {
+  const keycloak = $keycloak
+  if (isNil(keycloak)) {
     throw new Error('[vue-keycloak] Keycloak is not initialised. Call createKeycloak() first.')
   }
   try {
-    await $keycloak.updateToken(minValidity)
-    setToken($keycloak.token, $keycloak.tokenParsed)
-    return $keycloak.token
+    await keycloak.updateToken(minValidity)
+    const { token, tokenParsed } = keycloak
+    if (isNil(token) || isNil(tokenParsed)) {
+      throw new Error('Failed to refresh the access token')
+    }
+    setToken(token, tokenParsed)
+    return token
   } catch (err) {
     const rejectionReason = isNil(err) ? new Error('Failed to refresh the access token') : err
     hasFailed(true, rejectionReason)
@@ -43,7 +48,8 @@ export function createKeycloak(config: KeycloakConfig): KeycloakInstance {
 export async function initKeycloak(initConfig: KeycloakInitOptions): Promise<void> {
   try {
     isPending(true)
-    if (isNil($keycloak)) {
+    const keycloak = $keycloak
+    if (isNil(keycloak)) {
       // createKeycloak() already reported why the adapter is missing; don't mask it.
       if (!creationFailed) {
         hasFailed(true, new Error('Keycloak is not initialised. Call createKeycloak() first.'))
@@ -51,14 +57,14 @@ export async function initKeycloak(initConfig: KeycloakInitOptions): Promise<voi
       return
     }
     // init() can fire this, so bind it first.
-    $keycloak.onAuthLogout = () => {
+    keycloak.onAuthLogout = () => {
       isAuthenticated(false)
       clearToken()
     }
-    const _isAuthenticated = await $keycloak.init(initConfig)
+    const _isAuthenticated = await keycloak.init(initConfig)
     isAuthenticated(_isAuthenticated)
-    if (!isNil($keycloak.token)) {
-      setToken($keycloak.token, $keycloak.tokenParsed)
+    if (!isNil(keycloak.token) && !isNil(keycloak.tokenParsed)) {
+      setToken(keycloak.token, keycloak.tokenParsed)
     }
   } catch (err) {
     isAuthenticated(false)
