@@ -1,7 +1,7 @@
 import { createKeycloak, getToken, initKeycloak } from './keycloak'
 import Keycloak from 'keycloak-js'
 import type { KeycloakConfig } from 'keycloak-js'
-import { hasFailed, isAuthenticated, isPending, setToken } from './state'
+import { clearToken, hasFailed, isAuthenticated, isPending, setToken } from './state'
 import { defaultInitConfig } from './const'
 
 jest.mock('keycloak-js', () => jest.fn())
@@ -9,6 +9,7 @@ jest.mock('./state', () => {
   return {
     setKeycloak: jest.fn(),
     setToken: jest.fn(),
+    clearToken: jest.fn(),
     hasFailed: jest.fn(),
     isPending: jest.fn(),
     isAuthenticated: jest.fn(),
@@ -28,12 +29,15 @@ describe('keycloak', () => {
     init: jest.fn().mockImplementation(() => Promise.resolve(true)),
   }
 
+  type MockAdapter = typeof mockKeycloak & { onAuthLogout?: () => void }
+
   beforeEach(() => {
     ;(Keycloak as jest.Mock).mockClear()
     ;(setToken as jest.Mock).mockClear()
     ;(hasFailed as jest.Mock).mockClear()
     ;(isAuthenticated as jest.Mock).mockClear()
     ;(isPending as jest.Mock).mockClear()
+    ;(clearToken as jest.Mock).mockClear()
   })
 
   describe('getToken', () => {
@@ -123,6 +127,38 @@ describe('keycloak', () => {
       expect(isPending).toHaveBeenCalledWith(false)
       expect(hasFailed).toHaveBeenCalledWith(true, expect.any(Error))
       expect(isAuthenticated).toHaveBeenCalledWith(false)
+    })
+
+    test('should reset the state when the adapter reports a logout', async () => {
+      const adapter: MockAdapter = { ...mockKeycloak }
+      ;(Keycloak as jest.Mock).mockImplementation(() => adapter)
+
+      createKeycloak(keycloakConfig)
+      await initKeycloak(defaultInitConfig)
+      ;(isAuthenticated as jest.Mock).mockClear()
+
+      expect(adapter.onAuthLogout).toEqual(expect.any(Function))
+      adapter.onAuthLogout?.()
+
+      expect(isAuthenticated).toHaveBeenCalledWith(false)
+      expect(clearToken).toHaveBeenCalledTimes(1)
+    })
+
+    test('should bind onAuthLogout before init, so a logout during init is not missed', async () => {
+      let boundDuringInit = false
+      const adapter: MockAdapter = {
+        ...mockKeycloak,
+        init: jest.fn().mockImplementation(() => {
+          boundDuringInit = typeof adapter.onAuthLogout === 'function'
+          return Promise.resolve(true)
+        }),
+      }
+      ;(Keycloak as jest.Mock).mockImplementation(() => adapter)
+
+      createKeycloak(keycloakConfig)
+      await initKeycloak(defaultInitConfig)
+
+      expect(boundDuringInit).toBe(true)
     })
 
     test('should keep the createKeycloak error instead of reporting a missing instance', async () => {

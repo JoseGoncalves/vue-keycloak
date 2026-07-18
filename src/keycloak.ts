@@ -1,6 +1,6 @@
 import Keycloak from 'keycloak-js'
 import type { KeycloakConfig, KeycloakInitOptions } from 'keycloak-js'
-import { hasFailed, isAuthenticated, isPending, setKeycloak, setToken } from './state'
+import { clearToken, hasFailed, isAuthenticated, isPending, setKeycloak, setToken } from './state'
 import { isNil } from './utils'
 
 export type KeycloakInstance = Keycloak | undefined
@@ -49,6 +49,11 @@ export async function initKeycloak(initConfig: KeycloakInitOptions): Promise<voi
         hasFailed(true, new Error('Keycloak is not initialised. Call createKeycloak() first.'))
       }
       return
+    }
+    // init() can fire this, so bind it first.
+    $keycloak.onAuthLogout = () => {
+      isAuthenticated(false)
+      clearToken()
     }
     const _isAuthenticated = await $keycloak.init(initConfig)
     isAuthenticated(_isAuthenticated)

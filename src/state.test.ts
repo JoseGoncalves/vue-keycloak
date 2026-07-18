@@ -1,4 +1,4 @@
-import { state, setToken } from './state'
+import { state, setToken, clearToken } from './state'
 
 describe('state', () => {
   const token =
@@ -36,5 +36,17 @@ describe('state', () => {
     expect(state.username).toBe('my-name')
     expect(state.roles).toStrictEqual(['my-role'])
     expect(state.resourceRoles).toStrictEqual({ 'my-app': ['my-role'] })
+  })
+
+  test('should clear the token derived state', () => {
+    setToken(token, tokenParsed)
+    clearToken()
+
+    expect(state.token).toBe('')
+    expect(state.decodedToken).toStrictEqual({})
+    expect(state.username).toBe('')
+    expect(state.userId).toBe('')
+    expect(state.roles).toStrictEqual([])
+    expect(state.resourceRoles).toStrictEqual({})
   })
 })

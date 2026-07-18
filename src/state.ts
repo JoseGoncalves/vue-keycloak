@@ -47,6 +47,15 @@ export const setToken = (token: string, tokenParsed: KeycloakTokenParsed): void 
     : {}
 }
 
+export const clearToken = (): void => {
+  state.token = ''
+  state.decodedToken = {} as KeycloakTokenParsed
+  state.roles = []
+  state.username = ''
+  state.userId = ''
+  state.resourceRoles = {}
+}
+
 interface ErrorString {
   error: string
 }
