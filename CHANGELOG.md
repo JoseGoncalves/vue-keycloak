@@ -1,3 +1,10 @@
+## [3.3.7](https://github.com/JoseGoncalves/vue-keycloak/compare/v3.3.6...v3.3.7) (2026-07-18)
+
+### Bug Fixes
+
+* allow null in error type ([290825b](https://github.com/JoseGoncalves/vue-keycloak/commit/290825b940ec8ffa38ecbdbf8e5c4e38f0d42b4c))
+* loosen node engines to supported LTS lines ([0e89783](https://github.com/JoseGoncalves/vue-keycloak/commit/0e89783e3c022ea690bbf4c320c7d953164bbfe3))
+
 ## [3.3.6](https://github.com/JoseGoncalves/vue-keycloak/compare/v3.3.5...v3.3.6) (2026-05-19)
 
 ### Bug Fixes
