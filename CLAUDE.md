@@ -57,4 +57,4 @@ TypeScript sources are first compiled to `dist-transpiled/` via `tsc`, then bund
 
 ## Releases
 
-Releases are automated via `semantic-release` with conventional commits. The `release.config.js` controls changelog generation and Git tagging. Use conventional commit format (`feat:`, `fix:`, `chore:`, etc.) for all commits.
+Releases are **triggered manually** — run `npm run release` locally (`semantic-release --no-ci`). Nothing publishes on push; there is no release GitHub Action. Version bump, changelog, Git tag, and npm publish are all derived from conventional commits by `semantic-release` when you run it. The `release.config.js` controls changelog generation and Git tagging. Use conventional commit format (`feat:`, `fix:`, `chore:`, etc.) for all commits.
