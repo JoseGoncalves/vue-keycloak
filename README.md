@@ -190,6 +190,8 @@ instance.interceptors.request.use(
 )
 ```
 
+Always call `getToken()` when you need a token to send. The `token` value exposed by `useKeycloak()` is a snapshot from the last time the token was set — it is not refreshed in the background, so it will eventually expire in place and be rejected by your API. `getToken()` refreshes it when needed and updates the reactive state.
+
 ## Composition API
 
 ```vue
@@ -240,7 +242,7 @@ The `useKeycloak` function exposes the following data.
 | isPending       | `Ref<boolean>`                                         | If `true` the authentication request is still pending.              |
 | hasFailed       | `Ref<boolean>`                                         | If `true` an error occurred on initialization or Keycloak request.  |
 | error           | `Ref<Error>`                                           | Info on error that occurred (null if no error)                      |
-| token           | `Ref<string>`                                          | Raw value of the access token.                                      |
+| token           | `Ref<string>`                                          | Raw value of the access token. May be expired.                      |
 | decodedToken    | `Ref<`[`KeycloakTokenParsed`][TokenParsed]`>`          | Decoded value of the access token.                                  |
 | username        | `Ref<string>`                                          | Username. Extracted from `decodedToken['preferred_username']`.      |
 | userId          | `Ref<string>`                                          | User identifier. Extracted from `decodedToken['sub']`.              |
