@@ -57,4 +57,8 @@ TypeScript sources are first compiled to `dist-transpiled/` via `tsc`, then bund
 
 ## Releases
 
-Releases are **triggered manually** — run `npm run release` locally (`semantic-release --no-ci`). Nothing publishes on push; there is no release GitHub Action. Version bump, changelog, Git tag, and npm publish are all derived from conventional commits by `semantic-release` when you run it. The `release.config.js` controls changelog generation and Git tagging. Use conventional commit format (`feat:`, `fix:`, `chore:`, etc.) for all commits.
+Releases are **triggered manually** — run the `Release` workflow (`.github/workflows/release.yml`) from the GitHub Actions tab. It is `workflow_dispatch` only, so nothing publishes on push. It exposes a `dry_run` input that adds `--dry-run`. Version bump, changelog, Git tag, and npm publish are all derived from conventional commits by `semantic-release`. The `release.config.js` controls changelog generation and Git tagging. Use conventional commit format (`feat:`, `fix:`, `chore:`, etc.) for all commits.
+
+Publishing uses npm **trusted publishing (OIDC)** — there is no `NPM_TOKEN` secret, which is why the job needs `id-token: write`. The workflow builds explicitly before `semantic-release` because `files` is `dist/` and there is no `prepare`/`prepublishOnly` script.
+
+To preview a release locally, run `npx semantic-release --dry-run --no-ci`. This still needs `npm whoami` to succeed (`@semantic-release/npm` verifies auth even in dry-run mode), so keep a **read-only** granular access token in `~/.npmrc`. A read-only token is sufficient — dry-run never checks publish rights.
