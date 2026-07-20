@@ -1,3 +1,11 @@
+## [3.3.8](https://github.com/JoseGoncalves/vue-keycloak/compare/v3.3.7...v3.3.8) (2026-07-20)
+
+### Bug Fixes
+
+* enable TypeScript strict mode and honor the declared types ([2467c7b](https://github.com/JoseGoncalves/vue-keycloak/commit/2467c7b9caf2b61822067426ba28499135f628cb))
+* keep the createKeycloak error instead of masking it ([651c734](https://github.com/JoseGoncalves/vue-keycloak/commit/651c7347b9c62fabffd65ea93b836cc737b493ae))
+* reset state when the adapter reports a logout ([7f3eb5f](https://github.com/JoseGoncalves/vue-keycloak/commit/7f3eb5f2aea35853976cff917cc9fbc6fdd35314))
+
 ## [3.3.7](https://github.com/JoseGoncalves/vue-keycloak/compare/v3.3.6...v3.3.7) (2026-07-18)
 
 ### Bug Fixes
