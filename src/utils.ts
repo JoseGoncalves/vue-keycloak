@@ -13,3 +13,8 @@ export function isNil(value: unknown): value is undefined | null {
 export function isString(value: unknown): value is string {
   return typeof value === 'string'
 }
+
+// keycloak-js rejects with a bare `true` on a failed refresh.
+export function isErrorLike(value: unknown): boolean {
+  return value instanceof Error || isString(value) || isString((value as { error?: unknown })?.error)
+}

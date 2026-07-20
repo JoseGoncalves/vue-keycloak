@@ -70,6 +70,19 @@ describe('keycloak', () => {
       expect(hasFailed).toHaveBeenCalledWith(true, expect.any(Error))
     })
 
+    test('should report a meaningful error when keycloak-js rejects with a bare true', async () => {
+      ;(Keycloak as jest.Mock).mockImplementation(() => ({
+        token: 'abc',
+        updateToken: jest.fn().mockImplementation(() => Promise.reject(true)),
+      }))
+
+      createKeycloak(keycloakConfig)
+
+      await expect(getToken()).rejects.toThrow(/^Failed to refresh the access token$/)
+
+      expect(hasFailed).toHaveBeenCalledWith(true, expect.any(Error))
+    })
+
     test('should reset the state when the refresh failed because the session is gone', async () => {
       ;(Keycloak as jest.Mock).mockImplementation(() => ({
         token: 'abc',

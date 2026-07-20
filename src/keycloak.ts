@@ -1,7 +1,7 @@
 import Keycloak from 'keycloak-js'
 import type { KeycloakConfig, KeycloakInitOptions } from 'keycloak-js'
 import { clearToken, hasFailed, isAuthenticated, isPending, setKeycloak, setToken } from './state'
-import { isNil } from './utils'
+import { isErrorLike, isNil } from './utils'
 
 export type KeycloakInstance = Keycloak | undefined
 
@@ -27,7 +27,7 @@ async function updateToken(minValidity: number): Promise<string> {
       isAuthenticated(false)
       clearToken()
     }
-    const rejectionReason = isNil(err) ? new Error('Failed to refresh the access token') : err
+    const rejectionReason = isErrorLike(err) ? err : new Error('Failed to refresh the access token')
     hasFailed(true, rejectionReason)
     throw rejectionReason
   }
