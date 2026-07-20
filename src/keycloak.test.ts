@@ -30,8 +30,6 @@ describe('keycloak', () => {
     init: jest.fn().mockImplementation(() => Promise.resolve(true)),
   }
 
-  type MockAdapter = typeof mockKeycloak & { onAuthLogout?: () => void }
-
   beforeEach(() => {
     ;(Keycloak as jest.Mock).mockClear()
     ;(setToken as jest.Mock).mockClear()
@@ -70,6 +68,36 @@ describe('keycloak', () => {
       await expect(getToken()).rejects.toThrow(/^Failed to refresh the access token$/)
 
       expect(hasFailed).toHaveBeenCalledWith(true, expect.any(Error))
+    })
+
+    test('should reset the state when the refresh failed because the session is gone', async () => {
+      ;(Keycloak as jest.Mock).mockImplementation(() => ({
+        token: 'abc',
+        authenticated: false,
+        updateToken: jest.fn().mockImplementation(() => Promise.reject()),
+      }))
+
+      createKeycloak(keycloakConfig)
+
+      await expect(getToken()).rejects.toThrow()
+
+      expect(isAuthenticated).toHaveBeenCalledWith(false)
+      expect(clearToken).toHaveBeenCalledTimes(1)
+    })
+
+    test('should keep the state when the refresh failed but the session is still active', async () => {
+      ;(Keycloak as jest.Mock).mockImplementation(() => ({
+        token: 'abc',
+        authenticated: true,
+        updateToken: jest.fn().mockImplementation(() => Promise.reject()),
+      }))
+
+      createKeycloak(keycloakConfig)
+
+      await expect(getToken()).rejects.toThrow()
+
+      expect(isAuthenticated).not.toHaveBeenCalled()
+      expect(clearToken).not.toHaveBeenCalled()
     })
   })
 
@@ -128,38 +156,6 @@ describe('keycloak', () => {
       expect(isPending).toHaveBeenCalledWith(false)
       expect(hasFailed).toHaveBeenCalledWith(true, expect.any(Error))
       expect(isAuthenticated).toHaveBeenCalledWith(false)
-    })
-
-    test('should reset the state when the adapter reports a logout', async () => {
-      const adapter: MockAdapter = { ...mockKeycloak }
-      ;(Keycloak as jest.Mock).mockImplementation(() => adapter)
-
-      createKeycloak(keycloakConfig)
-      await initKeycloak(defaultInitConfig)
-      ;(isAuthenticated as jest.Mock).mockClear()
-
-      expect(adapter.onAuthLogout).toEqual(expect.any(Function))
-      adapter.onAuthLogout?.()
-
-      expect(isAuthenticated).toHaveBeenCalledWith(false)
-      expect(clearToken).toHaveBeenCalledTimes(1)
-    })
-
-    test('should bind onAuthLogout before init, so a logout during init is not missed', async () => {
-      let boundDuringInit = false
-      const adapter: MockAdapter = {
-        ...mockKeycloak,
-        init: jest.fn().mockImplementation(() => {
-          boundDuringInit = typeof adapter.onAuthLogout === 'function'
-          return Promise.resolve(true)
-        }),
-      }
-      ;(Keycloak as jest.Mock).mockImplementation(() => adapter)
-
-      createKeycloak(keycloakConfig)
-      await initKeycloak(defaultInitConfig)
-
-      expect(boundDuringInit).toBe(true)
     })
 
     test('should keep the createKeycloak error instead of reporting a missing instance', async () => {

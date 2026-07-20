@@ -22,6 +22,11 @@ async function updateToken(minValidity: number): Promise<string> {
     setToken(token, tokenParsed)
     return token
   } catch (err) {
+    // Only a terminated session, not a transient failure.
+    if (!keycloak.authenticated) {
+      isAuthenticated(false)
+      clearToken()
+    }
     const rejectionReason = isNil(err) ? new Error('Failed to refresh the access token') : err
     hasFailed(true, rejectionReason)
     throw rejectionReason
@@ -55,11 +60,6 @@ export async function initKeycloak(initConfig: KeycloakInitOptions): Promise<voi
         hasFailed(true, new Error('Keycloak is not initialised. Call createKeycloak() first.'))
       }
       return
-    }
-    // init() can fire this, so bind it first.
-    keycloak.onAuthLogout = () => {
-      isAuthenticated(false)
-      clearToken()
     }
     const _isAuthenticated = await keycloak.init(initConfig)
     isAuthenticated(_isAuthenticated)
