@@ -61,4 +61,6 @@ Releases are **triggered manually** — run the `Release` workflow (`.github/wor
 
 Publishing uses npm **trusted publishing (OIDC)** — there is no `NPM_TOKEN` secret, which is why the job needs `id-token: write`. The workflow builds explicitly before `semantic-release` because `files` is `dist/` and there is no `prepare`/`prepublishOnly` script.
 
-To preview a release locally, run `npx semantic-release --dry-run --no-ci`. This still needs `npm whoami` to succeed (`@semantic-release/npm` verifies auth even in dry-run mode), so keep a **read-only** granular access token in `~/.npmrc`. A read-only token is sufficient — dry-run never checks publish rights.
+To preview a release locally, run `npm run release:dry`. This still needs `npm whoami` to succeed (`@semantic-release/npm` verifies auth even in dry-run mode), so keep a **read-only** granular access token in `~/.npmrc`. A read-only token is sufficient — dry-run never checks publish rights.
+
+There is deliberately **no local publishing script**. `verifyConditions` only runs `npm whoami`, so it cannot tell a read-only token from a publishing one; a local real run would push the release commit and tag in `prepare` before failing at `publish`. Publish only via the workflow.

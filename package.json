@@ -27,7 +27,7 @@
     "lint:fix": "npm run lint -- --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "release": "semantic-release --no-ci"
+    "release:dry": "semantic-release --dry-run --no-ci"
   },
   "type": "module",
   "main": "./dist/index.cjs",
