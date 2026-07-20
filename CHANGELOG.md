@@ -1,3 +1,10 @@
+## [3.3.9](https://github.com/JoseGoncalves/vue-keycloak/compare/v3.3.8...v3.3.9) (2026-07-20)
+
+### Bug Fixes
+
+* report a meaningful error when a token refresh fails ([acd0e2f](https://github.com/JoseGoncalves/vue-keycloak/commit/acd0e2f24786de265aa671b222de521460f4eb43))
+* reset the auth state from updateToken instead of onAuthLogout ([c7a209e](https://github.com/JoseGoncalves/vue-keycloak/commit/c7a209e320a77b90ac163e06d739487f27ccfd27))
+
 ## [3.3.8](https://github.com/JoseGoncalves/vue-keycloak/compare/v3.3.7...v3.3.8) (2026-07-20)
 
 ### Bug Fixes
