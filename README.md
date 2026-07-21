@@ -14,7 +14,7 @@
 
 # vue-keycloak
 [![NPM Version](https://img.shields.io/npm/v/%40josempgon%2Fvue-keycloak)](https://www.npmjs.com/package/@josempgon/vue-keycloak)
-[![npm bundle size](https://img.shields.io/bundlephobia/min/%40josempgon%2Fvue-keycloak?cacheSeconds=86400)](https://bundlephobia.com/package/@josempgon/vue-keycloak)
+[![npm bundle size](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fdeno.bundlejs.com%2F%3Fq%3D%40josempgon%2Fvue-keycloak%26config%3D%257B%2522esbuild%2522%253A%257B%2522external%2522%253A%255B%2522vue%2522%252C%2522keycloak-js%2522%255D%257D%257D&query=%24.size.uncompressedSize&label=minified%20size&color=blue&cacheSeconds=21600)](https://bundlejs.com/?q=%40josempgon%2Fvue-keycloak)
 [![NPM Downloads](https://img.shields.io/npm/dm/%40josempgon%2Fvue-keycloak?cacheSeconds=21600)](https://npm-stat.com/charts.html?package=%40josempgon%2Fvue-keycloak)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue?logo=typescript)](https://www.typescriptlang.org/)
 
