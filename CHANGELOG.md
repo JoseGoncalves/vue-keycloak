@@ -1,3 +1,14 @@
+## [3.3.11](https://github.com/JoseGoncalves/vue-keycloak/compare/v3.3.10...v3.3.11) (2026-08-24)
+
+### Bug Fixes
+
+* always reject getToken() with an Error ([1fb3d5e](https://github.com/JoseGoncalves/vue-keycloak/commit/1fb3d5ef8d2d63429b0d53864181bee1b38f8671))
+* restore isAuthenticated when a refresh recovers the session ([5bbd89d](https://github.com/JoseGoncalves/vue-keycloak/commit/5bbd89d4751fd22eadeb982bb1d6f82181aef8fd))
+
+### Internal
+
+* emit ES2020 to stop downlevelling optional chaining ([09641d1](https://github.com/JoseGoncalves/vue-keycloak/commit/09641d1d64bb9079b32f5cb23d1d908bedd59e8b))
+
 ## [3.3.10](https://github.com/JoseGoncalves/vue-keycloak/compare/v3.3.9...v3.3.10) (2026-08-24)
 
 ### Bug Fixes
