@@ -1,7 +1,7 @@
 import { shallowRef, reactive } from 'vue'
 import type { KeycloakTokenParsed } from 'keycloak-js'
 import type { KeycloakInstance } from './keycloak'
-import { isString } from './utils'
+import { toError } from './utils'
 
 export interface KeycloakState {
   isAuthenticated: boolean
@@ -56,28 +56,9 @@ export const clearToken = (): void => {
   state.resourceRoles = {}
 }
 
-interface ErrorString {
-  error: string
-}
-
-const toStateError = (err: unknown): Error => {
-  // Adopt the error as it is. `name` carries the error type, so renaming it would
-  // both mislabel the failure and corrupt the object updateToken() rethrows.
-  if (err instanceof Error) {
-    return err
-  }
-  if (isString((err as ErrorString)?.error)) {
-    return new Error((err as ErrorString).error)
-  }
-  if (isString(err)) {
-    return new Error(err)
-  }
-  return new Error('Unknown')
-}
-
 export const hasFailed = (err: unknown): void => {
   state.hasFailed = true
-  state.error = toStateError(err)
+  state.error = toError(err)
   console.error('[vue-keycloak]', state.error)
 }
 

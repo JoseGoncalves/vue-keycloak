@@ -60,6 +60,63 @@ describe('failure recovery', () => {
     expect(state.error?.name).toBe('TypeError')
   })
 
+  test('should reject with an Error when keycloak-js rejects with a protocol error object', async () => {
+    // keycloak's token endpoint answers a dead session with this shape, not with an Error
+    ;(Keycloak as jest.Mock).mockImplementation(() => ({
+      authenticated: true,
+      updateToken: jest
+        .fn()
+        .mockImplementation(() => Promise.reject({ error: 'invalid_grant', error_description: 'Session not active' })),
+    }))
+
+    createKeycloak(keycloakConfig)
+
+    const rejection = await getToken().then(
+      () => null,
+      err => err,
+    )
+
+    // the caller must be able to read `.message`, so a bare object is not acceptable
+    expect(rejection).toBeInstanceOf(Error)
+    expect(rejection.message).toBe('invalid_grant')
+    expect(state.error).toBe(rejection)
+  })
+
+  test('should reject with an Error when keycloak-js rejects with a bare string', async () => {
+    ;(Keycloak as jest.Mock).mockImplementation(() => ({
+      authenticated: true,
+      updateToken: jest.fn().mockImplementation(() => Promise.reject('access_denied')),
+    }))
+
+    createKeycloak(keycloakConfig)
+
+    const rejection = await getToken().then(
+      () => null,
+      err => err,
+    )
+
+    expect(rejection).toBeInstanceOf(Error)
+    expect(rejection.message).toBe('access_denied')
+    expect(state.error).toBe(rejection)
+  })
+
+  test('should reject with an Error when keycloak-js rejects with nothing usable', async () => {
+    ;(Keycloak as jest.Mock).mockImplementation(() => ({
+      authenticated: true,
+      updateToken: jest.fn().mockImplementation(() => Promise.reject(true)),
+    }))
+
+    createKeycloak(keycloakConfig)
+
+    const rejection = await getToken().then(
+      () => null,
+      err => err,
+    )
+
+    expect(rejection).toBeInstanceOf(Error)
+    expect(rejection.message).toBe('Failed to refresh the access token')
+  })
+
   test('should stop reporting a failure once a later init succeeds', async () => {
     ;(Keycloak as jest.Mock).mockImplementation(() => ({
       init: jest.fn().mockImplementation(() => Promise.reject(new Error('realm unreachable'))),

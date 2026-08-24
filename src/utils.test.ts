@@ -1,4 +1,4 @@
-import { isArray, isFunction, isNil, isString } from './utils'
+import { isArray, isFunction, isNil, isString, toError } from './utils'
 
 describe('util', () => {
   const arr: unknown[] = []
@@ -51,6 +51,42 @@ describe('util', () => {
       expect(isString(fun)).toBe(false)
       expect(isString(prom)).toBe(false)
       expect(isString(obj)).toBe(false)
+    })
+  })
+
+  describe('toError', () => {
+    test('should adopt an Error as it is, keeping its type', () => {
+      const original = new TypeError('Failed to fetch')
+
+      expect(toError(original)).toBe(original)
+      expect(toError(original).name).toBe('TypeError')
+    })
+
+    test('should unwrap the keycloak protocol error shape', () => {
+      const result = toError({ error: 'invalid_grant', error_description: 'Session not active' })
+
+      expect(result).toBeInstanceOf(Error)
+      expect(result.message).toBe('invalid_grant')
+    })
+
+    test('should wrap a string rejection', () => {
+      const result = toError('boom')
+
+      expect(result).toBeInstanceOf(Error)
+      expect(result.message).toBe('boom')
+    })
+
+    test('should fall back for a rejection that carries nothing usable', () => {
+      expect(toError(true).message).toBe('Unknown')
+      expect(toError(undefined).message).toBe('Unknown')
+      expect(toError(null).message).toBe('Unknown')
+      expect(toError({ error: 42 }).message).toBe('Unknown')
+    })
+
+    test('should use the caller supplied fallback message', () => {
+      expect(toError(true, 'Failed to refresh the access token').message).toBe('Failed to refresh the access token')
+      // a usable reason still wins over the fallback
+      expect(toError('boom', 'Failed to refresh the access token').message).toBe('boom')
     })
   })
 })
