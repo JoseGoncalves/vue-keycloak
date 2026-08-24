@@ -1,4 +1,4 @@
-import { state, setToken, clearToken } from './state'
+import { state, setToken, clearToken, hasFailed, clearFailure } from './state'
 
 describe('state', () => {
   const token =
@@ -36,6 +36,18 @@ describe('state', () => {
     expect(state.username).toBe('my-name')
     expect(state.roles).toStrictEqual(['my-role'])
     expect(state.resourceRoles).toStrictEqual({ 'my-app': ['my-role'] })
+  })
+
+  test('should clear a recorded failure', () => {
+    jest.spyOn(console, 'error').mockImplementation(() => {})
+    hasFailed(true, new Error('boom'))
+    expect(state.hasFailed).toBe(true)
+    expect(state.error?.message).toBe('boom')
+
+    clearFailure()
+
+    expect(state.hasFailed).toBe(false)
+    expect(state.error).toBe(null)
   })
 
   test('should clear the token derived state', () => {

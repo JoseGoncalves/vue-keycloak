@@ -1,7 +1,7 @@
 import { createKeycloak, getToken, initKeycloak } from './keycloak'
 import Keycloak from 'keycloak-js'
 import type { KeycloakConfig } from 'keycloak-js'
-import { clearToken, hasFailed, isAuthenticated, isPending, setToken } from './state'
+import { clearFailure, clearToken, hasFailed, isAuthenticated, isPending, setToken } from './state'
 import { defaultInitConfig } from './const'
 
 jest.mock('keycloak-js', () => jest.fn())
@@ -10,6 +10,7 @@ jest.mock('./state', () => {
     setKeycloak: jest.fn(),
     setToken: jest.fn(),
     clearToken: jest.fn(),
+    clearFailure: jest.fn(),
     hasFailed: jest.fn(),
     isPending: jest.fn(),
     isAuthenticated: jest.fn(),
@@ -37,6 +38,7 @@ describe('keycloak', () => {
     ;(isAuthenticated as jest.Mock).mockClear()
     ;(isPending as jest.Mock).mockClear()
     ;(clearToken as jest.Mock).mockClear()
+    ;(clearFailure as jest.Mock).mockClear()
   })
 
   describe('getToken', () => {
@@ -55,6 +57,7 @@ describe('keycloak', () => {
       const token = await getToken()
 
       expect(token).toBe('abc')
+      expect(clearFailure).toHaveBeenCalledTimes(1)
     })
 
     test('should throw an error and set hasFailed to true if token could not be refreshed', async () => {
@@ -68,6 +71,7 @@ describe('keycloak', () => {
       await expect(getToken()).rejects.toThrow(/^Failed to refresh the access token$/)
 
       expect(hasFailed).toHaveBeenCalledWith(true, expect.any(Error))
+      expect(clearFailure).not.toHaveBeenCalled()
     })
 
     test('should report a meaningful error when keycloak-js rejects with a bare true', async () => {
@@ -151,6 +155,7 @@ describe('keycloak', () => {
       expect(isPending).toHaveBeenCalledTimes(2)
       expect(isPending).toHaveBeenCalledWith(false)
       expect(isAuthenticated).toHaveBeenCalledWith(true)
+      expect(clearFailure).toHaveBeenCalledTimes(1)
     })
 
     test('should set isAuthenticated to false, due to login failure ', async () => {
@@ -184,6 +189,7 @@ describe('keycloak', () => {
       expect(isPending).toHaveBeenCalledWith(false)
       expect(hasFailed).toHaveBeenCalledWith(true, expect.any(Error))
       expect(isAuthenticated).toHaveBeenCalledWith(false)
+      expect(clearFailure).not.toHaveBeenCalled()
     })
 
     test('should keep the createKeycloak error instead of reporting a missing instance', async () => {
@@ -197,6 +203,7 @@ describe('keycloak', () => {
 
       expect(hasFailed).toHaveBeenCalledTimes(1)
       expect(hasFailed).toHaveBeenCalledWith(true, creationError)
+      expect(clearFailure).not.toHaveBeenCalled()
     })
 
     test('should report a missing instance if createKeycloak was never called', async () => {

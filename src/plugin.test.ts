@@ -2,7 +2,7 @@ import type { KeycloakConfig } from 'keycloak-js'
 import { vueKeycloak } from './plugin'
 import { createKeycloak, initKeycloak } from './keycloak'
 import { defaultInitConfig } from './const'
-import { state } from './state'
+import { state, clearFailure } from './state'
 
 jest.mock('./keycloak', () => {
   return {
@@ -33,6 +33,8 @@ describe('vueKeycloak', () => {
     ;(createKeycloak as jest.Mock).mockImplementation(() => ({ isMyKeycloak: true }))
     ;(initKeycloak as jest.Mock).mockImplementation(() => undefined)
     jest.spyOn(console, 'error').mockImplementation(() => {})
+    // state is module level and shared, so each test must start from a clean slate
+    clearFailure()
   })
 
   test('should have error if plugin config is nil', async () => {
@@ -77,6 +79,16 @@ describe('vueKeycloak', () => {
     expect(state.isPending).toBe(false)
     expect(createKeycloak as jest.Mock).not.toHaveBeenCalled()
     expect(initKeycloak as jest.Mock).not.toHaveBeenCalled()
+  })
+
+  test('should install with the configuration from the async factory', async () => {
+    const factory = (): Promise<{ config: KeycloakConfig }> => Promise.resolve({ config: keycloakConfig })
+
+    await vueKeycloak.install(appMock, factory)
+
+    expect(state.hasFailed).toBe(false)
+    expect(createKeycloak as jest.Mock).toHaveBeenCalledWith(keycloakConfig)
+    expect(initKeycloak as jest.Mock).toHaveBeenCalledWith(defaultInitConfig)
   })
 
   test('should set globalProperties', async () => {

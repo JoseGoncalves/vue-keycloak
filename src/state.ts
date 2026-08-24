@@ -75,6 +75,11 @@ export const hasFailed = (value: boolean, err: unknown): void => {
   console.error(state.error)
 }
 
+export const clearFailure = (): void => {
+  state.hasFailed = false
+  state.error = null
+}
+
 export const isPending = (value: boolean): void => {
   state.isPending = value
 }

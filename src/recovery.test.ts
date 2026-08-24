@@ -1,0 +1,79 @@
+import Keycloak from 'keycloak-js'
+import type { KeycloakConfig } from 'keycloak-js'
+import { createKeycloak, getToken, initKeycloak } from './keycloak'
+import { defaultInitConfig } from './const'
+import { state } from './state'
+
+jest.mock('keycloak-js', () => jest.fn())
+
+describe('failure recovery', () => {
+  const keycloakConfig: KeycloakConfig = {
+    clientId: 'abc',
+    realm: 'abc',
+    url: 'abc',
+  }
+
+  beforeEach(() => {
+    ;(Keycloak as jest.Mock).mockClear()
+    jest.spyOn(console, 'error').mockImplementation(() => {})
+  })
+
+  test('should stop reporting a failure once a later refresh succeeds', async () => {
+    let attempt = 0
+    ;(Keycloak as jest.Mock).mockImplementation(() => ({
+      authenticated: true,
+      token: 'abc',
+      tokenParsed: { sub: 'abc' },
+      updateToken: jest.fn().mockImplementation(() => {
+        attempt += 1
+        return attempt === 1 ? Promise.reject(new Error('network blip')) : Promise.resolve()
+      }),
+    }))
+
+    createKeycloak(keycloakConfig)
+
+    await expect(getToken()).rejects.toThrow('network blip')
+    expect(state.hasFailed).toBe(true)
+    expect(state.error?.message).toBe('network blip')
+
+    await expect(getToken()).resolves.toBe('abc')
+    expect(state.hasFailed).toBe(false)
+    expect(state.error).toBe(null)
+  })
+
+  test('should stop reporting a failure once a later init succeeds', async () => {
+    ;(Keycloak as jest.Mock).mockImplementation(() => ({
+      init: jest.fn().mockImplementation(() => Promise.reject(new Error('realm unreachable'))),
+    }))
+
+    createKeycloak(keycloakConfig)
+    await initKeycloak(defaultInitConfig)
+
+    expect(state.hasFailed).toBe(true)
+    expect(state.error?.message).toBe('realm unreachable')
+    ;(Keycloak as jest.Mock).mockImplementation(() => ({
+      token: 'abc',
+      tokenParsed: { sub: 'abc' },
+      init: jest.fn().mockImplementation(() => Promise.resolve(true)),
+    }))
+
+    createKeycloak(keycloakConfig)
+    await initKeycloak(defaultInitConfig)
+
+    expect(state.hasFailed).toBe(false)
+    expect(state.error).toBe(null)
+    expect(state.isAuthenticated).toBe(true)
+  })
+
+  test('should keep reporting a creation failure when init cannot run', async () => {
+    ;(Keycloak as jest.Mock).mockImplementation(() => {
+      throw new Error('Invalid realm URL')
+    })
+
+    createKeycloak(keycloakConfig)
+    await initKeycloak(defaultInitConfig)
+
+    expect(state.hasFailed).toBe(true)
+    expect(state.error?.message).toBe('Invalid realm URL')
+  })
+})

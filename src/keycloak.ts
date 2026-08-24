@@ -1,6 +1,6 @@
 import Keycloak from 'keycloak-js'
 import type { KeycloakConfig, KeycloakInitOptions } from 'keycloak-js'
-import { clearToken, hasFailed, isAuthenticated, isPending, setKeycloak, setToken } from './state'
+import { clearFailure, clearToken, hasFailed, isAuthenticated, isPending, setKeycloak, setToken } from './state'
 import { isErrorLike, isNil } from './utils'
 
 export type KeycloakInstance = Keycloak | undefined
@@ -20,6 +20,7 @@ async function updateToken(minValidity: number): Promise<string> {
       throw new Error('Failed to refresh the access token')
     }
     setToken(token, tokenParsed)
+    clearFailure()
     return token
   } catch (err) {
     // `authenticated` stays undefined until init() resolves, so only an explicit
@@ -63,6 +64,7 @@ export async function initKeycloak(initConfig: KeycloakInitOptions): Promise<voi
       return
     }
     const _isAuthenticated = await keycloak.init(initConfig)
+    clearFailure()
     isAuthenticated(_isAuthenticated)
     if (!isNil(keycloak.token) && !isNil(keycloak.tokenParsed)) {
       setToken(keycloak.token, keycloak.tokenParsed)
