@@ -1,3 +1,19 @@
+## [3.3.10](https://github.com/JoseGoncalves/vue-keycloak/compare/v3.3.9...v3.3.10) (2026-08-24)
+
+### Bug Fixes
+
+* clear the failure state once keycloak recovers ([1216a1b](https://github.com/JoseGoncalves/vue-keycloak/commit/1216a1bef87f97176ffb450174fe72942ab6c3df))
+* clear the shared instance when adapter creation fails ([fddfb21](https://github.com/JoseGoncalves/vue-keycloak/commit/fddfb215685ff677b46ed138c55f75be979bd5df))
+* clear the token state when init fails or finds no session ([228a669](https://github.com/JoseGoncalves/vue-keycloak/commit/228a669cbaf9af23428bdfb95e866878e29427be))
+* don't clear the token when a refresh fails before init completes ([d5b944b](https://github.com/JoseGoncalves/vue-keycloak/commit/d5b944b2008eacd01c4d862a32bf9df206097879))
+* report an error when the async config factory resolves to nil ([f6404a9](https://github.com/JoseGoncalves/vue-keycloak/commit/f6404a94f5359190768c5b3908d108d47e20f2f7))
+* stop renaming the error reported to state ([4651840](https://github.com/JoseGoncalves/vue-keycloak/commit/4651840cdab29fc762a5ce36e306cbcc4ffb3bb5))
+* tolerate tokens whose role containers are empty ([ac673a4](https://github.com/JoseGoncalves/vue-keycloak/commit/ac673a47cbf6dfd0af1bb063fd70d7b52e2f768b))
+
+### Internal
+
+* drop the redundant boolean from the hasFailed setter ([19da368](https://github.com/JoseGoncalves/vue-keycloak/commit/19da368cf4daf70a157884f4e3473195d34e44fb))
+
 ## [3.3.9](https://github.com/JoseGoncalves/vue-keycloak/compare/v3.3.8...v3.3.9) (2026-07-20)
 
 ### Bug Fixes
