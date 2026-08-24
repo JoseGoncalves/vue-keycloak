@@ -39,11 +39,11 @@ export const setToken = (token: string, tokenParsed: KeycloakTokenParsed): void 
   state.token = token
   const content = tokenParsed
   state.decodedToken = content
-  state.roles = content.realm_access ? content.realm_access.roles : []
+  state.roles = content.realm_access?.roles ?? []
   state.username = (content.preferred_username ?? '') as string
   state.userId = content.sub ?? ''
   state.resourceRoles = content.resource_access
-    ? Object.fromEntries(Object.entries(content.resource_access).map(([key, value]) => [key, value.roles]))
+    ? Object.fromEntries(Object.entries(content.resource_access).map(([key, value]) => [key, value.roles ?? []]))
     : {}
 }
 

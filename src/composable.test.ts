@@ -1,5 +1,5 @@
 import { useKeycloak } from './composable'
-import { state } from './state'
+import { state, setToken } from './state'
 
 describe('useKeycloak', () => {
   describe('state', () => {
@@ -27,6 +27,15 @@ describe('useKeycloak', () => {
       expect(hasRoles([])).toBe(false)
       expect(hasRolesLoose(undefined)).toBe(false)
       expect(hasRolesLoose(null)).toBe(false)
+    })
+
+    test('should not throw for a token that carries no realm roles', () => {
+      setToken('abc', { sub: 'abc', realm_access: {} } as never)
+      state.isAuthenticated = true
+      const { hasRoles } = useKeycloak()
+
+      expect(() => hasRoles(['my-role'])).not.toThrow()
+      expect(hasRoles(['my-role'])).toBe(false)
     })
   })
   describe('hasResourceRoles', () => {

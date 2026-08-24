@@ -38,6 +38,17 @@ describe('state', () => {
     expect(state.resourceRoles).toStrictEqual({ 'my-app': ['my-role'] })
   })
 
+  test('should tolerate a token whose role containers are empty', () => {
+    setToken(token, {
+      sub: '1234567890',
+      realm_access: {},
+      resource_access: { 'my-app': {} },
+    } as unknown as typeof tokenParsed)
+
+    expect(state.roles).toStrictEqual([])
+    expect(state.resourceRoles).toStrictEqual({ 'my-app': [] })
+  })
+
   test('should clear a recorded failure', () => {
     jest.spyOn(console, 'error').mockImplementation(() => {})
     hasFailed(new Error('boom'))
