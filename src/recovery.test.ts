@@ -41,6 +41,25 @@ describe('failure recovery', () => {
     expect(state.error).toBe(null)
   })
 
+  test('should reject with the original error untouched', async () => {
+    const failure = new TypeError('Failed to fetch')
+    ;(Keycloak as jest.Mock).mockImplementation(() => ({
+      authenticated: true,
+      updateToken: jest.fn().mockImplementation(() => Promise.reject(failure)),
+    }))
+
+    createKeycloak(keycloakConfig)
+
+    // the caller must get their own error back, with its type intact
+    await expect(getToken()).rejects.toBe(failure)
+    expect(failure.name).toBe('TypeError')
+    expect(String(failure)).toBe('TypeError: Failed to fetch')
+
+    // and the reported state is that same error, not a relabelled copy
+    expect(state.error).toBe(failure)
+    expect(state.error?.name).toBe('TypeError')
+  })
+
   test('should stop reporting a failure once a later init succeeds', async () => {
     ;(Keycloak as jest.Mock).mockImplementation(() => ({
       init: jest.fn().mockImplementation(() => Promise.reject(new Error('realm unreachable'))),

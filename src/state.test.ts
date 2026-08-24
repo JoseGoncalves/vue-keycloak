@@ -49,6 +49,30 @@ describe('state', () => {
     expect(state.resourceRoles).toStrictEqual({ 'my-app': [] })
   })
 
+  test('should adopt the error it was given without renaming it', () => {
+    jest.spyOn(console, 'error').mockImplementation(() => {})
+    const original = new TypeError('Failed to fetch')
+
+    hasFailed(original)
+
+    expect(state.error).toBe(original)
+    expect(state.error?.name).toBe('TypeError')
+    expect(state.error?.message).toBe('Failed to fetch')
+  })
+
+  test('should wrap a non error rejection', () => {
+    jest.spyOn(console, 'error').mockImplementation(() => {})
+
+    hasFailed({ error: 'access_denied' })
+    expect(state.error?.message).toBe('access_denied')
+
+    hasFailed('boom')
+    expect(state.error?.message).toBe('boom')
+
+    hasFailed(true)
+    expect(state.error?.message).toBe('Unknown')
+  })
+
   test('should clear a recorded failure', () => {
     jest.spyOn(console, 'error').mockImplementation(() => {})
     hasFailed(new Error('boom'))

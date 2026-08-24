@@ -60,19 +60,25 @@ interface ErrorString {
   error: string
 }
 
+const toStateError = (err: unknown): Error => {
+  // Adopt the error as it is. `name` carries the error type, so renaming it would
+  // both mislabel the failure and corrupt the object updateToken() rethrows.
+  if (err instanceof Error) {
+    return err
+  }
+  if (isString((err as ErrorString)?.error)) {
+    return new Error((err as ErrorString).error)
+  }
+  if (isString(err)) {
+    return new Error(err)
+  }
+  return new Error('Unknown')
+}
+
 export const hasFailed = (err: unknown): void => {
   state.hasFailed = true
-  if (err instanceof Error) {
-    state.error = err
-  } else if (isString((err as ErrorString)?.error)) {
-    state.error = new Error((err as ErrorString).error)
-  } else if (isString(err)) {
-    state.error = new Error(err)
-  } else {
-    state.error = new Error('Unknown')
-  }
-  state.error.name = '[vue-keycloak]'
-  console.error(state.error)
+  state.error = toStateError(err)
+  console.error('[vue-keycloak]', state.error)
 }
 
 export const clearFailure = (): void => {
