@@ -241,7 +241,7 @@ The `useKeycloak` function exposes the following data.
 | isAuthenticated | `Ref<boolean>`                                         | If `true` the user is authenticated.                                |
 | isPending       | `Ref<boolean>`                                         | If `true` the authentication request is still pending.              |
 | hasFailed       | `Ref<boolean>`                                         | If `true` an error occurred on initialization or Keycloak request.  |
-| error           | `Ref<Error>`                                           | Info on error that occurred (null if no error)                      |
+| error           | `Ref<Error \| null>`                                   | Info on error that occurred (null if no error)                      |
 | token           | `Ref<string>`                                          | Raw value of the access token. May be expired.                      |
 | decodedToken    | `Ref<`[`KeycloakTokenParsed`][TokenParsed]`>`          | Decoded value of the access token.                                  |
 | username        | `Ref<string>`                                          | Username. Extracted from `decodedToken['preferred_username']`.      |
