@@ -20,7 +20,7 @@ export const vueKeycloak: ObjectPlugin = {
 
     if (isNil(options)) {
       isPending(false)
-      hasFailed(true, new Error('The VueKeycloakPluginConfig is required'))
+      hasFailed(new Error('The VueKeycloakPluginConfig is required'))
       return
     }
 
@@ -30,12 +30,12 @@ export const vueKeycloak: ObjectPlugin = {
         keycloakPluginConfig = await (options as KeycloakConfigAsyncFactory)()
       } catch (err) {
         isPending(false)
-        hasFailed(true, isNil(err) ? new Error('The KeycloakConfigAsyncFactory failed') : err)
+        hasFailed(isNil(err) ? new Error('The KeycloakConfigAsyncFactory failed') : err)
         return
       }
       if (isNil(keycloakPluginConfig)) {
         isPending(false)
-        hasFailed(true, new Error('The KeycloakConfigAsyncFactory returned no configuration'))
+        hasFailed(new Error('The KeycloakConfigAsyncFactory returned no configuration'))
         return
       }
     } else {
@@ -44,7 +44,7 @@ export const vueKeycloak: ObjectPlugin = {
 
     if (isNil(keycloakPluginConfig.config)) {
       isPending(false)
-      hasFailed(true, new Error('The KeycloakConfig is required'))
+      hasFailed(new Error('The KeycloakConfig is required'))
       return
     }
 

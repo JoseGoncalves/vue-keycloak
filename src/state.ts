@@ -60,8 +60,8 @@ interface ErrorString {
   error: string
 }
 
-export const hasFailed = (value: boolean, err: unknown): void => {
-  state.hasFailed = value
+export const hasFailed = (err: unknown): void => {
+  state.hasFailed = true
   if (err instanceof Error) {
     state.error = err
   } else if (isString((err as ErrorString)?.error)) {

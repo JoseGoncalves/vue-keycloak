@@ -40,7 +40,7 @@ describe('state', () => {
 
   test('should clear a recorded failure', () => {
     jest.spyOn(console, 'error').mockImplementation(() => {})
-    hasFailed(true, new Error('boom'))
+    hasFailed(new Error('boom'))
     expect(state.hasFailed).toBe(true)
     expect(state.error?.message).toBe('boom')
 

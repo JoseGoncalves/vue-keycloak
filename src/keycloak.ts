@@ -30,7 +30,7 @@ async function updateToken(minValidity: number): Promise<string> {
       clearToken()
     }
     const rejectionReason = isErrorLike(err) ? err : new Error('Failed to refresh the access token')
-    hasFailed(true, rejectionReason)
+    hasFailed(rejectionReason)
     throw rejectionReason
   }
 }
@@ -47,7 +47,7 @@ export function createKeycloak(config: KeycloakConfig): KeycloakInstance {
   } catch (err) {
     $keycloak = undefined
     creationFailed = true
-    hasFailed(true, isNil(err) ? new Error('Failed to create the keycloak adapter') : err)
+    hasFailed(isNil(err) ? new Error('Failed to create the keycloak adapter') : err)
   }
   return $keycloak
 }
@@ -59,7 +59,7 @@ export async function initKeycloak(initConfig: KeycloakInitOptions): Promise<voi
     if (isNil(keycloak)) {
       // createKeycloak() already reported why the adapter is missing; don't mask it.
       if (!creationFailed) {
-        hasFailed(true, new Error('Keycloak is not initialised. Call createKeycloak() first.'))
+        hasFailed(new Error('Keycloak is not initialised. Call createKeycloak() first.'))
       }
       return
     }
@@ -71,7 +71,7 @@ export async function initKeycloak(initConfig: KeycloakInitOptions): Promise<voi
     }
   } catch (err) {
     isAuthenticated(false)
-    hasFailed(true, isNil(err) ? new Error('Failed to initialize the keycloak adapter') : err)
+    hasFailed(isNil(err) ? new Error('Failed to initialize the keycloak adapter') : err)
   } finally {
     isPending(false)
   }

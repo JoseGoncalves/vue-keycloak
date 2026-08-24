@@ -70,7 +70,7 @@ describe('keycloak', () => {
 
       await expect(getToken()).rejects.toThrow(/^Failed to refresh the access token$/)
 
-      expect(hasFailed).toHaveBeenCalledWith(true, expect.any(Error))
+      expect(hasFailed).toHaveBeenCalledWith(expect.any(Error))
       expect(clearFailure).not.toHaveBeenCalled()
     })
 
@@ -84,7 +84,7 @@ describe('keycloak', () => {
 
       await expect(getToken()).rejects.toThrow(/^Failed to refresh the access token$/)
 
-      expect(hasFailed).toHaveBeenCalledWith(true, expect.any(Error))
+      expect(hasFailed).toHaveBeenCalledWith(expect.any(Error))
     })
 
     test('should reset the state when the refresh failed because the session is gone', async () => {
@@ -187,7 +187,7 @@ describe('keycloak', () => {
       expect(hasFailed).toHaveBeenCalledTimes(1)
       expect(isPending).toHaveBeenCalledTimes(2)
       expect(isPending).toHaveBeenCalledWith(false)
-      expect(hasFailed).toHaveBeenCalledWith(true, expect.any(Error))
+      expect(hasFailed).toHaveBeenCalledWith(expect.any(Error))
       expect(isAuthenticated).toHaveBeenCalledWith(false)
       expect(clearFailure).not.toHaveBeenCalled()
     })
@@ -202,7 +202,7 @@ describe('keycloak', () => {
       await initKeycloak(defaultInitConfig)
 
       expect(hasFailed).toHaveBeenCalledTimes(1)
-      expect(hasFailed).toHaveBeenCalledWith(true, creationError)
+      expect(hasFailed).toHaveBeenCalledWith(creationError)
       expect(clearFailure).not.toHaveBeenCalled()
     })
 
@@ -214,7 +214,6 @@ describe('keycloak', () => {
       await initFreshKeycloak(defaultInitConfig)
 
       expect(hasFreshFailed).toHaveBeenCalledWith(
-        true,
         expect.objectContaining({ message: 'Keycloak is not initialised. Call createKeycloak() first.' }),
       )
     })
