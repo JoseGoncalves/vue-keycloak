@@ -2,7 +2,7 @@
   "compilerOptions": {
     "declaration": true,
     "esModuleInterop": true,
-    "target": "es2019",
+    "target": "es2020",
     "moduleResolution": "bundler",
     "strict": true,
     "outDir": "dist-transpiled",
