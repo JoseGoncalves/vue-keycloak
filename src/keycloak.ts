@@ -20,6 +20,9 @@ async function updateToken(minValidity: number): Promise<string> {
       throw new Error('Failed to refresh the access token')
     }
     setToken(token, tokenParsed)
+    // The adapter handed back a usable token, so the session is live again even if a
+    // previous refresh had given up on it.
+    isAuthenticated(true)
     clearFailure()
     return token
   } catch (err) {

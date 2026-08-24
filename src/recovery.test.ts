@@ -3,6 +3,7 @@ import type { KeycloakConfig } from 'keycloak-js'
 import { createKeycloak, getToken, initKeycloak } from './keycloak'
 import { defaultInitConfig } from './const'
 import { state, keycloak as keycloakRef } from './state'
+import { useKeycloak } from './composable'
 
 jest.mock('keycloak-js', () => jest.fn())
 
@@ -115,6 +116,64 @@ describe('failure recovery', () => {
 
     expect(rejection).toBeInstanceOf(Error)
     expect(rejection.message).toBe('Failed to refresh the access token')
+  })
+
+  test('should restore the authenticated state when a refresh recovers a lost session', async () => {
+    let attempt = 0
+    const adapter: Record<string, unknown> = {
+      authenticated: false,
+      token: 'abc',
+      tokenParsed: { sub: 'user-1', preferred_username: 'alice' },
+    }
+    adapter.updateToken = jest.fn().mockImplementation(() => {
+      attempt += 1
+      if (attempt === 1) {
+        return Promise.reject(new Error('refresh token expired'))
+      }
+      adapter.authenticated = true
+      return Promise.resolve(true)
+    })
+    ;(Keycloak as jest.Mock).mockImplementation(() => adapter)
+
+    createKeycloak(keycloakConfig)
+
+    await expect(getToken()).rejects.toThrow('refresh token expired')
+    expect(state.isAuthenticated).toBe(false)
+    expect(state.token).toBe('')
+
+    await expect(getToken()).resolves.toBe('abc')
+
+    // the token is back, so the rest of the state must agree with it
+    expect(state.isAuthenticated).toBe(true)
+    expect(state.token).toBe('abc')
+    expect(state.username).toBe('alice')
+    expect(state.hasFailed).toBe(false)
+  })
+
+  test('should not leave hasRoles denying access after a recovered refresh', async () => {
+    let attempt = 0
+    const adapter: Record<string, unknown> = {
+      authenticated: false,
+      token: 'abc',
+      tokenParsed: { sub: 'user-1', realm_access: { roles: ['my-role'] } },
+    }
+    adapter.updateToken = jest.fn().mockImplementation(() => {
+      attempt += 1
+      if (attempt === 1) {
+        return Promise.reject(new Error('refresh token expired'))
+      }
+      adapter.authenticated = true
+      return Promise.resolve(true)
+    })
+    ;(Keycloak as jest.Mock).mockImplementation(() => adapter)
+
+    createKeycloak(keycloakConfig)
+
+    await expect(getToken()).rejects.toThrow()
+    await expect(getToken()).resolves.toBe('abc')
+
+    // hasRoles gates on isAuthenticated, so a stale false silently denies a valid session
+    expect(useKeycloak().hasRoles(['my-role'])).toBe(true)
   })
 
   test('should stop reporting a failure once a later init succeeds', async () => {

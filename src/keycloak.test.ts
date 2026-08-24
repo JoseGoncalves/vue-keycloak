@@ -59,6 +59,7 @@ describe('keycloak', () => {
 
       expect(token).toBe('abc')
       expect(clearFailure).toHaveBeenCalledTimes(1)
+      expect(isAuthenticated).toHaveBeenCalledWith(true)
     })
 
     test('should throw an error and set hasFailed to true if token could not be refreshed', async () => {
