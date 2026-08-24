@@ -69,9 +69,12 @@ export async function initKeycloak(initConfig: KeycloakInitOptions): Promise<voi
     isAuthenticated(_isAuthenticated)
     if (!isNil(keycloak.token) && !isNil(keycloak.tokenParsed)) {
       setToken(keycloak.token, keycloak.tokenParsed)
+    } else {
+      clearToken()
     }
   } catch (err) {
     isAuthenticated(false)
+    clearToken()
     hasFailed(isNil(err) ? new Error('Failed to initialize the keycloak adapter') : err)
   } finally {
     isPending(false)

@@ -97,6 +97,30 @@ describe('failure recovery', () => {
     expect(keycloakRef.value).toBeUndefined()
   })
 
+  test('should not leave the previous identity behind when a later init fails', async () => {
+    ;(Keycloak as jest.Mock).mockImplementation(() => ({
+      token: 'abc',
+      tokenParsed: { sub: 'user-1', preferred_username: 'alice' },
+      init: jest.fn().mockImplementation(() => Promise.resolve(true)),
+    }))
+
+    createKeycloak(keycloakConfig)
+    await initKeycloak(defaultInitConfig)
+
+    expect(state.username).toBe('alice')
+    ;(Keycloak as jest.Mock).mockImplementation(() => ({
+      init: jest.fn().mockImplementation(() => Promise.reject(new Error('realm unreachable'))),
+    }))
+
+    createKeycloak(keycloakConfig)
+    await initKeycloak(defaultInitConfig)
+
+    expect(state.isAuthenticated).toBe(false)
+    expect(state.username).toBe('')
+    expect(state.userId).toBe('')
+    expect(state.token).toBe('')
+  })
+
   test('should keep reporting a creation failure when init cannot run', async () => {
     ;(Keycloak as jest.Mock).mockImplementation(() => {
       throw new Error('Invalid realm URL')

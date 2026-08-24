@@ -202,6 +202,20 @@ describe('keycloak', () => {
       expect(hasFailed).toHaveBeenCalledWith(expect.any(Error))
       expect(isAuthenticated).toHaveBeenCalledWith(false)
       expect(clearFailure).not.toHaveBeenCalled()
+      expect(clearToken).toHaveBeenCalledTimes(1)
+    })
+
+    test('should clear the token state when init reports no session', async () => {
+      ;(Keycloak as jest.Mock).mockImplementation(() => ({
+        init: jest.fn().mockImplementation(() => Promise.resolve(false)),
+      }))
+
+      createKeycloak(keycloakConfig)
+      await initKeycloak(defaultInitConfig)
+
+      expect(isAuthenticated).toHaveBeenCalledWith(false)
+      expect(setToken).not.toHaveBeenCalled()
+      expect(clearToken).toHaveBeenCalledTimes(1)
     })
 
     test('should keep the createKeycloak error instead of reporting a missing instance', async () => {
@@ -216,6 +230,7 @@ describe('keycloak', () => {
       expect(hasFailed).toHaveBeenCalledTimes(1)
       expect(hasFailed).toHaveBeenCalledWith(creationError)
       expect(clearFailure).not.toHaveBeenCalled()
+      expect(clearToken).not.toHaveBeenCalled()
     })
 
     test('should report a missing instance if createKeycloak was never called', async () => {
