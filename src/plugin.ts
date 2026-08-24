@@ -33,6 +33,11 @@ export const vueKeycloak: ObjectPlugin = {
         hasFailed(true, isNil(err) ? new Error('The KeycloakConfigAsyncFactory failed') : err)
         return
       }
+      if (isNil(keycloakPluginConfig)) {
+        isPending(false)
+        hasFailed(true, new Error('The KeycloakConfigAsyncFactory returned no configuration'))
+        return
+      }
     } else {
       keycloakPluginConfig = options as KeycloakPluginConfig
     }

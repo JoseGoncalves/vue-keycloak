@@ -67,6 +67,18 @@ describe('vueKeycloak', () => {
     expect(state.error?.message).toBe('The KeycloakConfigAsyncFactory failed')
   })
 
+  test('should have error if async factory resolves without a configuration', async () => {
+    const emptyFactory = (): Promise<undefined> => Promise.resolve(undefined)
+
+    await expect(vueKeycloak.install(appMock, emptyFactory)).resolves.not.toThrow()
+
+    expect(state.hasFailed).toBe(true)
+    expect(state.error?.message).toBe('The KeycloakConfigAsyncFactory returned no configuration')
+    expect(state.isPending).toBe(false)
+    expect(createKeycloak as jest.Mock).not.toHaveBeenCalled()
+    expect(initKeycloak as jest.Mock).not.toHaveBeenCalled()
+  })
+
   test('should set globalProperties', async () => {
     await vueKeycloak.install(appMock, { config: keycloakConfig })
 
