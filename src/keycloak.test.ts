@@ -112,6 +112,21 @@ describe('keycloak', () => {
       expect(isAuthenticated).not.toHaveBeenCalled()
       expect(clearToken).not.toHaveBeenCalled()
     })
+
+    test('should keep the state when the refresh failed before init has completed', async () => {
+      ;(Keycloak as jest.Mock).mockImplementation(() => ({
+        token: 'abc',
+        // keycloak-js leaves `authenticated` undefined until init() resolves
+        updateToken: jest.fn().mockImplementation(() => Promise.reject(new Error('The client is not initialized'))),
+      }))
+
+      createKeycloak(keycloakConfig)
+
+      await expect(getToken()).rejects.toThrow()
+
+      expect(isAuthenticated).not.toHaveBeenCalled()
+      expect(clearToken).not.toHaveBeenCalled()
+    })
   })
 
   describe('createKeycloak', () => {

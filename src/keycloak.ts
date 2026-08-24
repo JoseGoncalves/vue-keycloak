@@ -22,8 +22,9 @@ async function updateToken(minValidity: number): Promise<string> {
     setToken(token, tokenParsed)
     return token
   } catch (err) {
-    // Only a terminated session, not a transient failure.
-    if (!keycloak.authenticated) {
+    // `authenticated` stays undefined until init() resolves, so only an explicit
+    // false means a terminated session rather than one that never started.
+    if (keycloak.authenticated === false) {
       isAuthenticated(false)
       clearToken()
     }
