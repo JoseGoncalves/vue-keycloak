@@ -1,7 +1,7 @@
 import { createKeycloak, getToken, initKeycloak } from './keycloak'
 import Keycloak from 'keycloak-js'
 import type { KeycloakConfig } from 'keycloak-js'
-import { clearFailure, clearToken, hasFailed, isAuthenticated, isPending, setToken } from './state'
+import { clearFailure, clearToken, hasFailed, isAuthenticated, isPending, setKeycloak, setToken } from './state'
 import { defaultInitConfig } from './const'
 
 jest.mock('keycloak-js', () => jest.fn())
@@ -39,6 +39,7 @@ describe('keycloak', () => {
     ;(isPending as jest.Mock).mockClear()
     ;(clearToken as jest.Mock).mockClear()
     ;(clearFailure as jest.Mock).mockClear()
+    ;(setKeycloak as jest.Mock).mockClear()
   })
 
   describe('getToken', () => {
@@ -139,6 +140,17 @@ describe('keycloak', () => {
 
       expect(result?.token).toBe('abc')
       expect(Keycloak).toHaveBeenCalledWith(keycloakConfig)
+    })
+
+    test('should clear the shared instance when creation fails', () => {
+      ;(Keycloak as jest.Mock).mockImplementation(() => {
+        throw new Error('Invalid realm URL')
+      })
+
+      const result = createKeycloak(keycloakConfig)
+
+      expect(result).toBeUndefined()
+      expect(setKeycloak).toHaveBeenCalledWith(undefined)
     })
   })
 

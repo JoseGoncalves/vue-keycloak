@@ -2,7 +2,7 @@ import Keycloak from 'keycloak-js'
 import type { KeycloakConfig } from 'keycloak-js'
 import { createKeycloak, getToken, initKeycloak } from './keycloak'
 import { defaultInitConfig } from './const'
-import { state } from './state'
+import { state, keycloak as keycloakRef } from './state'
 
 jest.mock('keycloak-js', () => jest.fn())
 
@@ -82,6 +82,19 @@ describe('failure recovery', () => {
     expect(state.hasFailed).toBe(false)
     expect(state.error).toBe(null)
     expect(state.isAuthenticated).toBe(true)
+  })
+
+  test('should not hand out a discarded adapter after a failed re-creation', () => {
+    ;(Keycloak as jest.Mock).mockImplementation(() => ({ authenticated: true }))
+    createKeycloak(keycloakConfig)
+    expect(keycloakRef.value).toBeDefined()
+    ;(Keycloak as jest.Mock).mockImplementation(() => {
+      throw new Error('Invalid realm URL')
+    })
+
+    createKeycloak(keycloakConfig)
+
+    expect(keycloakRef.value).toBeUndefined()
   })
 
   test('should keep reporting a creation failure when init cannot run', async () => {

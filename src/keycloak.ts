@@ -46,6 +46,7 @@ export function createKeycloak(config: KeycloakConfig): KeycloakInstance {
     setKeycloak($keycloak)
   } catch (err) {
     $keycloak = undefined
+    setKeycloak(undefined)
     creationFailed = true
     hasFailed(isNil(err) ? new Error('Failed to create the keycloak adapter') : err)
   }
