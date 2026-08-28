@@ -5,6 +5,8 @@
     "target": "es2020",
     "moduleResolution": "bundler",
     "strict": true,
+    "types": ["jest"],
+    "rootDir": "src",
     "outDir": "dist-transpiled",
     "declarationDir": "dist/types",
     "removeComments": true,
