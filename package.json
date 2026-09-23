@@ -71,7 +71,6 @@
     "vue": "^3.5.43"
   },
   "overrides": {
-    "babel-plugin-istanbul": "^8.0.2",
     "test-exclude": "^8.0.0"
   },
   "engines": {
