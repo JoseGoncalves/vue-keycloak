@@ -210,7 +210,7 @@ const { isPending, isAuthenticated, error, username, userId, keycloak } = useKey
     <h2>User: {{ username }}</h2>
     <h2>User ID: {{ userId }}</h2>
     <div>
-      <button @click="keycloak.logout">Logout</button>
+      <button @click="keycloak.logout()">Logout</button>
     </div>
   </div>
   <div v-if="error">
